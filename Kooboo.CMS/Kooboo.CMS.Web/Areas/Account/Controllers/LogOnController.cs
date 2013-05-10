@@ -17,6 +17,8 @@ using Kooboo.CMS.Sites;
 using Kooboo.Globalization;
 using Kooboo.CMS.Account.Services;
 using Kooboo.CMS.Common;
+using System.IdentityModel.Services;
+
 namespace Kooboo.CMS.Web.Areas.Account.Controllers
 {
     public class LogOnController : ControllerBase
@@ -107,14 +109,29 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
         }
         public virtual ActionResult SignOut(string returnUrl)
         {
+            var fam = FederatedAuthentication.WSFederationAuthenticationModule;
+
+            // Clear local cookie
+            fam.SignOut(false);
+
+            // Initiate a federated sign out request to the sts.
+            var signOutRequest = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm);
+            signOutRequest.Reply = fam.Reply;
+
+            // Redirect to sts logout page 
+            return new RedirectResult(signOutRequest.WriteQueryString()); 
+
+            /*
             System.Web.Security.FormsAuthentication.SignOut();
             if (string.IsNullOrEmpty(returnUrl))
             {
                 returnUrl = System.Web.Security.FormsAuthentication.LoginUrl;
             }
             return Redirect(returnUrl);
+            */
         }
 
+        /*
         public virtual ActionResult ForgotPassword()
         {
             return View();
@@ -176,5 +193,6 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
 
             return View();
         }
+         */
     }
 }

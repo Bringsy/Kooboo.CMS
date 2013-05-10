@@ -31,9 +31,9 @@
              <li>
                 <a href="@Url.Action("ChangeLanguage", new { area = "account", controller = "Users", @return = ViewContext.HttpContext.Request.RawUrl })">@("Change language".Localize())</a>
             </li>
-            <li>
+            @*<li>
                 <a href="@Url.Action("ChangePassword", new { area = "account", controller = "Users", @return = ViewContext.HttpContext.Request.RawUrl })">@("Change password".Localize())</a>
-            </li>
+            </li>*@
             <li>
                 <a href="@Url.Action("SignOut", new { controller = "Logon", area = "account" })">@("Sign out".Localize())</a>
             </li>
