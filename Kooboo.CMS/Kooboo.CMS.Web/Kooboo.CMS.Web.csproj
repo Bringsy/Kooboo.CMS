@@ -605,6 +605,28 @@
     <Content Include="Areas\Sites\Scripts\visualStyle\utilities.js" />
     <Content Include="Areas\Sites\Scripts\visualStyle\visualStyle.css" />
     <Content Include="Areas\Sites\Scripts\visualStyle\visualStyle.js" />
+    <Content Include="Cms_Data\Contents\SampleSite\Data\Article.xml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Data\Category.xml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Data\Comment.xml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Data\_category_.xml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Search\LastActions.xml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Files\favicon.ico" />
+    <Content Include="Cms_Data\Sites\SampleSite\Files\logo.png" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\app.js" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\html5shiv.js" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\Order.txt" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\test\test_nested.js" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\base.css" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\common.css" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\ie.css" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\images\icon-back.png" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\images\icon-search.png" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\Order.txt" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\reset.css" />
+    <Content Include="Cms_Data\SiteTemplates\SampleSite.png" />
+    <Content Include="Cms_Data\SiteTemplates\SmallBusiness.png" />
+    <Content Include="FederationMetadata\2007-06\FederationMetadata.xml" />
     <Content Include="Images\Default.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\loading.gif" />
@@ -2105,6 +2127,12 @@
     <Content Include="Views\Shared\EditorTemplates\Image.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Cms_Data\Account\Users\" />
+    <Folder Include="Cms_Data\Connect\Users\" />
+    <Folder Include="Cms_Data\Contents\SampleSite\Search\Index\" />
+    <Folder Include="Cms_Data\Contents\SampleSite\Workflows\" />
+    <Folder Include="Cms_Data\Sites\SampleSite\Users\" />
+    <Folder Include="Cms_Data\WebEvents\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
   </ItemGroup>
@@ -2408,6 +2436,85 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cms_Data\Account\Roles\Content manager.config" />
+    <Content Include="Cms_Data\Account\Roles\Developer.config" />
+    <Content Include="Cms_Data\Account\Roles\Publisher.config" />
+    <Content Include="Cms_Data\Account\setting.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\Folders\Article\setting.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\Folders\Category\setting.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\Folders\Comment\setting.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Create.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Detail.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Grid.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\List.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Selectable.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\setting.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Update.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Create.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Detail.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Grid.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\List.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Selectable.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\setting.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Update.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Create.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Detail.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Grid.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\List.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Selectable.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\setting.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Update.cshtml" />
+    <Content Include="Cms_Data\Contents\SampleSite\Search\Settings\Article.config" />
+    <Content Include="Cms_Data\Contents\SampleSite\setting.config" />
+    <Content Include="Cms_Data\ContentType_Templates\Controls\ImageCrop.cshtml" />
+    <Content Include="Cms_Data\ContentType_Templates\Controls\MediaFiles.cshtml" />
+    <Content Include="Cms_Data\ContentType_Templates\Controls\MultiFiles.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\about\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\Articles\Detail\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\Articles\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\Search\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Sites\SampleSite_DE\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\ContactUs.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\DeleteComment.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\PostComment.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\one_column\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\one_column\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\two_column\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\two_column\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Category\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Category\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail.Return\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail.Return\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\ParameterTemplate.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Search\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Search\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Contactus\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Contactus\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\LoginForm\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\LoginForm\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Menu\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Menu\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\Theme.rule" />
+    <Content Include="Cms_Data\SiteTemplates\Empty.zip" />
+    <Content Include="Cms_Data\SiteTemplates\SampleSite.zip" />
+    <Content Include="Cms_Data\SiteTemplates\SmallBusiness.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cms_Data\Sites\SampleSite\Labels\Labels.resx" />
+    <EmbeddedResource Include="Cms_Data\Sites\SampleSite\Sites\SampleSite_DE\Labels\Labels.resx" />
+    <EmbeddedResource Include="I18N\de-DE.resx" />
+    <EmbeddedResource Include="I18N\en-GB.resx" />
+    <EmbeddedResource Include="I18N\en-US.resx" />
+    <EmbeddedResource Include="I18N\ru-RU.resx" />
+    <EmbeddedResource Include="I18N\zh-CN.resx" />
+    <EmbeddedResource Include="I18N\zh-TW.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
