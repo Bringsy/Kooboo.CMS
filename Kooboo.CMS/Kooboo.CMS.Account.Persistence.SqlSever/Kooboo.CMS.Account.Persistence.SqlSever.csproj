@@ -64,10 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Kooboo.Connect\Kooboo.Connect.csproj">
-      <Project>{7389239B-564D-4398-87B7-99D9999ABECB}</Project>
-      <Name>Kooboo.Connect</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Kooboo\Kooboo.csproj">
       <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>
       <Name>Kooboo %28Source\Kooboo\Kooboo%29</Name>

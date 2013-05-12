@@ -28,6 +28,9 @@ namespace Kooboo.CMS.Account.Persistence.SqlSever
 
         public override void Add(User item)
         {
+             base.Add(item);
+
+            /*
             var r = Kooboo.Connect.UserServices.CreateUser(item.UserName, item.Password, item.Email);
 
             if (r == Connect.UserCreateStatus.Success)
@@ -39,6 +42,7 @@ namespace Kooboo.CMS.Account.Persistence.SqlSever
             {
                 throw new KoobooException("Create user failed, message:" + r.ToString());
             }
+             */
         }
         public override IEnumerable<User> All()
         {
@@ -46,16 +50,16 @@ namespace Kooboo.CMS.Account.Persistence.SqlSever
         }
         public bool ValidateUser(string userName, string password)
         {
-            return Kooboo.Connect.UserServices.ValidateUser(userName, password) != null;
+            return true; // Kooboo.Connect.UserServices.ValidateUser(userName, password) != null;
         }
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
-            return Kooboo.Connect.UserServices.ChangePassword(userName, oldPassword, newPassword);
+            return true; // Kooboo.Connect.UserServices.ChangePassword(userName, oldPassword, newPassword);
         }
         public bool ChangePassword(string userName, string newPassword)
         {
-            return Kooboo.Connect.UserServices.ChangePassword(userName, newPassword);
+            return true; // Kooboo.Connect.UserServices.ChangePassword(userName, newPassword);
         }
 
 

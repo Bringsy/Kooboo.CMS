@@ -12,7 +12,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kooboo.CMS.Web.Areas.Account.Models;
-using Kooboo.Connect;
 using Kooboo.CMS.Sites;
 using Kooboo.Globalization;
 using Kooboo.CMS.Account.Services;
@@ -86,6 +85,9 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
             {
                 data.RunWithTry((resultData) =>
                 {
+                    // TODO: 
+
+                    /*
                     if (UserServices.ValidateUser(loginModel.UserName, loginModel.Password) != null)
                     {
                         System.Web.Security.FormsAuthentication.SetAuthCookie(loginModel.UserName, loginModel.RememberMe);
@@ -103,6 +105,7 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
                     {
                         resultData.AddFieldError("UserName", "Username and/or password are incorrect.".Localize());
                     }
+                     */
                 });
             }
             return Json(data);

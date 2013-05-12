@@ -91,6 +91,8 @@ namespace Kooboo.CMS.Account.Services
                     return null;
                 }
             }
+
+            /*
             var connectUser = Kooboo.Connect.UserServices.ValidateUser(userName, password);
             if (connectUser == null && cmsUser != null)
             {
@@ -111,6 +113,8 @@ namespace Kooboo.CMS.Account.Services
                 cmsUser.FailedPasswordAttemptCount = 0;
                 Update(userName, cmsUser);
             }
+             */
+
             return cmsUser;
         }
 

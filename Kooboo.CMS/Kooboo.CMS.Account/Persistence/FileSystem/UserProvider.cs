@@ -51,6 +51,9 @@ namespace Kooboo.CMS.Account.Persistence.FileSystem
 
         public override void Add(User item)
         {
+            base.Add(item);
+
+            /*
             var r = Kooboo.Connect.UserServices.CreateUser(item.UserName, item.Password, item.Email);
 
             if (r == Connect.UserCreateStatus.Success)
@@ -62,29 +65,26 @@ namespace Kooboo.CMS.Account.Persistence.FileSystem
             {
                 throw new KoobooException("Create user failed, message:" + r.ToString());
             }
-
+            */
         }
 
         public bool ValidateUser(string userName, string password)
         {
-            return Kooboo.Connect.UserServices.ValidateUser(userName, password) != null;
+            return true; // Kooboo.Connect.UserServices.ValidateUser(userName, password) != null;
         }
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
-            return Kooboo.Connect.UserServices.ChangePassword(userName, oldPassword, newPassword);
+            return true; // Kooboo.Connect.UserServices.ChangePassword(userName, oldPassword, newPassword);
         }
         public bool ChangePassword(string userName, string newPassword)
         {
-            return Kooboo.Connect.UserServices.ChangePassword(userName, newPassword);
+            return true; //  Kooboo.Connect.UserServices.ChangePassword(userName, newPassword);
         }
         public override void Remove(User item)
         {
             base.Remove(item);
-            Kooboo.Connect.UserServices.Delete(new Kooboo.Connect.User() { Name = item.UserName });
+            // Kooboo.Connect.UserServices.Delete(new Kooboo.Connect.User() { Name = item.UserName });
         }
-
-
-
     }
 }
