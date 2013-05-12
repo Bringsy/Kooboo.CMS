@@ -2511,6 +2511,9 @@
     <EmbeddedResource Include="I18N\zh-CN.resx" />
     <EmbeddedResource Include="I18N\zh-TW.resx" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -2552,10 +2555,9 @@
     </MonoDevelop>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>copy "..\..\..\Lib\MVC\4.0\*.dll"  "$(TargetDir)";
-copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Ninject.dll"  "$(TargetDir)";
+    <PostBuildEvent>copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Ninject.dll"  "$(TargetDir)";
 copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll"  "$(TargetDir)";
-@echo copy "..\..\..\Lib\SQLCe\*.*" "$(TargetDir)"</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
