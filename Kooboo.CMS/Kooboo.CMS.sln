@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{726D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kooboo.CMS.Sites.Providers", "Kooboo.CMS.Sites.Providers", "{1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Web", "Kooboo.CMS.Web\Kooboo.CMS.Web.csproj", "{C5803C24-EEEE-4A7E-8F2F-B0FB66287845}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Web45", "Kooboo.CMS.Web\Kooboo.CMS.Web45.csproj", "{C5803C24-EEEE-4A7E-8F2F-B0FB66287845}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Content", "Kooboo.CMS.Content\Kooboo.CMS.Content\Kooboo.CMS.Content.csproj", "{C5A5186D-6F8E-4BB9-AF0E-74F0993B48DA}"
 EndProject

@@ -17,6 +17,8 @@ using System.Threading;
 using Kooboo.CMS.Sites;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Common;
+using System.Web;
+using Kooboo.Globalization;
 namespace Kooboo.CMS.Sites
 {
     [ValidateInput(false)]
@@ -112,8 +114,9 @@ namespace Kooboo.CMS.Sites
                 filterContext.ExceptionHandled = true;
             }
         }
-        #endregion  
+        #endregion
 
+        #region Site
         public virtual Site Site
         {
             get
@@ -125,5 +128,6 @@ namespace Kooboo.CMS.Sites
                 Site.Current = value;
             }
         }
+        #endregion
     }
 }

@@ -14,7 +14,7 @@
     <RootNamespace>Kooboo.CMS.Web</RootNamespace>
     <AssemblyName>Kooboo.CMS.Web</AssemblyName>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -69,9 +69,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.identitymodel.services" />
-    <Reference Include="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
-      <HintPath>..\packages\System.IdentityModel.Tokens.ValidatingIssuerNameRegistry.4.5.1\lib\net45\System.IdentityModel.Tokens.ValidatingIssuerNameRegistry.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -232,6 +229,7 @@
     <Compile Include="Models\AllPropertiesResolver.cs" />
     <Compile Include="Models\ImportModel.cs" />
     <Compile Include="Models\RelationModel.cs" />
+    <Compile Include="ReferrerCheckingModule.cs" />
     <Compile Include="SortByExtension.cs" />
     <Content Include="Areas\Account\Menu.config">
       <SubType>Designer</SubType>
@@ -426,6 +424,7 @@
     <Content Include="Areas\Sites\Menu.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Sites\Scripts\extension\jquery.innerLineEditor.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\anchor\anchor.css" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\anchor\anchor.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\anchor\anchorFix.js" />
@@ -464,6 +463,7 @@
     <Content Include="Areas\Sites\Scripts\inlineEdit\combo\combo.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\combo\fontFamilyCombo.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\combo\fontSizeCombo.js" />
+    <Content Include="Areas\Sites\Scripts\inlineEdit\combo\headingCombo.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\combo\images\textfield_dropdown.gif" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\core\corebase.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\core\ellipsis.xml" />
@@ -491,6 +491,7 @@
     <Content Include="Areas\Sites\Scripts\inlineEdit\editor\images\tb_italic_off.gif" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\editor\images\tb_numberlist_off.gif" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\editor\images\tb_outdent_off.gif" />
+    <Content Include="Areas\Sites\Scripts\inlineEdit\editor\images\tb_pasteplaintext_off.gif" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\editor\images\tb_redo_off.gif" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\editor\images\tb_underline_off.gif" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\editor\images\tb_undo_off.gif" />
@@ -525,6 +526,8 @@
     <Content Include="Areas\Sites\Scripts\inlineEdit\picker\colorPicker.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\picker\fontFamilyPicker.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\picker\fontSizePicker.js" />
+    <Content Include="Areas\Sites\Scripts\inlineEdit\picker\headingPicker.css" />
+    <Content Include="Areas\Sites\Scripts\inlineEdit\picker\headingPicker.js" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\picker\images\tb_back_color.png" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\picker\images\tb_default_color.gif" />
     <Content Include="Areas\Sites\Scripts\inlineEdit\picker\images\tb_font_color.png" />
@@ -534,6 +537,7 @@
     <Content Include="Areas\Sites\Scripts\pageDesign\anchor\images\add_html.png" />
     <Content Include="Areas\Sites\Scripts\pageDesign\anchor\images\add_htmlBlock.png" />
     <Content Include="Areas\Sites\Scripts\pageDesign\anchor\images\add_module.gif" />
+    <Content Include="Areas\Sites\Scripts\pageDesign\anchor\images\add_proxy.png" />
     <Content Include="Areas\Sites\Scripts\pageDesign\anchor\images\add_view.png" />
     <Content Include="Areas\Sites\Scripts\pageDesign\anchor\images\menu_bg.gif" />
     <Content Include="Areas\Sites\Scripts\pageDesign\anchor\images\menu_split.gif" />
@@ -551,6 +555,7 @@
     <Content Include="Areas\Sites\Scripts\pageDesign\design\images\c_up.gif" />
     <Content Include="Areas\Sites\Scripts\pageDesign\design\images\drag.png" />
     <Content Include="Areas\Sites\Scripts\pageDesign\design\images\watermark.png" />
+    <Content Include="Areas\Sites\Scripts\pageDesign\design\images\watermark.psd" />
     <Content Include="Areas\Sites\Scripts\pageDesign\index.css" />
     <Content Include="Areas\Sites\Scripts\pageDesign\index.js" />
     <Content Include="Areas\Sites\Scripts\pageDesign\nest.js" />
@@ -605,27 +610,16 @@
     <Content Include="Areas\Sites\Scripts\visualStyle\utilities.js" />
     <Content Include="Areas\Sites\Scripts\visualStyle\visualStyle.css" />
     <Content Include="Areas\Sites\Scripts\visualStyle\visualStyle.js" />
-    <Content Include="Cms_Data\Contents\SampleSite\Data\Article.xml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Data\Category.xml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Data\Comment.xml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Data\_category_.xml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Search\LastActions.xml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Files\favicon.ico" />
-    <Content Include="Cms_Data\Sites\SampleSite\Files\logo.png" />
-    <Content Include="Cms_Data\Sites\SampleSite\Scripts\app.js" />
-    <Content Include="Cms_Data\Sites\SampleSite\Scripts\html5shiv.js" />
-    <Content Include="Cms_Data\Sites\SampleSite\Scripts\jquery.fancybox-1.3.4.pack.js" />
-    <Content Include="Cms_Data\Sites\SampleSite\Scripts\Order.txt" />
-    <Content Include="Cms_Data\Sites\SampleSite\Scripts\test\test_nested.js" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\base.css" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\common.css" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\ie.css" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\images\icon-back.png" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\images\icon-search.png" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\Order.txt" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\reset.css" />
-    <Content Include="Cms_Data\SiteTemplates\SampleSite.png" />
-    <Content Include="Cms_Data\SiteTemplates\SmallBusiness.png" />
+    <Content Include="Areas\Sites\Styles\images\arrow-down.png" />
+    <Content Include="Areas\Sites\Styles\images\arrow-right.png" />
+    <Content Include="Areas\Sites\Styles\images\arrow-up.png" />
+    <Content Include="Areas\Sites\Styles\images\arrow-white-up.png" />
+    <Content Include="Areas\Sites\Styles\images\arrow-white.png" />
+    <Content Include="Areas\Sites\Styles\images\arrow.png" />
+    <Content Include="Areas\Sites\Styles\images\map-item-dark.png" />
+    <Content Include="Areas\Sites\Styles\images\map-item-hover.png" />
+    <Content Include="Areas\Sites\Styles\images\map-item.png" />
+    <Content Include="Areas\Sites\Styles\sites.css" />
     <Content Include="FederationMetadata\2007-06\FederationMetadata.xml" />
     <Content Include="Images\Default.png" />
     <Content Include="Images\favicon.ico" />
@@ -1176,15 +1170,6 @@
     <Content Include="Areas\Sites\CodeSnippets\WebForm\MultiFilesField.txt" />
     <Content Include="Areas\Sites\CodeSnippets\WebForm\QueryString.txt" />
     <Content Include="Areas\Sites\CodeSnippets\WebForm\RenderHtmlBlock.txt" />
-    <Content Include="Areas\Sites\Styles\images\arrow-down.png" />
-    <Content Include="Areas\Sites\Styles\images\arrow-right.png" />
-    <Content Include="Areas\Sites\Styles\images\arrow-up.png" />
-    <Content Include="Areas\Sites\Styles\images\arrow-white-up.png" />
-    <Content Include="Areas\Sites\Styles\images\arrow-white.png" />
-    <Content Include="Areas\Sites\Styles\images\arrow.png" />
-    <Content Include="Areas\Sites\Styles\images\map-item-dark.png" />
-    <Content Include="Areas\Sites\Styles\images\map-item-hover.png" />
-    <Content Include="Areas\Sites\Styles\images\map-item.png" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_SitesNavTree.cshtml" />
     <Content Include="Areas\Account\Views\Users\ResetPassword.cshtml" />
@@ -1906,8 +1891,6 @@
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\tiny_mce_extension.js" />
     <Content Include="Scripts\jquery.urldecoder.js" />
-    <Content Include="Areas\Sites\Scripts\extension\jquery.innerLineEditor.js" />
-    <Content Include="Areas\Sites\Styles\sites.css" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.filestyle.js" />
@@ -1934,7 +1917,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Shared\EditorTemplates\Tinymce.cshtml" />
-    <Content Include="Web_mono.config" />
     <Content Include="Areas\Sites\Views\Site\DeleteRepository.cshtml" />
     <Content Include="Areas\Sites\Views\Site\ImportRepository.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Create.cshtml" />
@@ -2094,7 +2076,6 @@
     <Content Include="Areas\Contents\Views\MediaContent\Html5Uploader.cshtml" />
     <Content Include="Areas\Contents\Views\MediaContent\Edit.cshtml" />
     <Content Include="Areas\Contents\Views\TextContent\_Grid.Scripts.cshtml" />
-    <Content Include="Areas\Sites\Scripts\pageDesign\design\images\watermark.psd" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
@@ -2127,11 +2108,6 @@
     <Content Include="Views\Shared\EditorTemplates\Image.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Cms_Data\Account\Users\" />
-    <Folder Include="Cms_Data\Contents\SampleSite\Search\Index\" />
-    <Folder Include="Cms_Data\Contents\SampleSite\Workflows\" />
-    <Folder Include="Cms_Data\Sites\SampleSite\Users\" />
-    <Folder Include="Cms_Data\WebEvents\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
   </ItemGroup>
@@ -2430,80 +2406,9 @@
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Naviation_Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="Packages\Kooboo.Cms.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cms_Data\Account\Roles\Content manager.config" />
-    <Content Include="Cms_Data\Account\Roles\Developer.config" />
-    <Content Include="Cms_Data\Account\Roles\Publisher.config" />
-    <Content Include="Cms_Data\Account\setting.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\Folders\Article\setting.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\Folders\Category\setting.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\Folders\Comment\setting.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Create.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Detail.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Grid.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\List.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Selectable.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\setting.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Article\Update.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Create.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Detail.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Grid.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\List.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Selectable.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\setting.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Category\Update.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Create.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Detail.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Grid.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\List.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Selectable.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\setting.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\Schemas\Comment\Update.cshtml" />
-    <Content Include="Cms_Data\Contents\SampleSite\Search\Settings\Article.config" />
-    <Content Include="Cms_Data\Contents\SampleSite\setting.config" />
-    <Content Include="Cms_Data\ContentType_Templates\Controls\ImageCrop.cshtml" />
-    <Content Include="Cms_Data\ContentType_Templates\Controls\MediaFiles.cshtml" />
-    <Content Include="Cms_Data\ContentType_Templates\Controls\MultiFiles.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Pages\about\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Pages\Articles\Detail\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Pages\Articles\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Pages\Search\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Sites\SampleSite_DE\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\ContactUs.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\DeleteComment.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\PostComment.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\one_column\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\one_column\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\two_column\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\two_column\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Category\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Category\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail.Return\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail.Return\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\ParameterTemplate.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Search\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Search\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Contactus\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Contactus\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\LoginForm\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\LoginForm\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Menu\setting.config" />
-    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Menu\template.cshtml" />
-    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\Theme.rule" />
-    <Content Include="Cms_Data\SiteTemplates\Empty.zip" />
-    <Content Include="Cms_Data\SiteTemplates\SampleSite.zip" />
-    <Content Include="Cms_Data\SiteTemplates\SmallBusiness.zip" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Cms_Data\Sites\SampleSite\Labels\Labels.resx" />
-    <EmbeddedResource Include="Cms_Data\Sites\SampleSite\Sites\SampleSite_DE\Labels\Labels.resx" />
     <EmbeddedResource Include="I18N\de-DE.resx" />
     <EmbeddedResource Include="I18N\en-GB.resx" />
     <EmbeddedResource Include="I18N\en-US.resx" />
@@ -2512,10 +2417,7 @@
     <EmbeddedResource Include="I18N\zh-TW.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Packages\Kooboo.Cms.nuspec">
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2538,11 +2440,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>3810</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://kooboo.cms</IISUrl>
+          <IISUrl>http://localhost:3810/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -2558,9 +2460,10 @@
     </MonoDevelop>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Ninject.dll"  "$(TargetDir)";
+    <PostBuildEvent>copy "..\..\..\Lib\MVC\4.0\*.dll"  "$(TargetDir)";
+copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Ninject.dll"  "$(TargetDir)";
 copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll"  "$(TargetDir)";
-</PostBuildEvent>
+@echo copy "..\..\..\Lib\SQLCe\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
