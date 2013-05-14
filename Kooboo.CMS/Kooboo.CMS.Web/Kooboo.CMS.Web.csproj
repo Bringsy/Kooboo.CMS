@@ -2512,6 +2512,9 @@
     <EmbeddedResource Include="I18N\zh-TW.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Packages\Kooboo.Cms.nuspec">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
   </ItemGroup>
   <PropertyGroup>
