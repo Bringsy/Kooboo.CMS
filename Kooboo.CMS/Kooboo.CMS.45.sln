@@ -15,9 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kooboo", "Kooboo", "{0F50FD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{726D07D4-5749-4ABA-AA8A-5448F02D77F7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kooboo.CMS.Sites.Providers", "Kooboo.CMS.Sites.Providers", "{1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Web", "Kooboo.CMS.Web\Kooboo.CMS.Web.csproj", "{C5803C24-EEEE-4A7E-8F2F-B0FB66287845}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Web45", "Kooboo.CMS.Web\Kooboo.CMS.Web45.csproj", "{C5803C24-EEEE-4A7E-8F2F-B0FB66287845}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Content", "Kooboo.CMS.Content\Kooboo.CMS.Content\Kooboo.CMS.Content.csproj", "{C5A5186D-6F8E-4BB9-AF0E-74F0993B48DA}"
 EndProject
@@ -43,8 +41,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Form", "Kooboo.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.Connect.Providers.SqlServer", "..\Kooboo.Connect.Providers.SqlServer\Kooboo.Connect.Providers.SqlServer.csproj", "{1050ED3F-55D6-4F87-9EDF-7CB995467EA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Account.Persistence.SqlSever", "Kooboo.CMS.Account.Persistence.SqlSever\Kooboo.CMS.Account.Persistence.SqlSever.csproj", "{3984ABBA-7A1B-4B20-8A59-AF93EEFBEE1D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.PluginTemplate", "Kooboo.CMS.PluginTemplate\Kooboo.CMS.PluginTemplate.csproj", "{8219FDF8-8606-4320-828B-FEF0EBD0C3A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Search", "Kooboo.CMS.Search\Kooboo.CMS.Search.csproj", "{C7B73E67-D226-41CB-A86D-410276B265A1}"
@@ -59,10 +55,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Content.Persiste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Content.Persistence.AzureBlobService", "Kooboo.CMS.Content\Kooboo.CMS.Content.Persistence.AzureBlobService\Kooboo.CMS.Content.Persistence.AzureBlobService.csproj", "{0CFBFE16-8413-4D71-B876-7EA8448E3AEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Sites.Providers.AzureTable", "Kooboo.CMS.Sites.Providers.AzureTable\Kooboo.CMS.Sites.Providers.AzureTable.csproj", "{86BADA5A-8965-4F82-94F4-270ACFAE77F3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Sites.Providers.SqlServer", "Kooboo.CMS.Sites.Providers.SqlServer\Kooboo.CMS.Sites.Providers.SqlServer.csproj", "{80046D04-4DE9-4419-99BB-B2F467B0FA22}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Content.FileServer.Interfaces", "Kooboo.CMS.Content\Kooboo.CMS.Content.FileServer.Interfaces\Kooboo.CMS.Content.FileServer.Interfaces.csproj", "{AF3A1665-74B6-4A34-A795-64A1914AF749}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Content.Persistence.FileServerProvider", "Kooboo.CMS.Content\Kooboo.CMS.Content.Persistence.FileServerProvider\Kooboo.CMS.Content.Persistence.FileServerProvider.csproj", "{5DB8FCB2-6F8C-4199-AB8A-84AEEADEEF6E}"
@@ -76,6 +68,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Sites.Tests", "Kooboo.CMS.Sites.Tests\Kooboo.CMS.Sites.Tests.csproj", "{3D9FB61E-5453-4244-8230-BDC6FB256212}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Common.Runtime.Dependency.Ninject", "Kooboo.CMS.Common.Runtime.Dependency.Ninject\Kooboo.CMS.Common.Runtime.Dependency.Ninject.csproj", "{94A4A4BA-F5EB-44CB-9CD3-B240B80CE686}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{78C93056-F0CA-4973-A3DC-4DA9052A4AEB}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,10 +134,6 @@ Global
 		{1050ED3F-55D6-4F87-9EDF-7CB995467EA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1050ED3F-55D6-4F87-9EDF-7CB995467EA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1050ED3F-55D6-4F87-9EDF-7CB995467EA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3984ABBA-7A1B-4B20-8A59-AF93EEFBEE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3984ABBA-7A1B-4B20-8A59-AF93EEFBEE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3984ABBA-7A1B-4B20-8A59-AF93EEFBEE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3984ABBA-7A1B-4B20-8A59-AF93EEFBEE1D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8219FDF8-8606-4320-828B-FEF0EBD0C3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8219FDF8-8606-4320-828B-FEF0EBD0C3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8219FDF8-8606-4320-828B-FEF0EBD0C3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -167,14 +162,6 @@ Global
 		{0CFBFE16-8413-4D71-B876-7EA8448E3AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CFBFE16-8413-4D71-B876-7EA8448E3AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CFBFE16-8413-4D71-B876-7EA8448E3AEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86BADA5A-8965-4F82-94F4-270ACFAE77F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86BADA5A-8965-4F82-94F4-270ACFAE77F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86BADA5A-8965-4F82-94F4-270ACFAE77F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86BADA5A-8965-4F82-94F4-270ACFAE77F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80046D04-4DE9-4419-99BB-B2F467B0FA22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80046D04-4DE9-4419-99BB-B2F467B0FA22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80046D04-4DE9-4419-99BB-B2F467B0FA22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80046D04-4DE9-4419-99BB-B2F467B0FA22}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF3A1665-74B6-4A34-A795-64A1914AF749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF3A1665-74B6-4A34-A795-64A1914AF749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3A1665-74B6-4A34-A795-64A1914AF749}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -212,11 +199,9 @@ Global
 		{87F80724-B566-4089-9511-C7703C28B2F4} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{0F50FD4D-932C-427E-A549-7E64A3BBE89A} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{726D07D4-5749-4ABA-AA8A-5448F02D77F7} = {5312F628-CA1D-4280-9C47-CCF101137464}
-		{1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{C5803C24-EEEE-4A7E-8F2F-B0FB66287845} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{61ED004C-9E20-4680-AF2B-0723FE7648BB} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{C4F32215-EFAD-45C9-8276-6126681C3589} = {5312F628-CA1D-4280-9C47-CCF101137464}
-		{3984ABBA-7A1B-4B20-8A59-AF93EEFBEE1D} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{C7B73E67-D226-41CB-A86D-410276B265A1} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{FFD8E9F0-61B6-4B0D-A803-5BECCD2A6578} = {5312F628-CA1D-4280-9C47-CCF101137464}
 		{AB6DDE14-EEB6-4497-80A0-D148A0A692B5} = {5312F628-CA1D-4280-9C47-CCF101137464}
@@ -241,7 +226,5 @@ Global
 		{570CD9D3-75D2-468A-8245-45BDCA57432E} = {726D07D4-5749-4ABA-AA8A-5448F02D77F7}
 		{406906F5-CC5C-4C06-A62C-6D7AFC1A4FAD} = {726D07D4-5749-4ABA-AA8A-5448F02D77F7}
 		{9A684F96-625B-44B7-A1F6-F3E9114591B3} = {726D07D4-5749-4ABA-AA8A-5448F02D77F7}
-		{86BADA5A-8965-4F82-94F4-270ACFAE77F3} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
-		{80046D04-4DE9-4419-99BB-B2F467B0FA22} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
 	EndGlobalSection
 EndGlobal

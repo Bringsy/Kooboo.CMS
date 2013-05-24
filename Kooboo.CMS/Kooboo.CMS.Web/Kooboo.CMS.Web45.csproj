@@ -209,6 +209,7 @@
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_SortableGridColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\HitReport_GridItemColumn.cs" />
+    <Compile Include="Areas\Sites\Models\LanguageVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ProxyPosition_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\RandomVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ABPageSetting_Metadata.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Areas\Sites\Models\ABRuleSetting_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\SiteTemplate_ViewModel.cs" />
     <Compile Include="Areas\Sites\Models\QueryStringVisitRule_Metadata.cs" />
+    <Compile Include="Authorizations\AntiForgeryConfigModule.cs" />
     <Compile Include="Authorizations\ClaimsAuthenticationManager.cs" />
     <Compile Include="Authorizations\ClaimsPrincipalExtensions.cs" />
     <Compile Include="KooboCMSHttpApplicationEvents.cs" />
@@ -2425,6 +2427,12 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Sites\Views\ModuleManagement\InstallComplete.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\OnInstalling.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\OnUninstalling.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\Uninstall.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\GoingToUninstall.cshtml" />
+    <Content Include="Areas\Sites\Views\ABRuleSetting\RuleTemplates\Language.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
   </ItemGroup>
   <PropertyGroup>
