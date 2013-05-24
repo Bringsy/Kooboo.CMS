@@ -15,7 +15,7 @@
     <AssemblyName>Kooboo.CMS.Web</AssemblyName>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -25,8 +25,6 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,8 +65,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel" />
-    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -206,6 +202,7 @@
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_SortableGridColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\HitReport_GridItemColumn.cs" />
+    <Compile Include="Areas\Sites\Models\LanguageVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ProxyPosition_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\RandomVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ABPageSetting_Metadata.cs" />
@@ -223,8 +220,6 @@
     <Compile Include="Areas\Sites\Models\ABRuleSetting_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\SiteTemplate_ViewModel.cs" />
     <Compile Include="Areas\Sites\Models\QueryStringVisitRule_Metadata.cs" />
-    <Compile Include="Authorizations\ClaimsAuthenticationManager.cs" />
-    <Compile Include="Authorizations\ClaimsPrincipalExtensions.cs" />
     <Compile Include="KooboCMSHttpApplicationEvents.cs" />
     <Compile Include="Models\AllPropertiesResolver.cs" />
     <Compile Include="Models\ImportModel.cs" />
@@ -620,7 +615,6 @@
     <Content Include="Areas\Sites\Styles\images\map-item-hover.png" />
     <Content Include="Areas\Sites\Styles\images\map-item.png" />
     <Content Include="Areas\Sites\Styles\sites.css" />
-    <Content Include="FederationMetadata\2007-06\FederationMetadata.xml" />
     <Content Include="Images\Default.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\loading.gif" />
@@ -1917,6 +1911,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Shared\EditorTemplates\Tinymce.cshtml" />
+    <Content Include="Web_mono.config" />
     <Content Include="Areas\Sites\Views\Site\DeleteRepository.cshtml" />
     <Content Include="Areas\Sites\Views\Site\ImportRepository.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Create.cshtml" />
@@ -2015,7 +2010,6 @@
     <Content Include="Areas\Sites\Views\Module\Index.cshtml" />
     <Content Include="Areas\Sites\Views\ModuleManagement\Index.cshtml" />
     <Content Include="Areas\Sites\Views\ModuleManagement\Install.cshtml" />
-    <Content Include="Areas\Sites\Views\ModuleManagement\UninstallModule.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\DataRules.cshtml" />
     <Content Include="Areas\Sites\Views\Shared\EditorTemplates\HtmlMeta.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Layout.cshtml" />
@@ -2115,6 +2109,10 @@
     <Content Include="routes.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Kooboo.Connect\Kooboo.Connect.csproj">
+      <Project>{7389239B-564D-4398-87B7-99D9999ABECB}</Project>
+      <Name>Kooboo.Connect</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Kooboo\Kooboo.csproj">
       <Project>{347E47E5-3132-4BAD-B935-8282A2B16CF5}</Project>
       <Name>Kooboo %28Source\Kooboo\Kooboo%29</Name>
@@ -2406,18 +2404,22 @@
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Naviation_Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Packages\Kooboo.Cms.nuspec" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\OnInstalling.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="I18N\de-DE.resx" />
-    <EmbeddedResource Include="I18N\en-GB.resx" />
-    <EmbeddedResource Include="I18N\en-US.resx" />
-    <EmbeddedResource Include="I18N\ru-RU.resx" />
-    <EmbeddedResource Include="I18N\zh-CN.resx" />
-    <EmbeddedResource Include="I18N\zh-TW.resx" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\InstallComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\OnUninstalling.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ModuleManagement\Uninstall.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ModuleManagement\GoingToUninstall.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ABRuleSetting\RuleTemplates\Language.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2465,5 +2467,4 @@ copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName
 copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll"  "$(TargetDir)";
 @echo copy "..\..\..\Lib\SQLCe\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
