@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web;
-using System.Linq;
+using System.Linq; 
 
 namespace Kooboo.CMS.Web.Authorizations
 {
@@ -30,7 +30,7 @@ namespace Kooboo.CMS.Web.Authorizations
 
             // Create a user if not already created
             var user = Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Get(uuid);
-
+            
             if (user == null)
             {
                 Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Add(new Kooboo.CMS.Account.Models.User
@@ -50,14 +50,15 @@ namespace Kooboo.CMS.Web.Authorizations
 
             if (site != null)
             {
-                var siteUser = Kooboo.CMS.Sites.Services.ServiceFactory.UserManager.Get(site, uuid);
+                var siteUser = Kooboo.CMS.Sites.Services.ServiceFactory.UserManager.Get(site,
+                    principal.Identity.Name);
 
                 if (siteUser == null)
                 {
                     siteUser = new User
                     {
                         UUID = uuid,
-                        UserName = uuid,
+                        UserName = principal.Identity.Name,
                         Profile = new Profile(),
                         Site = site
                     };

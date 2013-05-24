@@ -5,7 +5,7 @@
 }
 @section Panel{
     <ul class="panel">
-        <li>
+        @*<li>
             <a href="@Url.Action("Create", ViewContext.RequestContext.AllRouteValues().Merge("return", ViewContext.HttpContext.Request.RawUrl))">
                 @Html.IconImage("add") @("New user".Localize())</a>
         </li>
@@ -13,6 +13,7 @@
             @Html.IconImage("delete") @("Delete".Localize())</a></li>
           <li><a href="@Url.Action("ResetPassword", ViewContext.RequestContext.AllRouteValues().Merge("return", ViewContext.HttpContext.Request.RawUrl))" data-show-on-check="Single" data-command-type="Redirect">
             @Html.IconImage("resetpassword") @("ResetPassword".Localize())</a></li>
+		*@
     </ul>
 }
 <div class="topbar clearfix">

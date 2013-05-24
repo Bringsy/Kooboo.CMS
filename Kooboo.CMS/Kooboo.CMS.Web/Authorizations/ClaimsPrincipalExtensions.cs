@@ -1,11 +1,13 @@
 ﻿using System.Security.Claims;
 using System.Linq;
+using Kooboo.CMS.Common.Runtime.Dependency;
+using System.Web.Helpers;
 
 namespace Kooboo.CMS.Web.Authorizations
 {
     public static class ClaimsPrincipalExtensions
     {
-        private static string LastSegment(this string str)
+        public static string LastSegment(this string str)
         {
             return str.Trim('/').Split('/').Last();
         }
