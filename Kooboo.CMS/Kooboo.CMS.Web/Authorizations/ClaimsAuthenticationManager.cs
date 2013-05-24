@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web;
+using System.Linq;
 
 namespace Kooboo.CMS.Web.Authorizations
 {
@@ -22,25 +23,23 @@ namespace Kooboo.CMS.Web.Authorizations
         public void CreateOrUpdateUser(ClaimsPrincipal principal)
         {
             // REPLACE IT BY CUSTOM CODE, ITS JUST A SAMPLE CODE ...
+            var nameClaim = principal.FindFirstStripped(ClaimTypes.NameIdentifier);
+            if (nameClaim == null)
+                nameClaim = principal.FindFirstStripped(ClaimTypes.Name);
+            var uuid = nameClaim.Value;
 
             // Create a user if not already created
-            var user = Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Get(principal.Identity.Name);
-
-            var nameClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
-            if (nameClaim == null)
-                nameClaim = principal.FindFirst(ClaimTypes.Name);
-
-            var uuid = nameClaim.Value;
+            var user = Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Get(uuid);
 
             if (user == null)
             {
                 Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Add(new Kooboo.CMS.Account.Models.User
                 {
                     UUID = uuid,
+                    UserName = uuid,
                     IsAdministrator = principal.IsInRole("Administrator"),
-                    UserName = principal.Identity.Name,
-                    Email = principal.FindFirst(ClaimTypes.Email).Value,
-                    /* Create a fake password */
+                    Email = principal.FindFirstStripped(ClaimTypes.Email).Value,
+                    /* Create a fake password TODO: replace repository and ignore password */
                     Password = string.Format("{0}87r8r7923r230", uuid)
                 });
             }
@@ -51,15 +50,14 @@ namespace Kooboo.CMS.Web.Authorizations
 
             if (site != null)
             {
-                var siteUser = Kooboo.CMS.Sites.Services.ServiceFactory.UserManager.Get(site,
-                    principal.Identity.Name);
+                var siteUser = Kooboo.CMS.Sites.Services.ServiceFactory.UserManager.Get(site, uuid);
 
                 if (siteUser == null)
                 {
                     siteUser = new User
                     {
                         UUID = uuid,
-                        UserName = principal.Identity.Name,
+                        UserName = uuid,
                         Profile = new Profile(),
                         Site = site
                     };

@@ -88,4 +88,7 @@
   <data name="Kooboo team" xml:space="preserve">
     <value>Kooboo team</value>
   </data>
+  <data name="The cross-domain POST request is not allowed." xml:space="preserve">
+    <value>The cross-domain POST request is not allowed.</value>
+  </data>
 </root>

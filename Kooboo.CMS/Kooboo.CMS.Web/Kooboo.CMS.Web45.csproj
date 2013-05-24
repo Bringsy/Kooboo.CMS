@@ -14,7 +14,7 @@
     <RootNamespace>Kooboo.CMS.Web</RootNamespace>
     <AssemblyName>Kooboo.CMS.Web</AssemblyName>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -59,6 +59,9 @@
       <HintPath>..\..\Lib\DiffPlex.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Tokens.JWT">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.JWT.0.1.0\lib\net45\Microsoft.IdentityModel.Tokens.JWT.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Lib\JSON.NET\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -2410,7 +2413,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="I18N\de-DE.resx" />
-    <EmbeddedResource Include="I18N\en-GB.resx" />
+    <EmbeddedResource Include="I18N\en-GB.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="I18N\en-US.resx" />
     <EmbeddedResource Include="I18N\ru-RU.resx" />
     <EmbeddedResource Include="I18N\zh-CN.resx" />
@@ -2443,11 +2448,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>3810</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3810/</IISUrl>
+          <IISUrl>https://kooboo.cms</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

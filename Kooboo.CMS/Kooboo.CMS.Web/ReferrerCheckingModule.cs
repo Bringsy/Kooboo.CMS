@@ -15,6 +15,7 @@ using Kooboo.Globalization;
 using Kooboo.CMS.Common.Runtime.Dependency;
 namespace Kooboo.CMS.Web
 {
+    /*
     [Dependency(typeof(Kooboo.CMS.Common.IHttpApplicationEvents), Key = "ReferrerCheckingModule")]
     public class ReferrerCheckingModule : Kooboo.CMS.Common.HttpApplicationEvents
     {
@@ -32,4 +33,5 @@ namespace Kooboo.CMS.Web
             }
         }
     }
+    */
 }

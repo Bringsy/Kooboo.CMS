@@ -84,9 +84,8 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>echo copy "$(TargetDir)\EntityFramework.dll" "..\..\..\Kooboo.CMS.Web\Bin\EntityFramework.dll"
-echo copy "$(TargetDir)\$(TargetFileName)" "..\..\..\Kooboo.CMS.Web\Bin\"
-echo copy "$(TargetDir)\$(TargetName).pdb" "..\..\..\Kooboo.CMS.Web\Bin\"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
