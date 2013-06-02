@@ -2,12 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Kooboo.CMS.References</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title />
     <authors>Kooboo</authors>
     <owners />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Binaries for Kooboo CMS</description>
+	 <dependencies>
+      <group targetFramework=".NETFramework4.5">
+	  <dependency id="Microsoft.IdentityModel.Tokens.JWT" version="0.1.0"  />
+	  <dependency id="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry" version="4.5.1"  />
+	  </group>
+	 </dependencies>
   </metadata>
   <files>
 	<file src="..\bin\*.dll" target="lib\net45" />

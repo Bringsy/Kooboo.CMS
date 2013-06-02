@@ -22,7 +22,7 @@ namespace Kooboo.CMS.Web.Authorizations
 
         public void CreateOrUpdateUser(ClaimsPrincipal principal)
         {
-            // REPLACE IT BY CUSTOM CODE, ITS JUST A SAMPLE CODE ...
+            // TODO: check if JWT is used, if yes strip claims if not use whole claims
             var nameClaim = principal.FindFirstStripped(ClaimTypes.NameIdentifier);
             if (nameClaim == null)
                 nameClaim = principal.FindFirstStripped(ClaimTypes.Name);
@@ -30,18 +30,24 @@ namespace Kooboo.CMS.Web.Authorizations
 
             // Create a user if not already created
             var user = Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Get(uuid);
-            
+
             if (user == null)
             {
+                // Create user 
                 Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Add(new Kooboo.CMS.Account.Models.User
                 {
                     UUID = uuid,
                     UserName = uuid,
                     IsAdministrator = principal.IsInRole("Administrator"),
-                    Email = principal.FindFirstStripped(ClaimTypes.Email).Value,
-                    /* Create a fake password TODO: replace repository and ignore password */
-                    Password = string.Format("{0}87r8r7923r230", uuid)
+                    Email = principal.FindFirstStripped(ClaimTypes.Email).Value
                 });
+            }
+            else
+            {
+                // Update user 
+                user.IsAdministrator = principal.IsInRole("Administrator");
+                user.Email = principal.FindFirstStripped(ClaimTypes.Email).Value;
+                Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Update(user.UserName, user); 
             }
 
             // Assign user to current site if not already assigned

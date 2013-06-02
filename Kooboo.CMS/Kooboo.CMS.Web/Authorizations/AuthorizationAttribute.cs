@@ -45,6 +45,7 @@ namespace Kooboo.CMS.Web.Authorizations
             }
             requestContext.HttpContext.Items[exclusiveFlag] = Exclusive;
         }
+
         //private void CacheValidateHandler(HttpContext context, object data, ref HttpValidationStatus validationStatus)
         //{
         //    validationStatus = this.OnCacheAuthorization(new HttpContextWrapper(context));
@@ -57,26 +58,45 @@ namespace Kooboo.CMS.Web.Authorizations
         //    }
         //    return HttpValidationStatus.Valid;
         //}
+
         protected virtual void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             filterContext.Result = new HttpUnauthorizedResult();
         }
 
+        private bool IsInAnyRole(IPrincipal user, string[] roles)
+        {
+            foreach (var role in roles)
+            {
+                if (user.IsInRole(role))
+                    return true; 
+            }
+
+            return false; 
+        }
+
         protected virtual bool AuthorizeCore(RequestContext requestContext)
         {
             var authenticated = requestContext.HttpContext.User.Identity.IsAuthenticated;
-            if (authenticated && RequiredAdministrator)
+            if (authenticated)
             {
-                return Kooboo.CMS.Sites.Services.ServiceFactory.UserManager.IsAdministrator(requestContext.HttpContext.User.Identity.Name);
+                if (requestContext.HttpContext.User.IsInRole("Administrator"))
+                    return authenticated;
+
+                if (!RequiredAdministrator)
+                {
+                    var roles = Kooboo.CMS.Account.Services.ServiceFactory.RoleManager.All().Select(s => s.Name).ToArray();
+                    return IsInAnyRole(requestContext.HttpContext.User, roles); 
+                }
             }
-            else
-            {
-                return authenticated;
-            }
+
+            return false; 
         }
+
         public bool RequiredAdministrator { get; set; }
         public bool Exclusive { get; set; }
     }
+
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
     public class AuthorizationAttribute : RequiredLogOnAttribute
     {

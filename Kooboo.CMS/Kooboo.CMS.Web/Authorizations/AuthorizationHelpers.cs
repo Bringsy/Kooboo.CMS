@@ -15,6 +15,7 @@ using Kooboo.CMS.Account.Models;
 using Kooboo.CMS.Sites.Models;
 using System.Security.Principal;
 using Kooboo.Web.Mvc;
+using System.IdentityModel.Services;
 namespace Kooboo.CMS.Web.Authorizations
 {
     public static class AuthorizationHelpers
@@ -30,6 +31,7 @@ namespace Kooboo.CMS.Web.Authorizations
 
             return Kooboo.CMS.Sites.Services.ServiceFactory.UserManager.Authorize(site, user.Identity.Name, permission);
         }
+
         private static Site GetSite(RequestContext requestContext)
         {
             var siteName = requestContext.GetRequestValue("siteName");
@@ -38,6 +40,21 @@ namespace Kooboo.CMS.Web.Authorizations
                 return SiteHelper.Parse(siteName);
             }
             return null;
+        }
+
+        public static string GetSignOutQueryString()
+        {
+            var fam = FederatedAuthentication.WSFederationAuthenticationModule;
+
+            // Clear local cookie
+            fam.SignOut(false);
+
+            // Initiate a federated sign out request to the sts.
+            var signOutRequest = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm);
+            signOutRequest.Reply = fam.Reply;
+
+            // return query string for redirecting to sts 
+            return signOutRequest.WriteQueryString(); 
         }
     }
 }

@@ -27,8 +27,8 @@ namespace Kooboo.CMS.Account.Models
         [DataMember(Order = 1)]
         public string Email { get; set; }
 
-        [DataMember(Order = 3)]
-        public string Password { get; set; }
+        //[DataMember(Order = 3)]
+        //public string Password { get; set; }
 
         [DataMember(Order = 5)]
         public bool IsAdministrator { get; set; }

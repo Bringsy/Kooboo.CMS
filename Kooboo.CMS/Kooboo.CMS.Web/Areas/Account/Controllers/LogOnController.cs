@@ -17,6 +17,7 @@ using Kooboo.Globalization;
 using Kooboo.CMS.Account.Services;
 using Kooboo.CMS.Common;
 using System.IdentityModel.Services;
+using Kooboo.CMS.Web.Authorizations;
 
 namespace Kooboo.CMS.Web.Areas.Account.Controllers
 {
@@ -112,17 +113,7 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
         }
         public virtual ActionResult SignOut(string returnUrl)
         {
-            var fam = FederatedAuthentication.WSFederationAuthenticationModule;
-
-            // Clear local cookie
-            fam.SignOut(false);
-
-            // Initiate a federated sign out request to the sts.
-            var signOutRequest = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm);
-            signOutRequest.Reply = fam.Reply;
-
-            // Redirect to sts logout page 
-            return new RedirectResult(signOutRequest.WriteQueryString()); 
+            return new RedirectResult(AuthorizationHelpers.GetSignOutQueryString()); 
 
             /*
             System.Web.Security.FormsAuthentication.SignOut();
