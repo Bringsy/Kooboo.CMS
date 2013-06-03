@@ -202,6 +202,7 @@
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_SortableGridColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\HitReport_GridItemColumn.cs" />
+    <Compile Include="Areas\Sites\Models\HtmlMeta_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\LanguageVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ProxyPosition_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\RandomVisitRule_Metadata.cs" />
@@ -2420,6 +2421,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Sites\Views\ABRuleSetting\RuleTemplates\Language.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Contents\Views\ContentType\EditTemplate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ABRuleSetting\EditorTemplates\UserAgentPattern.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
