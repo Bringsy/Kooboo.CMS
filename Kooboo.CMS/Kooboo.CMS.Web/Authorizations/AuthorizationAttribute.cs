@@ -69,28 +69,30 @@ namespace Kooboo.CMS.Web.Authorizations
             foreach (var role in roles)
             {
                 if (user.IsInRole(role))
-                    return true; 
+                    return true;
             }
 
-            return false; 
+            return false;
         }
 
         protected virtual bool AuthorizeCore(RequestContext requestContext)
         {
-            var authenticated = requestContext.HttpContext.User.Identity.IsAuthenticated;
-            if (authenticated)
+            if (requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                if (requestContext.HttpContext.User.IsInRole("Administrator"))
-                    return authenticated;
+                // if (requestContext.HttpContext.User.IsInRole("Administrator"))
+                if (Kooboo.CMS.Sites.Services.ServiceFactory
+                    .UserManager.IsAdministrator(requestContext.HttpContext.User.Identity.Name))
+                    return true;
 
                 if (!RequiredAdministrator)
                 {
-                    var roles = Kooboo.CMS.Account.Services.ServiceFactory.RoleManager.All().Select(s => s.Name).ToArray();
-                    return IsInAnyRole(requestContext.HttpContext.User, roles); 
+                    var roles = Kooboo.CMS.Account.Services.ServiceFactory
+                        .RoleManager.All().Select(s => s.Name).ToArray();
+                    return IsInAnyRole(requestContext.HttpContext.User, roles);
                 }
             }
 
-            return false; 
+            return false;
         }
 
         public bool RequiredAdministrator { get; set; }
