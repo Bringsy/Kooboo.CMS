@@ -209,6 +209,7 @@
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_SortableGridColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\HitReport_GridItemColumn.cs" />
+    <Compile Include="Areas\Sites\Models\HtmlMeta_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\LanguageVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ProxyPosition_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\RandomVisitRule_Metadata.cs" />
@@ -2020,7 +2021,6 @@
     <Content Include="Areas\Sites\Views\Module\Index.cshtml" />
     <Content Include="Areas\Sites\Views\ModuleManagement\Index.cshtml" />
     <Content Include="Areas\Sites\Views\ModuleManagement\Install.cshtml" />
-    <Content Include="Areas\Sites\Views\ModuleManagement\UninstallModule.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\DataRules.cshtml" />
     <Content Include="Areas\Sites\Views\Shared\EditorTemplates\HtmlMeta.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Layout.cshtml" />
@@ -2411,9 +2411,6 @@
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Naviation_Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Packages\Kooboo.Cms.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="I18N\de-DE.resx" />
     <EmbeddedResource Include="I18N\en-GB.resx">
       <SubType>Designer</SubType>
@@ -2433,6 +2430,8 @@
     <Content Include="Areas\Sites\Views\ModuleManagement\Uninstall.cshtml" />
     <Content Include="Areas\Sites\Views\ModuleManagement\GoingToUninstall.cshtml" />
     <Content Include="Areas\Sites\Views\ABRuleSetting\RuleTemplates\Language.cshtml" />
+    <Content Include="Areas\Sites\Views\ABRuleSetting\EditorTemplates\UserAgentPattern.cshtml" />
+    <Content Include="Areas\Contents\Views\ContentType\EditTemplate.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
   </ItemGroup>
   <PropertyGroup>
@@ -2479,7 +2478,7 @@
     <PostBuildEvent>copy "..\..\..\Lib\MVC\4.0\*.dll"  "$(TargetDir)";
 copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Ninject.dll"  "$(TargetDir)";
 copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll"  "$(TargetDir)";
-@echo copy "..\..\..\Lib\SQLCe\*.*" "$(TargetDir)"</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

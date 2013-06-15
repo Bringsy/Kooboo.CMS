@@ -31,10 +31,10 @@ namespace Kooboo.CMS.Web.Areas.Account.Models
         [RegularExpression(RegexPatterns.EmailAddress, ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
 
-        //[UIHint("PasswordStrength")]
-        //[DataType(DataType.Password)]
-        //[Required(ErrorMessage = "Required")]
-        //public string Password { get; set; }
+        [UIHint("PasswordStrength")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Required")]
+        public string Password { get; set; }
 
         [Display(Name = "Confirm password")]
         [DataType(DataType.Password)]
@@ -58,7 +58,7 @@ namespace Kooboo.CMS.Web.Areas.Account.Models
         {
             this.UserName = user.UserName;
             this.Email = user.Email;
-            //this.Password = user.Password;
+            this.Password = user.Password;
             this.IsAdministrator = user.IsAdministrator;
             this.IsLockedOut = user.IsLockedOut;
             this.UICulture = user.UICulture;
@@ -74,7 +74,7 @@ namespace Kooboo.CMS.Web.Areas.Account.Models
             {
                 user.LastLockoutDate = DateTime.UtcNow;
             }
-            // user.Password = this.Password;
+             user.Password = this.Password;
             user.UICulture = this.UICulture;
             return user;
         }
