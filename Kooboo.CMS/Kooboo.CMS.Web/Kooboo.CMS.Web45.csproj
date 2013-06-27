@@ -108,6 +108,8 @@
     <Compile Include="Areas\Account\Controllers\LogOnController.cs" />
     <Compile Include="Areas\Account\Controllers\RolesController.cs" />
     <Compile Include="Areas\Account\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Account\Controllers\SignInController.cs" />
+    <Compile Include="Areas\Account\Controllers\SignOutController.cs" />
     <Compile Include="Areas\Account\Controllers\UsersController.cs" />
     <Compile Include="Areas\Account\Models\ChangeLanguageModel.cs" />
     <Compile Include="Areas\Account\Models\CreateRoleModel.cs" />
@@ -2025,7 +2027,6 @@
     <Content Include="Areas\Sites\Views\Shared\EditorTemplates\HtmlMeta.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Layout.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Navigation.cshtml" />
-    <Content Include="Areas\Sites\Views\Page\EditorTemplates\OutputCache.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\PagePermission.cshtml" />
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\PageRoute.cshtml" />
     <Content Include="Areas\Sites\Views\Page\Copy.cshtml" />
@@ -2432,6 +2433,7 @@
     <Content Include="Areas\Sites\Views\ABRuleSetting\RuleTemplates\Language.cshtml" />
     <Content Include="Areas\Sites\Views\ABRuleSetting\EditorTemplates\UserAgentPattern.cshtml" />
     <Content Include="Areas\Contents\Views\ContentType\EditTemplate.cshtml" />
+    <Content Include="Areas\Sites\Views\Page\_OutputCache.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,8 +1,6 @@
 ﻿using Kooboo.CMS.Sites.Models;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web;
-using System.Linq; 
 
 namespace Kooboo.CMS.Web.Authorizations
 {
@@ -20,12 +18,12 @@ namespace Kooboo.CMS.Web.Authorizations
             return base.Authenticate(resourceName, principal);
         }
 
-        public void CreateOrUpdateUser(ClaimsPrincipal principal)
+        public virtual void CreateOrUpdateUser(ClaimsPrincipal principal)
         {
             // TODO: check if JWT is used, if yes strip claims if not use whole claims
-            var nameClaim = principal.FindFirstStripped(ClaimTypes.NameIdentifier);
+            var nameClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
             if (nameClaim == null)
-                nameClaim = principal.FindFirstStripped(ClaimTypes.Name);
+                nameClaim = principal.FindFirst(ClaimTypes.Name);
             var uuid = nameClaim.Value;
 
             // Create a user if not already created
@@ -39,14 +37,14 @@ namespace Kooboo.CMS.Web.Authorizations
                     UUID = uuid,
                     UserName = uuid,
                     IsAdministrator = principal.IsInRole("Administrator"),
-                    Email = principal.FindFirstStripped(ClaimTypes.Email).Value
+                    Email = principal.FindFirst(ClaimTypes.Email).Value
                 });
             }
             else
             {
                 // Update user 
                 user.IsAdministrator = principal.IsInRole("Administrator");
-                user.Email = principal.FindFirstStripped(ClaimTypes.Email).Value;
+                user.Email = principal.FindFirst(ClaimTypes.Email).Value;
                 Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Update(user.UserName, user); 
             }
 

@@ -1490,4 +1490,25 @@ Are you sure you want to use this size?</value>
   <data name="Are you sure you want to localize this item?" xml:space="preserve">
     <value>Are you sure you want to localize this item?</value>
   </data>
+  <data name="Not Found - Kooboo CMS" xml:space="preserve">
+    <value>Not Found - Kooboo CMS</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="If you see this page, it means that Kooboo CMS has been installed on this server." xml:space="preserve">
+    <value>If you see this page, it means that Kooboo CMS has been installed on this server.</value>
+  </data>
+  <data name="The requested URL was not found on this server. These could be the following reasons." xml:space="preserve">
+    <value>The requested URL was not found on this server. These could be the following reasons.</value>
+  </data>
+  <data name="You might have typed the URL incorrectly" xml:space="preserve">
+    <value>You might have typed the URL incorrectly</value>
+  </data>
+  <data name="Your page has been moved" xml:space="preserve">
+    <value>Your page has been moved</value>
+  </data>
+  <data name="You haven't created your Kooboo website yet. Please &lt;a href='{0}'&gt;login&lt;/a&gt; and create your first Kooboo website." xml:space="preserve">
+    <value>You haven't created your Kooboo website yet. Please &lt;a href='{0}'&gt;login&lt;/a&gt; and create your first Kooboo website.</value>
+  </data>
 </root>

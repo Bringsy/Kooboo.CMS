@@ -963,6 +963,11 @@ input, button, select, textarea {
 	width: 280px;
 }
 
+.common-form select.long,
+.common-form .select2-container.long {
+	width: 420px;
+}
+
 .common-form textarea.autoresize.medium,
 .autoresizeMedium {
 	-moz-box-sizing: border-box;
@@ -1895,7 +1900,7 @@ body .select2-results .select2-result-label {
 	padding: 20px 0;
 }
 
-.in-dialog .common-grid a {
+.in-dialog .common-grid ul a {
 	width: 200px;
 }
 
@@ -2945,6 +2950,16 @@ ul.site-tree {
 .sitemap-description li span.disabled {
 	background: #CCC;
 	color: #666;
+}
+
+.sitemap-description li span.abpage {
+	background: none;
+	color: #000;
+	border: 1px solid #000;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	padding-right: 1px;
 }
 
 /* Map item

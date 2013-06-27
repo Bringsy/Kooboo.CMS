@@ -11,7 +11,7 @@ namespace Kooboo.CMS.Web.Authorizations
         {
             // set the anti CSRF for name (that's a unqiue claim in our system)
             // TODO: check if JWT then last segment otherwise whole claim name 
-            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier.LastSegment();
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
 
             base.Application_Start(sender, e);
         }

@@ -14,8 +14,8 @@
     <RootNamespace>Kooboo.CMS.Web</RootNamespace>
     <AssemblyName>Kooboo.CMS.Web</AssemblyName>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -25,6 +25,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,14 +59,21 @@
       <HintPath>..\..\Lib\DiffPlex.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Lib\JSON.NET\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel">
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -91,6 +100,9 @@
       <HintPath>..\..\Lib\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Thinktecture.IdentityModel">
+      <HintPath>..\packages\Thinktecture.IdentityModel.3.0.1\lib\net40\Thinktecture.IdentityModel.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CMSAssemblyInfoGlobal.cs">
@@ -98,9 +110,10 @@
     </Compile>
     <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
     <Compile Include="Areas\Account\Controllers\ControllerBase.cs" />
-    <Compile Include="Areas\Account\Controllers\LogOnController.cs" />
+    <Compile Include="Areas\Account\Controllers\SignOutController.cs" />
     <Compile Include="Areas\Account\Controllers\RolesController.cs" />
     <Compile Include="Areas\Account\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Account\Controllers\SignInController.cs" />
     <Compile Include="Areas\Account\Controllers\UsersController.cs" />
     <Compile Include="Areas\Account\Models\ChangeLanguageModel.cs" />
     <Compile Include="Areas\Account\Models\CreateRoleModel.cs" />
@@ -221,6 +234,9 @@
     <Compile Include="Areas\Sites\Models\ABRuleSetting_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\SiteTemplate_ViewModel.cs" />
     <Compile Include="Areas\Sites\Models\QueryStringVisitRule_Metadata.cs" />
+    <Compile Include="Authorizations\AntiForgeryConfigModule.cs" />
+    <Compile Include="Authorizations\ClaimsAuthenticationManager.cs" />
+    <Compile Include="Authorizations\ClaimsPrincipalExtensions.cs" />
     <Compile Include="KooboCMSHttpApplicationEvents.cs" />
     <Compile Include="Models\AllPropertiesResolver.cs" />
     <Compile Include="Models\ImportModel.cs" />
@@ -616,6 +632,19 @@
     <Content Include="Areas\Sites\Styles\images\map-item-hover.png" />
     <Content Include="Areas\Sites\Styles\images\map-item.png" />
     <Content Include="Areas\Sites\Styles\sites.css" />
+    <Content Include="Cms_Data\Sites\SampleSite\Files\favicon.ico" />
+    <Content Include="Cms_Data\Sites\SampleSite\Files\logo.png" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\app.js" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\html5shiv.js" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Cms_Data\Sites\SampleSite\Scripts\Order.txt" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\base.css" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\common.css" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\ie.css" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\images\icon-back.png" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\images\icon-search.png" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\Order.txt" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\reset.css" />
     <Content Include="Images\Default.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\loading.gif" />
@@ -2428,6 +2457,41 @@
   <ItemGroup>
     <Content Include="Areas\Sites\Views\ABRuleSetting\EditorTemplates\UserAgentPattern.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\about\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\Articles\Detail\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\Articles\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Pages\Search\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\ContactUs.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\DeleteComment.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\SubmissionSettings\PostComment.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\one_column\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\one_column\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\two_column\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Layouts\two_column\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Category\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Category\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail.Return\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail.Return\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Detail\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\ParameterTemplate.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.List\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Search\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Article.Search\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Contactus\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Contactus\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\LoginForm\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\LoginForm\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Menu\setting.config" />
+    <Content Include="Cms_Data\Sites\SampleSite\Templates\Views\Menu\template.cshtml" />
+    <Content Include="Cms_Data\Sites\SampleSite\Themes\Default\Theme.rule" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cms_Data\Sites\SampleSite\Labels\Labels.resx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -2449,11 +2513,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>3810</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3810/</IISUrl>
+          <IISUrl>https://kooboo.cms</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -2474,4 +2538,5 @@ copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName
 copy "..\..\Kooboo.CMS.Common.Runtime.Dependency.Ninject\Bin\$(ConfigurationName)\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll"  "$(TargetDir)";
 @echo copy "..\..\..\Lib\SQLCe\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

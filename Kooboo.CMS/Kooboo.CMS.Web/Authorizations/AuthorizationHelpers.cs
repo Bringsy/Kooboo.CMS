@@ -6,16 +6,14 @@
 // See the file LICENSE.txt for details.
 // 
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Routing;
 using Kooboo.CMS.Account.Models;
 using Kooboo.CMS.Sites.Models;
-using System.Security.Principal;
 using Kooboo.Web.Mvc;
+using System;
 using System.IdentityModel.Services;
+using System.Security.Principal;
+using System.Web.Routing;
+
 namespace Kooboo.CMS.Web.Authorizations
 {
     public static class AuthorizationHelpers
@@ -45,16 +43,15 @@ namespace Kooboo.CMS.Web.Authorizations
         public static string GetSignOutQueryString()
         {
             var fam = FederatedAuthentication.WSFederationAuthenticationModule;
+            var request = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm) {Reply = fam.Reply};
+            return request.WriteQueryString();
+        }
 
-            // Clear local cookie
-            fam.SignOut(false);
-
-            // Initiate a federated sign out request to the sts.
-            var signOutRequest = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm);
-            signOutRequest.Reply = fam.Reply;
-
-            // return query string for redirecting to sts 
-            return signOutRequest.WriteQueryString(); 
+        public static string GetSignInQueryString()
+        {
+            var fam = FederatedAuthentication.WSFederationAuthenticationModule;
+            var request = new SignInRequestMessage(new Uri(fam.Issuer), fam.Realm) {Reply = fam.Reply};
+            return request.WriteQueryString();
         }
     }
 }

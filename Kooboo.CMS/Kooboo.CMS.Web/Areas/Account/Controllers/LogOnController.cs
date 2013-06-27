@@ -16,7 +16,6 @@ using Kooboo.CMS.Sites;
 using Kooboo.Globalization;
 using Kooboo.CMS.Account.Services;
 using Kooboo.CMS.Common;
-using System.IdentityModel.Services;
 using Kooboo.CMS.Web.Authorizations;
 
 namespace Kooboo.CMS.Web.Areas.Account.Controllers
@@ -123,6 +122,11 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
             }
             return Redirect(returnUrl);
             */
+        }
+
+        public virtual ActionResult SignIn(string returnUrl)
+        {
+            return new RedirectResult(AuthorizationHelpers.GetSignInQueryString()); 
         }
 
         /*
