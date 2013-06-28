@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kooboo.CMS.Common.Runtime;
 using Kooboo.CMS.Web.Areas.Account.Models;
 using Kooboo.CMS.Sites;
 using Kooboo.Globalization;
@@ -20,6 +21,12 @@ using Kooboo.CMS.Web.Authorizations;
 
 namespace Kooboo.CMS.Web.Areas.Account.Controllers
 {
+    public interface ILogOnHandler
+    {
+        ActionResult SignIn();
+        ActionResult SignOut(); 
+    }
+
     public class LogOnController : ControllerBase
     {
         public UserManager UserManager { get; private set; }
@@ -112,22 +119,35 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
         }
         public virtual ActionResult SignOut(string returnUrl)
         {
-            return new RedirectResult(AuthorizationHelpers.GetSignOutQueryString()); 
-
-            /*
-            System.Web.Security.FormsAuthentication.SignOut();
-            if (string.IsNullOrEmpty(returnUrl))
+            var handler = EngineContext.Current.ContainerManager.Resolve<ILogOnHandler>();
+            if (handler != null)
             {
-                returnUrl = System.Web.Security.FormsAuthentication.LoginUrl;
+                return handler.SignOut();
             }
-            return Redirect(returnUrl);
-            */
+            else
+            {
+                System.Web.Security.FormsAuthentication.SignOut();
+                if (string.IsNullOrEmpty(returnUrl))
+                {
+                    returnUrl = System.Web.Security.FormsAuthentication.LoginUrl;
+                }
+                return Redirect(returnUrl);
+            }
         }
 
         public virtual ActionResult SignIn(string returnUrl)
         {
-            return new RedirectResult(AuthorizationHelpers.GetSignInQueryString()); 
+            var handler = EngineContext.Current.ContainerManager.Resolve<ILogOnHandler>();
+            if (handler != null)
+            {
+                return handler.SignIn();
+            }
+            else
+            {
+                return Redirect(System.Web.Security.FormsAuthentication.LoginUrl);
+            }
         }
+    
 
         /*
         public virtual ActionResult ForgotPassword()

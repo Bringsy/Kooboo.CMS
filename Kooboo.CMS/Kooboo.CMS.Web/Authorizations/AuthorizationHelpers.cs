@@ -9,8 +9,6 @@
 using Kooboo.CMS.Account.Models;
 using Kooboo.CMS.Sites.Models;
 using Kooboo.Web.Mvc;
-using System;
-using System.IdentityModel.Services;
 using System.Security.Principal;
 using System.Web.Routing;
 
@@ -38,20 +36,6 @@ namespace Kooboo.CMS.Web.Authorizations
                 return SiteHelper.Parse(siteName);
             }
             return null;
-        }
-
-        public static string GetSignOutQueryString()
-        {
-            var fam = FederatedAuthentication.WSFederationAuthenticationModule;
-            var request = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm) {Reply = fam.Reply};
-            return request.WriteQueryString();
-        }
-
-        public static string GetSignInQueryString()
-        {
-            var fam = FederatedAuthentication.WSFederationAuthenticationModule;
-            var request = new SignInRequestMessage(new Uri(fam.Issuer), fam.Realm) {Reply = fam.Reply};
-            return request.WriteQueryString();
         }
     }
 }

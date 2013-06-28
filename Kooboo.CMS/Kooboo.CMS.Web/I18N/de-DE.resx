@@ -1418,4 +1418,7 @@ Are you sure you want to use this size?</value>
   <data name="No cache" xml:space="preserve">
     <value>No cache</value>
   </data>
+  <data name="Selected Files" xml:space="preserve">
+    <value>Selected Files</value>
+  </data>
 </root>
