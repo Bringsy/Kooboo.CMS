@@ -189,6 +189,7 @@
     <Compile Include="Areas\Contents\Models\TextFolder_Metadata.cs" />
     <Compile Include="Areas\Contents\Models\VersionInfo_Metadata.cs" />
     <Compile Include="Areas\Sites\Controllers\ABPageTestResultController.cs" />
+    <Compile Include="Areas\Sites\Controllers\ApplicationManagmentController.cs" />
     <Compile Include="Areas\Sites\Controllers\SubmissionSettingController.cs" />
     <Compile Include="Areas\Sites\Controllers\ABPageSettingController.cs" />
     <Compile Include="Areas\Sites\Controllers\SiteTemplateController.cs" />
@@ -659,6 +660,7 @@
     <Content Include="Scripts\tiny_mce\plugins\emoticons\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\example\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Scripts\tiny_mce\plugins\exit\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\fullpage\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\fullscreen\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\hr\plugin.min.js" />
@@ -2257,6 +2259,13 @@
     <EmbeddedResource Include="I18N\ru-RU.resx" />
     <EmbeddedResource Include="I18N\zh-CN.resx" />
     <EmbeddedResource Include="I18N\zh-TW.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
+    <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ApplicationManagment\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

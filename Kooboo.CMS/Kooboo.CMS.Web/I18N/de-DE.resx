@@ -1421,4 +1421,304 @@ Are you sure you want to use this size?</value>
   <data name="Selected Files" xml:space="preserve">
     <value>Selected Files</value>
   </data>
+  <data name="Text content" xml:space="preserve">
+    <value>Text content</value>
+  </data>
+  <data name="New folder" xml:space="preserve">
+    <value>New folder</value>
+  </data>
+  <data name="Advanced search" xml:space="preserve">
+    <value>Advanced search</value>
+  </data>
+  <data name="Add content" xml:space="preserve">
+    <value>Add content</value>
+  </data>
+  <data name="Are you sure you want to publish these items?" xml:space="preserve">
+    <value>Are you sure you want to publish these items?</value>
+  </data>
+  <data name="Are you sure you want to unpublish these items?" xml:space="preserve">
+    <value>Are you sure you want to unpublish these items?</value>
+  </data>
+  <data name="Re-broadcast" xml:space="preserve">
+    <value>Re-broadcast</value>
+  </data>
+  <data name="The SingleChoice field is required." xml:space="preserve">
+    <value>The SingleChoice field is required.</value>
+  </data>
+  <data name="Edit a content" xml:space="preserve">
+    <value>Edit a content</value>
+  </data>
+  <data name="Are you sure you want to reset these templates?" xml:space="preserve">
+    <value>Are you sure you want to reset these templates?</value>
+  </data>
+  <data name="Reset templates" xml:space="preserve">
+    <value>Reset templates</value>
+  </data>
+  <data name="Grid" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Selectable" xml:space="preserve">
+    <value>Selectable</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="Copy content type" xml:space="preserve">
+    <value>Copy content type</value>
+  </data>
+  <data name="Edit content type" xml:space="preserve">
+    <value>Edit content type</value>
+  </data>
+  <data name="The Tree style data field is required." xml:space="preserve">
+    <value>The Tree style data field is required.</value>
+  </data>
+  <data name="Tree style data" xml:space="preserve">
+    <value>Tree style data</value>
+  </data>
+  <data name="Create the tree style data and management interface." xml:space="preserve">
+    <value>Create the tree style data and management interface.</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="Control type" xml:space="preserve">
+    <value>Control type</value>
+  </data>
+  <data name="Summary field" xml:space="preserve">
+    <value>Summary field</value>
+  </data>
+  <data name="Content list page" xml:space="preserve">
+    <value>Content list page</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Validation" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="Selection value" xml:space="preserve">
+    <value>Selection value</value>
+  </data>
+  <data name="This name is being used by other columns." xml:space="preserve">
+    <value>This name is being used by other columns.</value>
+  </data>
+  <data name="Invalid column name." xml:space="preserve">
+    <value>Invalid column name.</value>
+  </data>
+  <data name="Name of your field, it uses the same naming rule as C# veriable name." xml:space="preserve">
+    <value>Name of your field, it uses the same naming rule as C# veriable name.</value>
+  </data>
+  <data name="Descriptive label of your field on the content editing page." xml:space="preserve">
+    <value>Descriptive label of your field on the content editing page.</value>
+  </data>
+  <data name="The way that you would like to input your content." xml:space="preserve">
+    <value>The way that you would like to input your content.</value>
+  </data>
+  <data name="ControlType" xml:space="preserve">
+    <value>ControlType</value>
+  </data>
+  <data name="DataType" xml:space="preserve">
+    <value>DataType</value>
+  </data>
+  <data name="Default value" xml:space="preserve">
+    <value>Default value</value>
+  </data>
+  <data name="The Summary field will be used as a title or summary to describe your content item." xml:space="preserve">
+    <value>The Summary field will be used as a title or summary to describe your content item.</value>
+  </data>
+  <data name="Show this field in the CMS content list page." xml:space="preserve">
+    <value>Show this field in the CMS content list page.</value>
+  </data>
+  <data name="Input tip while users are editing content." xml:space="preserve">
+    <value>Input tip while users are editing content.</value>
+  </data>
+  <data name="Tooltip" xml:space="preserve">
+    <value>Tooltip</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="Allow null" xml:space="preserve">
+    <value>Allow null</value>
+  </data>
+  <data name="Allows null value in this field" xml:space="preserve">
+    <value>Allows null value in this field</value>
+  </data>
+  <data name="Modifiable" xml:space="preserve">
+    <value>Modifiable</value>
+  </data>
+  <data name="Enable the modification of this field in the content editing page." xml:space="preserve">
+    <value>Enable the modification of this field in the content editing page.</value>
+  </data>
+  <data name="Custom settings" xml:space="preserve">
+    <value>Custom settings</value>
+  </data>
+  <data name="Error message" xml:space="preserve">
+    <value>Error message</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="The field Length must be a number." xml:space="preserve">
+    <value>The field Length must be a number.</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="Pattern" xml:space="preserve">
+    <value>Pattern</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="From folder" xml:space="preserve">
+    <value>From folder</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name=" - Database" xml:space="preserve">
+    <value> - Database</value>
+  </data>
+  <data name="Display name" xml:space="preserve">
+    <value>Display name</value>
+  </data>
+  <data name="Disallowed userkey chars. Replace chars that match this regular expression into hyphens" xml:space="preserve">
+    <value>Disallowed userkey chars. Replace chars that match this regular expression into hyphens</value>
+  </data>
+  <data name="Userkey escape chars" xml:space="preserve">
+    <value>Userkey escape chars</value>
+  </data>
+  <data name="Userkey hyphens" xml:space="preserve">
+    <value>Userkey hyphens</value>
+  </data>
+  <data name="The Enable versioning field is required." xml:space="preserve">
+    <value>The Enable versioning field is required.</value>
+  </data>
+  <data name="Enable content versioning" xml:space="preserve">
+    <value>Enable content versioning</value>
+  </data>
+  <data name="The Enable workflow field is required." xml:space="preserve">
+    <value>The Enable workflow field is required.</value>
+  </data>
+  <data name="Enable workflow" xml:space="preserve">
+    <value>Enable workflow</value>
+  </data>
+  <data name="Enable workflow control on folder content adding." xml:space="preserve">
+    <value>Enable workflow control on folder content adding.</value>
+  </data>
+  <data name="The Enable broadcasting field is required." xml:space="preserve">
+    <value>The Enable broadcasting field is required.</value>
+  </data>
+  <data name="Enable broadcasting" xml:space="preserve">
+    <value>Enable broadcasting</value>
+  </data>
+  <data name="Enable content broadcasting and sharing between content repositories." xml:space="preserve">
+    <value>Enable content broadcasting and sharing between content repositories.</value>
+  </data>
+  <data name="The Strict content permission field is required." xml:space="preserve">
+    <value>The Strict content permission field is required.</value>
+  </data>
+  <data name="Strict content permission" xml:space="preserve">
+    <value>Strict content permission</value>
+  </data>
+  <data name="User can not manage the content when the folder permission is empty." xml:space="preserve">
+    <value>User can not manage the content when the folder permission is empty.</value>
+  </data>
+  <data name="The Show hidden folders field is required." xml:space="preserve">
+    <value>The Show hidden folders field is required.</value>
+  </data>
+  <data name="Show hidden folders" xml:space="preserve">
+    <value>Show hidden folders</value>
+  </data>
+  <data name="Show the all folders including the hidden folders." xml:space="preserve">
+    <value>Show the all folders including the hidden folders.</value>
+  </data>
+  <data name="Index dashboard" xml:space="preserve">
+    <value>Index dashboard</value>
+  </data>
+  <data name="Indexed contents" xml:space="preserve">
+    <value>Indexed contents</value>
+  </data>
+  <data name="Rebuilding" xml:space="preserve">
+    <value>Rebuilding</value>
+  </data>
+  <data name="Last actions" xml:space="preserve">
+    <value>Last actions</value>
+  </data>
+  <data name="Indexed folder '{0}' - content title '{1}'." xml:space="preserve">
+    <value>Indexed folder '{0}' - content title '{1}'.</value>
+  </data>
+  <data name="Delete indexed content title '{1}' from folder '{0}'." xml:space="preserve">
+    <value>Delete indexed content title '{1}' from folder '{0}'.</value>
+  </data>
+  <data name="Rebuild" xml:space="preserve">
+    <value>Rebuild</value>
+  </data>
+  <data name="Search settings" xml:space="preserve">
+    <value>Search settings</value>
+  </data>
+  <data name="Folder name" xml:space="preserve">
+    <value>Folder name</value>
+  </data>
+  <data name="Link page" xml:space="preserve">
+    <value>Link page</value>
+  </data>
+  <data name="Edit search setting" xml:space="preserve">
+    <value>Edit search setting</value>
+  </data>
+  <data name="The detail page to dispaly the search result item." xml:space="preserve">
+    <value>The detail page to dispaly the search result item.</value>
+  </data>
+  <data name="The fields in search result items that will be appended to the detail page route values. Use {key} to match the value in the search result collection. " xml:space="preserve">
+    <value>The fields in search result items that will be appended to the detail page route values. Use {key} to match the value in the search result collection. </value>
+  </data>
+  <data name="Route fields" xml:space="preserve">
+    <value>Route fields</value>
+  </data>
+  <data name="Html code" xml:space="preserve">
+    <value>Html code</value>
+  </data>
+  <data name="Html With Inline editing" xml:space="preserve">
+    <value>Html With Inline editing</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="Please input another name ." xml:space="preserve">
+    <value>Please input another name .</value>
+  </data>
+  <data name="Please choose another position" xml:space="preserve">
+    <value>Please choose another position</value>
+  </data>
+  <data name="Edit DataRule" xml:space="preserve">
+    <value>Edit DataRule</value>
+  </data>
+  <data name="This item already exists." xml:space="preserve">
+    <value>This item already exists.</value>
+  </data>
+  <data name="Page full name" xml:space="preserve">
+    <value>Page full name</value>
+  </data>
+  <data name="Create content type" xml:space="preserve">
+    <value>Create content type</value>
+  </data>
+  <data name="Recycle Application" xml:space="preserve">
+    <value>Recycle Application</value>
+  </data>
+  <data name="Application" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
 </root>

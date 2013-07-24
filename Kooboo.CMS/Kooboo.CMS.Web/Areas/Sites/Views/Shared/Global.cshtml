@@ -34,17 +34,20 @@
             <li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ModuleManagement"))>
                 @Html.ActionLink("Modules".Localize(), "Index", "ModuleManagement")
             </li>
-            <li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ABRuleSetting", "ABSiteSetting"))>
-                <span class="arrow">@Html.IconImage("arrow")</span>
-                <a class="action">@("A/B Test".Localize())</a>
-                <ul>
-                    <li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ABRuleSetting"))>
-                        @Html.ActionLink("A/B rules", "Index", "ABRuleSetting")
-                    </li>
-                    <li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ABSiteSetting"))>
-                        @Html.ActionLink("A/B sites", "Index", "ABSiteSetting") </li>
-                </ul>
+	        <li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ABRuleSetting", "ABSiteSetting"))>
+		        <span class="arrow">@Html.IconImage("arrow")</span>
+		        <a class="action">@("A/B Test".Localize())</a>
+		        <ul>
+			        <li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ABRuleSetting"))>
+				        @Html.ActionLink("A/B rules", "Index", "ABRuleSetting")
+			        </li>
+			        <li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ABSiteSetting"))>
+				        @Html.ActionLink("A/B sites", "Index", "ABSiteSetting") </li>
+		        </ul>
 
+	        </li>
+			<li @Html.GenerateHtmlAttributes(GetMenuItemAttributes("ApplicationManagment"))>
+                @Html.ActionLink("Application".Localize(), "Index", "ApplicationManagment")
             </li>
         </ul>
     </nav>

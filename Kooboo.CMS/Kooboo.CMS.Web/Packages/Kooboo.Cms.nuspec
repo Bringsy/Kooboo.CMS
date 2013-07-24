@@ -1,26 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-  <metadata>
-    <id>Kooboo.CMS.References</id>
-    <version>1.0.11</version>
-    <title />
-    <authors>eConduct</authors>
-    <owners />
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Binaries for Kooboo CMS</description>
-    <dependencies>
-      <group targetFramework=".NETFramework4.5">
-        <dependency id="Microsoft.AspNet.Mvc" version="4.0.30506.0"  />
-        <dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />
-        <dependency id="Microsoft.AspNet.WebPages" version="2.0.30506.0"  />
-        <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0"  />
-        <dependency id="Newtonsoft.Json" version="5.0.6"  />
-        <dependency id="System.IdentityModel.Tokens.Jwt" version="1.0.0" />
-        <dependency id="Thinktecture.IdentityModel" version="3.2.0"  />
-      </group>
-    </dependencies>
-  </metadata>
-  <files>
-    <file src="..\bin\*.dll" target="lib\net45" />
-  </files>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Kooboo.CMS.References</id>
+        <version>1.0.15</version>
+        <authors>eConduct</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Binaries for Kooboo CMS</description>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="Microsoft.AspNet.Mvc" version="4.0.30506.0" />
+                <dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />
+                <dependency id="Microsoft.AspNet.WebPages" version="2.0.30506.0" />
+                <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
+                <dependency id="Newtonsoft.Json" version="5.0.6" />
+                <dependency id="System.IdentityModel.Tokens.Jwt" version="1.0.0" />
+                <dependency id="Thinktecture.IdentityModel" version="3.2.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\bin\CookComputing.XmlRpcV2.dll" target="lib\net45\CookComputing.XmlRpcV2.dll" />
+        <file src="..\bin\DiffPlex.dll" target="lib\net45\DiffPlex.dll" />
+        <file src="..\bin\HtmlAgilityPack.dll" target="lib\net45\HtmlAgilityPack.dll" />
+        <file src="..\bin\Ionic.Zip.Reduced.dll" target="lib\net45\Ionic.Zip.Reduced.dll" />
+        <file src="..\bin\Kooboo.CMS.Account.dll" target="lib\net45\Kooboo.CMS.Account.dll" />
+        <file src="..\bin\Kooboo.CMS.Caching.dll" target="lib\net45\Kooboo.CMS.Caching.dll" />
+        <file src="..\bin\Kooboo.CMS.Common.dll" target="lib\net45\Kooboo.CMS.Common.dll" />
+        <file src="..\bin\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll" target="lib\net45\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll" />
+        <file src="..\bin\Kooboo.CMS.Content.dll" target="lib\net45\Kooboo.CMS.Content.dll" />
+        <file src="..\bin\Kooboo.CMS.Form.dll" target="lib\net45\Kooboo.CMS.Form.dll" />
+        <file src="..\bin\Kooboo.CMS.IdentityModel.dll" target="lib\net45\Kooboo.CMS.IdentityModel.dll" />
+        <file src="..\bin\Kooboo.CMS.Search.dll" target="lib\net45\Kooboo.CMS.Search.dll" />
+        <file src="..\bin\Kooboo.CMS.Sites.dll" target="lib\net45\Kooboo.CMS.Sites.dll" />
+        <file src="..\bin\Kooboo.CMS.Sites.TemplateEngines.Razor.dll" target="lib\net45\Kooboo.CMS.Sites.TemplateEngines.Razor.dll" />
+        <file src="..\bin\Kooboo.CMS.Sites.TemplateEngines.WebForm.dll" target="lib\net45\Kooboo.CMS.Sites.TemplateEngines.WebForm.dll" />
+        <file src="..\bin\Kooboo.CMS.Web.dll" target="lib\net45\Kooboo.CMS.Web.dll" />
+        <file src="..\bin\Kooboo.Connect.dll" target="lib\net45\Kooboo.Connect.dll" />
+        <file src="..\bin\Kooboo.dll" target="lib\net45\Kooboo.dll" />
+        <file src="..\bin\Lucene.Net.Contrib.Highlighter.dll" target="lib\net45\Lucene.Net.Contrib.Highlighter.dll" />
+        <file src="..\bin\Lucene.Net.dll" target="lib\net45\Lucene.Net.dll" />
+        <file src="..\bin\Microsoft.IdentityModel.Tokens.JWT.dll" target="lib\net45\Microsoft.IdentityModel.Tokens.JWT.dll" />
+        <file src="..\bin\Microsoft.Web.Infrastructure.dll" target="lib\net45\Microsoft.Web.Infrastructure.dll" />
+        <file src="..\bin\Newtonsoft.Json.dll" target="lib\net45\Newtonsoft.Json.dll" />
+        <file src="..\bin\Ninject.dll" target="lib\net45\Ninject.dll" />
+        <file src="..\bin\NuGet.Core.dll" target="lib\net45\NuGet.Core.dll" />
+        <file src="..\bin\System.IdentityModel.Tokens.Jwt.dll" target="lib\net45\System.IdentityModel.Tokens.Jwt.dll" />
+        <file src="..\bin\System.Net.Http.Formatting.dll" target="lib\net45\System.Net.Http.Formatting.dll" />
+        <file src="..\bin\System.Web.Helpers.dll" target="lib\net45\System.Web.Helpers.dll" />
+        <file src="..\bin\System.Web.Http.dll" target="lib\net45\System.Web.Http.dll" />
+        <file src="..\bin\System.Web.Mvc.dll" target="lib\net45\System.Web.Mvc.dll" />
+        <file src="..\bin\System.Web.Razor.dll" target="lib\net45\System.Web.Razor.dll" />
+        <file src="..\bin\System.Web.WebPages.Administration.dll" target="lib\net45\System.Web.WebPages.Administration.dll" />
+        <file src="..\bin\System.Web.WebPages.Deployment.dll" target="lib\net45\System.Web.WebPages.Deployment.dll" />
+        <file src="..\bin\System.Web.WebPages.dll" target="lib\net45\System.Web.WebPages.dll" />
+        <file src="..\bin\System.Web.WebPages.Razor.dll" target="lib\net45\System.Web.WebPages.Razor.dll" />
+        <file src="..\bin\Thinktecture.IdentityModel.dll" target="lib\net45\Thinktecture.IdentityModel.dll" />
+    </files>
 </package>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Kooboo.CMS.Caching;
 using Kooboo.Web.Mvc;
 using Kooboo.CMS.Common;
 using Kooboo.CMS.Content.Models.Binder;

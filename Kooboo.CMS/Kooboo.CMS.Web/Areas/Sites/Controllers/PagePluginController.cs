@@ -21,6 +21,9 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
 
         public virtual ActionResult Index()
         {
+            // reload plugins here 
+            // http://forum.kooboo.com/yaf_postst394_Three--hopefully-simple--questions-about-KooBoo-plugins.aspx
+
             return View();
         }
 

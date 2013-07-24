@@ -207,7 +207,7 @@ namespace Kooboo.CMS.Sites.Extension
     }
     #endregion
 
-    #region UpdateTextContentPlugin
+    #region UpdateTextContentPlugin     
     public class UpdateTextContentPlugin : ContentPlugin
     {
         #region DoPost

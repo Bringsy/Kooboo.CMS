@@ -23,7 +23,7 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
 {
     public interface ILogOnHandler
     {
-        ActionResult SignIn();
+        ActionResult SignIn(string returnUrl);
         ActionResult SignOut(); 
     }
 
@@ -140,7 +140,7 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
             var handler = EngineContext.Current.ContainerManager.Resolve<ILogOnHandler>();
             if (handler != null)
             {
-                return handler.SignIn();
+                return handler.SignIn(returnUrl);
             }
             else
             {
