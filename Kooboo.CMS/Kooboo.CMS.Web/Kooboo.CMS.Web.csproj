@@ -208,6 +208,7 @@
     <Compile Include="Areas\Sites\Models\ImportRepositoryModel.cs" />
     <Compile Include="Areas\Sites\Models\ImportSiteModel.cs" />
     <Compile Include="Areas\Sites\Models\LanguageVisitRule_Metadata.cs" />
+    <Compile Include="Areas\Sites\Models\PagePermission_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ProxyPosition_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\RandomVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ABPageSetting_Metadata.cs" />
