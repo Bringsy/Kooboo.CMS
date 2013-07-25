@@ -84,10 +84,12 @@
     <Compile Include="Controllers\ActionFilters\CheckRequireHttpsAttribute.cs" />
     <Compile Include="Controllers\ActionFilters\CheckSiteExistsActionFilter.cs" />
     <Compile Include="Controllers\ActionFilters\CacheToDiskAttribute.cs" />
+    <Compile Include="Controllers\ActionFilters\PageAuthorizeAttribute.cs" />
     <Compile Include="Controllers\ActionFilters\CustomOutputTextWriterFilter.cs" />
     <Compile Include="Controllers\ActionFilters\CustomRedirectFilterAttribute.cs" />
     <Compile Include="Controllers\ActionFilters\OutputCacheFilterAttribute.cs" />
     <Compile Include="Controllers\SubmissionController.cs" />
+    <Compile Include="Extension\ContactUsPlugin.cs" />
     <Compile Include="Extension\EmailPlugin.cs" />
     <Compile Include="Extension\IHttpMethodPagePlugin.cs" />
     <Compile Include="Extension\ICommonPagePlugin.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Persistence\IABPageTestResultProvider.cs" />
     <Compile Include="Persistence\ISubmissionSettingProvider.cs" />
     <Compile Include="Persistence\FileSystem\SubmissionSettingProvider.cs" />
+    <Compile Include="NullSiteContextException.cs" />
     <Compile Include="Services\ABPageTestResultManager.cs" />
     <Compile Include="Services\PageCachingManager.cs" />
     <Compile Include="Services\SubmissionSettingManager.cs" />
@@ -174,8 +177,8 @@
     <Compile Include="Extension\ModuleArea\ModuleSessionStateTempDataProvider.cs" />
     <Compile Include="Extension\ModuleArea\ModuleViewEngine.cs" />
     <Compile Include="Extension\ModuleArea\RouteTables.cs" />
-    <Compile Include="Extension\PagePluginHelper.cs" />
-    <Compile Include="Globalization\IRepositoryFactory.cs" />
+    <Compile Include="Extension\ModelBindHelper.cs" />
+    <Compile Include="Globalization\IElementRepositoryFactory.cs" />
     <Compile Include="Globalization\SiteLabelRepository.cs" />
     <Compile Include="LocalizationHtmlExtensions.cs" />
     <Compile Include="IEnumerableStringExtension.cs" />

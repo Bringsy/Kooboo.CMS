@@ -15,6 +15,12 @@ using System.IO;
 
 namespace Kooboo.CMS.Sites.Persistence
 {
+    public class CreateSiteSetting
+    {
+        public string Repository { get; set; }
+        //public string Membership { get; set; }
+    }
+
     public interface ISiteProvider : ISiteElementProvider<Site>
     {
         Site GetSiteByHostNameNPath(string hostName, string requestPath);
@@ -40,7 +46,7 @@ namespace Kooboo.CMS.Sites.Persistence
 
         bool IsOnline(Site site);
 
-        Site Create(Site parentSite, string siteName, Stream packageStream, string repositoryName);
+        Site Create(Site parentSite, string siteName, Stream packageStream, CreateSiteSetting createSitSetting);
 
         void Initialize(Site site);
 

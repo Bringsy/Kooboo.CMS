@@ -21,6 +21,7 @@ using System.Collections.Specialized;
 using System.Collections;
 using Kooboo.Dynamic;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
+using System.Security.Principal;
 namespace Kooboo.CMS.Sites.Models
 {
     public enum PageType
@@ -196,14 +197,35 @@ namespace Kooboo.CMS.Sites.Models
     [DataContract]
     public class PagePermission
     {
-        /// <summary>
-        /// <example>?,*,User1,Role1</example>
-        /// </summary>
-        /// <value>The allowed.</value>
-        [DataMember(Order = 1)]
-        public string Allowed { get; set; }
-        [DataMember(Order = 3)]
-        public string Denied { get; set; }
+        [DataMember]
+        public bool RequireAuthentication { get; set; }
+        [DataMember]
+        public string[] AllowRoles { get; set; }
+        [DataMember]
+        public bool AuthorizeMenu { get; set; }
+        [DataMember]
+        public string UnauthorizedUrl { get; set; }
+
+        public bool Authorize(IPrincipal principal)
+        {
+            var allow = true;
+            if (this.RequireAuthentication)
+            {
+                if (!principal.Identity.IsAuthenticated)
+                {
+                    allow = false;
+                }
+                else
+                {
+                    var roles = this.AllowRoles;
+                    if (roles != null && roles.Length > 0 && !roles.Any<string>(new Func<string, bool>(principal.IsInRole)))
+                    {
+                        allow = false;
+                    }
+                }
+            }
+            return allow;
+        }
     }
 
     public static class PageHelper
@@ -433,6 +455,7 @@ namespace Kooboo.CMS.Sites.Models
         #region EmptyPage
         public static Func<Page> Activator = () => new Page();
         #endregion
+
         #region override PathResource
 
         string _fullName = null;

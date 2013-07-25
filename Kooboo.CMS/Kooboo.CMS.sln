@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kooboo", "Kooboo", "{0F50FD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{726D07D4-5749-4ABA-AA8A-5448F02D77F7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Site_Providers", "Site_Providers", "{1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Web", "Kooboo.CMS.Web\Kooboo.CMS.Web.csproj", "{C5803C24-EEEE-4A7E-8F2F-B0FB66287845}"
 EndProject
@@ -76,6 +76,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Sites.Tests", "Kooboo.CMS.Sites.Tests\Kooboo.CMS.Sites.Tests.csproj", "{3D9FB61E-5453-4244-8230-BDC6FB256212}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Common.Runtime.Dependency.Ninject", "Kooboo.CMS.Common.Runtime.Dependency.Ninject\Kooboo.CMS.Common.Runtime.Dependency.Ninject.csproj", "{94A4A4BA-F5EB-44CB-9CD3-B240B80CE686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Sites.Persistence.EntityFramework", "Kooboo.CMS.Sites.Persistence.EntityFramework\Kooboo.CMS.Sites.Persistence.EntityFramework.csproj", "{3245DC7D-2A38-4365-AAE6-99920136E41E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -203,6 +205,10 @@ Global
 		{94A4A4BA-F5EB-44CB-9CD3-B240B80CE686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94A4A4BA-F5EB-44CB-9CD3-B240B80CE686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94A4A4BA-F5EB-44CB-9CD3-B240B80CE686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3245DC7D-2A38-4365-AAE6-99920136E41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3245DC7D-2A38-4365-AAE6-99920136E41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3245DC7D-2A38-4365-AAE6-99920136E41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3245DC7D-2A38-4365-AAE6-99920136E41E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -243,5 +249,6 @@ Global
 		{9A684F96-625B-44B7-A1F6-F3E9114591B3} = {726D07D4-5749-4ABA-AA8A-5448F02D77F7}
 		{86BADA5A-8965-4F82-94F4-270ACFAE77F3} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
 		{80046D04-4DE9-4419-99BB-B2F467B0FA22} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
+		{3245DC7D-2A38-4365-AAE6-99920136E41E} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
 	EndGlobalSection
 EndGlobal
