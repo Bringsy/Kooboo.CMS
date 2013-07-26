@@ -80,5 +80,10 @@ namespace Kooboo.CMS.Account.Persistence.SqlSever
         {
             return dbContext.Users.Where(o => o.UserName == dummy.UserName).FirstOrDefault();
         }
+
+        public User FindUserByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

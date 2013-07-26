@@ -1979,4 +1979,67 @@ Are you sure you want to use this size?</value>
   <data name="User name" xml:space="preserve">
     <value>User name</value>
   </data>
+  <data name="Relation" xml:space="preserve">
+    <value>Relation</value>
+  </data>
+  <data name="You do not have any content database yet, click the button below to create a content database." xml:space="preserve">
+    <value>You do not have any content database yet, click the button below to create a content database.</value>
+  </data>
+  <data name="The Require Authentication field is required." xml:space="preserve">
+    <value>The Require Authentication field is required.</value>
+  </data>
+  <data name="Require Authentication" xml:space="preserve">
+    <value>Require Authentication</value>
+  </data>
+  <data name="Allow groups" xml:space="preserve">
+    <value>Allow groups</value>
+  </data>
+  <data name="Unauthorized URL" xml:space="preserve">
+    <value>Unauthorized URL</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Broadcasting" xml:space="preserve">
+    <value>Broadcasting</value>
+  </data>
+  <data name="Workflow" xml:space="preserve">
+    <value>Workflow</value>
+  </data>
+  <data name="Sites" xml:space="preserve">
+    <value>Sites</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Custom error" xml:space="preserve">
+    <value>Custom error</value>
+  </data>
+  <data name="Url redirect" xml:space="preserve">
+    <value>Url redirect</value>
+  </data>
+  <data name="Scripts/Themes/Custom files" xml:space="preserve">
+    <value>Scripts/Themes/Custom files</value>
+  </data>
+  <data name="Action mapping" xml:space="preserve">
+    <value>Action mapping</value>
+  </data>
+  <data name="Extensions" xml:space="preserve">
+    <value>Extensions</value>
+  </data>
+  <data name="Plugin" xml:space="preserve">
+    <value>Plugin</value>
+  </data>
+  <data name="Module" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="Style editing" xml:space="preserve">
+    <value>Style editing</value>
+  </data>
+  <data name="Publishing &amp; Inline editing" xml:space="preserve">
+    <value>Publishing &amp; Inline editing</value>
+  </data>
 </root>

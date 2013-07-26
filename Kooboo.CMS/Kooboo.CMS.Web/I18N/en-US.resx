@@ -1529,4 +1529,10 @@ Are you sure you want to use this size?</value>
   <data name="Current AppDomain ID" xml:space="preserve">
     <value>Current AppDomain ID</value>
   </data>
+  <data name="Databases" xml:space="preserve">
+    <value>Databases</value>
+  </data>
+  <data name="A/B sites" xml:space="preserve">
+    <value>A/B sites</value>
+  </data>
 </root>

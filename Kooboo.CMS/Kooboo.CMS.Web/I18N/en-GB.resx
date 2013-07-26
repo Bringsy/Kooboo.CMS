@@ -91,4 +91,7 @@
   <data name="The cross-domain POST request is not allowed." xml:space="preserve">
     <value>The cross-domain POST request is not allowed.</value>
   </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>InvalidPassword</value>
+  </data>
 </root>

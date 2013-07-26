@@ -24,9 +24,10 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
     {
         [DisplayName("Require Authentication")]
         public bool RequireAuthentication { get; set; }
+
         [DisplayName("Allow groups")]
         [UIHint("Multiple_DropDownList")]
-        //[DataSource(typeof(SiteMembershipGroupDataSource))]
+        [DataSource(typeof(RolesDatasource))]    
         public string[] AllowRoles { get; set; }
 
         [DisplayName("Authorize menu")]

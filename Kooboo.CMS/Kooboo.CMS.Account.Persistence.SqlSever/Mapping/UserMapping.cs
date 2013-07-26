@@ -29,7 +29,7 @@ namespace Kooboo.CMS.Account.Persistence.SqlSever.Mapping
             this.Ignore(it => it.IsDummy);
             this.Ignore(it => it.FailedPasswordAttemptCount);
             this.Ignore(it => it.IsLockedOut);
-            this.Ignore(it => it.LastLockoutDate);
+            this.Ignore(it => it.UtcLastLockoutDate);
             this.Ignore(it => it.UUID);
             this.ToTable("CMS_Account_Users");
         }
