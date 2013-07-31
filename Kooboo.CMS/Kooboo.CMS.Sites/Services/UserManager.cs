@@ -40,6 +40,7 @@ namespace Kooboo.CMS.Sites.Services
         public override void Update(Site site, User @new, User old)
         {
             @new.Site = site;
+            @new.Profile = @old.Profile; 
             @old.Site = site;
             Provider.Update(@new, @old);
         }

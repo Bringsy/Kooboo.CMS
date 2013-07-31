@@ -2042,4 +2042,55 @@ Are you sure you want to use this size?</value>
   <data name="Publishing &amp; Inline editing" xml:space="preserve">
     <value>Publishing &amp; Inline editing</value>
   </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="Data type" xml:space="preserve">
+    <value>Data type</value>
+  </data>
+  <data name="Basic info" xml:space="preserve">
+    <value>Basic info</value>
+  </data>
+  <data name="Permission Setting" xml:space="preserve">
+    <value>Permission Setting</value>
+  </data>
+  <data name="Relation folders" xml:space="preserve">
+    <value>Relation folders</value>
+  </data>
+  <data name="Content management" xml:space="preserve">
+    <value>Content management</value>
+  </data>
+  <data name="Role base" xml:space="preserve">
+    <value>Role base</value>
+  </data>
+  <data name="Workflow name" xml:space="preserve">
+    <value>Workflow name</value>
+  </data>
+  <data name="Single choice" xml:space="preserve">
+    <value>Single choice</value>
+  </data>
+  <data name="Category folders" xml:space="preserve">
+    <value>Category folders</value>
+  </data>
+  <data name="Embed content from another content folder. For example an &lt;b&gt;article&lt;/b&gt; embeds &lt;b&gt;comments&lt;/b&gt;" xml:space="preserve">
+    <value>Embed content from another content folder. For example an &lt;b&gt;article&lt;/b&gt; embeds &lt;b&gt;comments&lt;/b&gt;</value>
+  </data>
+  <data name="Embedded folders" xml:space="preserve">
+    <value>Embedded folders</value>
+  </data>
+  <data name="Sortable" xml:space="preserve">
+    <value>Sortable</value>
+  </data>
+  <data name="Hide the folder" xml:space="preserve">
+    <value>Hide the folder</value>
+  </data>
+  <data name="Hide the folder from the menu in the left slide bar when it was checked." xml:space="preserve">
+    <value>Hide the folder from the menu in the left slide bar when it was checked.</value>
+  </data>
+  <data name="The Page size field is required." xml:space="preserve">
+    <value>The Page size field is required.</value>
+  </data>
+  <data name="The item numbers on management grid page." xml:space="preserve">
+    <value>The item numbers on management grid page.</value>
+  </data>
 </root>

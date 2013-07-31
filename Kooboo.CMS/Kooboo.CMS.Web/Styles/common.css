@@ -2885,7 +2885,7 @@ body #diffBox .diffTable td.lineNumber {
 }
 
 .blank .common-table.fixed .tbody {
-	margin: 87px -20px 0;
+	margin: 51px -20px 0;
 }
 
 .blank.in-dialog .common-table.fixed .thead {
@@ -3161,22 +3161,44 @@ ul.site-tree {
 ----------------------------------------------------------*/
 .content-block{
 	float: left;
-	width: 232px;
-	padding: 0 10px;
-	margin: 0 20px 20px 0;
-	border: 1px solid #ccc;
+	width: 160px;
+	margin: 0 11px 32px 21px;
 	overflow: hidden;
 	position: relative;
 }
 
-.content-block.checked{
-	border-color: #0078b1;
+.content-block.database.checked > ul{
+	padding-left: 22px;
+	border-left: 2px solid #0078b1;
+	border-right: 2px solid #0078b1;
+	border-bottom: 2px solid #0078b1;
+}
+
+.content-block.membership.checked > ul{
+	padding-left: 22px;
+	border-left: 2px solid #3cbabb;
+	border-right: 2px solid #3cbabb;
+	border-bottom: 2px solid #3cbabb;
 }
 
 .content-block .content-block-header{
-	font-size: 16px;
-	line-height: 50px;
-	border-bottom: 1px solid #ccc;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 18px;
+}
+
+.content-block .content-block-header a{
+	color: #fff;
+	position: relative;
+	z-index: 3;
+}
+
+.content-block.database .content-block-header{
+	background: #1076a6;
+}
+
+.content-block.membership .content-block-header{
+	background: #3cbabb;
 }
 
 .content-block .content-block-header img.icon{
@@ -3185,28 +3207,35 @@ ul.site-tree {
 	margin-right: 5px;
 }
 
-.content-block input[type="checkbox"]{
-	position: absolute;
-	right: 10px;
-	top: 20px;
+.content-block input[type="radio"]{
+	display: none;
 }
 
-.content-block input[type="checkbox"] ~ label{
+.content-block input[type="radio"] ~ label{
 	display: block;
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	left: 0;
 	top: 0;
-	border: 1px solid red;
 }
 
-.content-block input[type="checkbox"]:checked ~ label{
-
+.content-block input[type="radio"] ~ label:hover{
+	cursor: pointer;
 }
 
 .content-block > ul{
-	margin: 10px 0 10px 28px;
+	padding: 10px 0 10px 23px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.content-block:hover > ul{
+	padding-left: 22px;
+	border-left: 2px solid #ccc;
+	border-right: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
 }
 
 .content-block > ul li{
@@ -3710,6 +3739,7 @@ ul.site-tree {
 /* relation svg */
 svg text:hover{
     cursor:pointer;
+	text-decoration: underline;
 }
 
 svg text.titles:hover{
