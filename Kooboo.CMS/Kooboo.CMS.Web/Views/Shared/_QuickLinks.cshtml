@@ -38,7 +38,7 @@
 				<a href="@System.Configuration.ConfigurationManager.AppSettings["ida:AccountSettingsUrl"]">@("Account settings".Localize())</a>
 			</li>
 			<li>
-				<a href="@Url.Action("SignOut", new { controller = "Logon", area = "account" })">@("Sign out".Localize())</a>
+				<a href="@Url.Action("SignOut", new { controller = "Auth", area = "account" })">@("Sign out".Localize())</a>
 			</li>
 		</ul>
 	</li>

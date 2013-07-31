@@ -11,7 +11,6 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
             var fam = FederatedAuthentication.WSFederationAuthenticationModule;
             var request = new SignInRequestMessage(new Uri(fam.Issuer), fam.Realm)
             {
-                /* Reply = fam.Reply, */
                 Context = string.Format("ru={0}", returnUrl)
             };
 
