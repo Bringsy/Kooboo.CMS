@@ -461,7 +461,7 @@
     <Compile Include="Web\UrlMapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Kooboo\Kooboo.csproj">
+    <ProjectReference Include="..\Kooboo\Kooboo.csproj">
       <Project>{347E47E5-3132-4BAD-B935-8282A2B16CF5}</Project>
       <Name>Kooboo %28Source\Kooboo\Kooboo%29</Name>
     </ProjectReference>

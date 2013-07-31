@@ -27,7 +27,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
 		#region Index
 		public ActionResult Index()
 		{
-			return View();
+		    return this.RedirectToAction("Cluster"); 
 		}
 		#endregion
 		#region Cluster

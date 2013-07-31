@@ -2093,4 +2093,7 @@ Are you sure you want to use this size?</value>
   <data name="The item numbers on management grid page." xml:space="preserve">
     <value>The item numbers on management grid page.</value>
   </data>
+  <data name="You do not have any module yet, click the button below to installl a membership." xml:space="preserve">
+    <value>You do not have any module yet, click the button below to installl a membership.</value>
+  </data>
 </root>

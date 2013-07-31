@@ -620,6 +620,10 @@
     <Content Include="Images\Default.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\loading.gif" />
+    <Content Include="Images\svg-edit.png" />
+    <Content Include="Images\svg-export.png" />
+    <Content Include="Images\svg-preview.png" />
+    <Content Include="Images\svg-view.png" />
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\aight.js" />
     <Content Include="Scripts\codemirror\addon\comment\comment.js" />
@@ -1843,7 +1847,6 @@
     <Content Include="Areas\Sites\Views\CustomError\Index.cshtml" />
     <Content Include="Areas\Sites\Views\File\Index.cshtml" />
     <Content Include="Areas\Sites\Views\Home\ImportSite.cshtml" />
-    <Content Include="Areas\Sites\Views\Home\Index.cshtml" />
     <Content Include="Areas\Sites\Views\Home\_LayoutList.cshtml" />
     <Content Include="Areas\Sites\Views\Home\SiteMap.cshtml" />
     <Content Include="Areas\Sites\Views\Home\SiteMapNode.cshtml" />
@@ -1956,10 +1959,6 @@
     <Content Include="routes.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Kooboo\Kooboo.csproj">
-      <Project>{347E47E5-3132-4BAD-B935-8282A2B16CF5}</Project>
-      <Name>Kooboo %28Source\Kooboo\Kooboo%29</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Kooboo.CMS.Account\Kooboo.CMS.Account.csproj">
       <Project>{61ed004c-9e20-4680-af2b-0723fe7648bb}</Project>
       <Name>Kooboo.CMS.Account</Name>
@@ -1987,6 +1986,10 @@
     <ProjectReference Include="..\Kooboo.CMS.Sites\Kooboo.CMS.Sites.csproj">
       <Project>{ffd8e9f0-61b6-4b0d-a803-5beccd2a6578}</Project>
       <Name>Kooboo.CMS.Sites</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo\Kooboo.csproj">
+      <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>
+      <Name>Kooboo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
