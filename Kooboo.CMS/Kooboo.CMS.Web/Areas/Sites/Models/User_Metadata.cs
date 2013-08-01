@@ -40,7 +40,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         public string UserName { get; set; }
 
         [GridColumn(Order = 2, GridItemColumnType = typeof(ArrayGridItemColumn))]
-        [Required(ErrorMessage = "Required")]
+        //[Required(ErrorMessage = "Required")]
         [UIHint("Multiple_DropDownList")]
         [DataSource(typeof(RolesDatasource))]        
         public List<string> Roles { get; set; }
