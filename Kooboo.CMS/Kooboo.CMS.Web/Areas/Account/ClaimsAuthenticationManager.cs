@@ -1,7 +1,10 @@
-﻿using System.Linq;
-using Kooboo.CMS.Sites.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Kooboo.CMS.Account.Models;
 using System.Security.Claims;
 using System.Web;
+using Kooboo.Web.Css;
+using User = Kooboo.CMS.Sites.Models.User;
 
 namespace Kooboo.CMS.Web.Areas.Account
 {
@@ -42,13 +45,14 @@ namespace Kooboo.CMS.Web.Areas.Account
 
         public void CreateOrUpdateKoobooUser(ClaimsPrincipal principal)
         {
-            // TODO: check if JWT is used, if yes strip claims if not use whole claims
+            // find uuid claim 
             var nameClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
             if (nameClaim == null)
                 nameClaim = principal.FindFirst(ClaimTypes.Name);
             var uuid = nameClaim.Value;
 
-            // Create a user if not already created
+            #region Create a user if not already created
+
             var user = Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Get(uuid);
 
             if (user == null)
@@ -70,7 +74,26 @@ namespace Kooboo.CMS.Web.Areas.Account
                 Kooboo.CMS.Account.Services.ServiceFactory.UserManager.Update(user.UserName, user);
             }
 
-            // Assign user to current site if not already assigned
+            #endregion
+
+            #region update roles 
+
+            foreach (var roleClaim in  principal.FindAll(ClaimTypes.Role))
+            {
+                var role = Kooboo.CMS.Account.Services.ServiceFactory.RoleManager.Get(roleClaim.Value);
+                if (role == null)
+                {
+                    Kooboo.CMS.Account.Services.ServiceFactory.RoleManager.Add(new Role
+                    {
+                        Name = roleClaim.Value
+                    });
+                }
+            }
+           
+            #endregion 
+
+            #region Assign user to current site if not already assigned
+
             var site = Kooboo.CMS.Sites.Persistence.Providers.SiteProvider.GetSiteByHostNameNPath(
                 HttpContext.Current.Request.Url.Host, "");
 
@@ -85,7 +108,7 @@ namespace Kooboo.CMS.Web.Areas.Account
                     {
                         UUID = uuid,
                         UserName = principal.Identity.Name,
-                        Profile = new Kooboo.CMS.Sites.Models.Profile(),
+                        Profile = new Dictionary<string, string>(),
                         Site = site,
                         Roles = principal.FindAll(ClaimTypes.Role).Select(s => s.Value).ToList()
                     };
@@ -106,13 +129,15 @@ namespace Kooboo.CMS.Web.Areas.Account
                     };
 
                     if (newSiteUser.Profile == null)
-                        newSiteUser.Profile = new Kooboo.CMS.Sites.Models.Profile();
+                        newSiteUser.Profile = new Dictionary<string, string>();
 
                     newSiteUser.Profile["Email"] = principal.FindFirst(ClaimTypes.Email).Value;
 
                     Kooboo.CMS.Sites.Services.ServiceFactory.UserManager.Update(site, newSiteUser, siteUser);
                 }
             }
+
+            #endregion
         }
     }
 }

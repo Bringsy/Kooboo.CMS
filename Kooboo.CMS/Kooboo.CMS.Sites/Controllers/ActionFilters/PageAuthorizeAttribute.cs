@@ -13,6 +13,8 @@ using System.Text;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Kooboo.CMS.Sites.View;
+using Kooboo.Web.Url;
 
 namespace Kooboo.CMS.Sites.Controllers.ActionFilters
 {

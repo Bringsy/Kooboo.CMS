@@ -73,8 +73,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo", "Kooboo\Kooboo.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Membership", "Kooboo.CMS.Membership\Kooboo.CMS.Membership.csproj", "{3DF23643-4BD1-4564-82B9-9EC594AD05B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kooboo.CMS.Membership.Persistence.EntityFramework", "Kooboo.CMS.Membership.Persistence.EntityFramework\Kooboo.CMS.Membership.Persistence.EntityFramework.csproj", "{6114E7DA-867C-44CB-8B7F-EBE326A98898}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -315,14 +313,6 @@ Global
 		{3DF23643-4BD1-4564-82B9-9EC594AD05B6}.Publish|Any CPU.Build.0 = Release|Any CPU
 		{3DF23643-4BD1-4564-82B9-9EC594AD05B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DF23643-4BD1-4564-82B9-9EC594AD05B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.EmailValidator|Any CPU.ActiveCfg = Release|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.EmailValidator|Any CPU.Build.0 = Release|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.Publish|Any CPU.ActiveCfg = Release|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.Publish|Any CPU.Build.0 = Release|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -361,6 +351,5 @@ Global
 		{80046D04-4DE9-4419-99BB-B2F467B0FA22} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
 		{3245DC7D-2A38-4365-AAE6-99920136E41E} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
 		{CCDA69D1-D0A7-49F1-BA97-940F1C291643} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
-		{6114E7DA-867C-44CB-8B7F-EBE326A98898} = {1E1ED9B0-589E-4E13-BFFF-8B22E21ADFEE}
 	EndGlobalSection
 EndGlobal

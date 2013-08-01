@@ -2096,4 +2096,7 @@ Are you sure you want to use this size?</value>
   <data name="You do not have any module yet, click the button below to installl a membership." xml:space="preserve">
     <value>You do not have any module yet, click the button below to installl a membership.</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
 </root>
