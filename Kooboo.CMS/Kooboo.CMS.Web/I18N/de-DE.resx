@@ -2099,4 +2099,7 @@ Are you sure you want to use this size?</value>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Allow roles" xml:space="preserve">
+    <value>Allow roles</value>
+  </data>
 </root>

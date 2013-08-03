@@ -56,9 +56,8 @@ namespace Kooboo.CMS.Sites.Controllers.ActionFilters
             }
             else
             {
-                throw new HttpException((int)HttpStatusCode.Unauthorized, "The page available for member only.");
+                filterContext.Result = new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             }
-
         }
     }
 }
