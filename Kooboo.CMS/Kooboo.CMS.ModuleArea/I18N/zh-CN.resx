@@ -2136,6 +2136,24 @@
   <data name="text panel" xml:space="preserve">
     <value>文字面板</value>
   </data>
+  <data name="Default entry" xml:space="preserve">
+    <value>Default entry</value>
+  </data>
+  <data name="ModuleName" xml:space="preserve">
+    <value>ModuleName</value>
+  </data>
+  <data name="KoobooCMSVersion" xml:space="preserve">
+    <value>KoobooCMSVersion</value>
+  </data>
+  <data name="ThemeName" xml:space="preserve">
+    <value>ThemeName</value>
+  </data>
+  <data name="Controller" xml:space="preserve">
+    <value>Controller</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
   <data name=" - Kooboo CMS" xml:space="preserve">
     <value> - Kooboo CMS</value>
   </data>
@@ -2145,16 +2163,16 @@
   <data name="Change language" xml:space="preserve">
     <value>Change language</value>
   </data>
-  <data name="Redirect to home page 字段是必需的。" xml:space="preserve">
-    <value>Redirect to home page 字段是必需的。</value>
+  <data name="All your changes might be lost." xml:space="preserve">
+    <value>All your changes might be lost.</value>
   </data>
-  <data name="Back to home page" xml:space="preserve">
-    <value>Back to home page</value>
+  <data name="Module setting has been changed." xml:space="preserve">
+    <value>Module setting has been changed.</value>
   </data>
-  <data name="For a list of newly added features and a quick start guide,&lt;br /&gt;See: &lt;a href=&quot;http://www.kooboo.com/documents&quot; target=&quot;_blank&quot;&gt;http://www.kooboo.com/documents&lt;/a&gt;" xml:space="preserve">
-    <value>For a list of newly added features and a quick start guide,&lt;br /&gt;See: &lt;a href="http://www.kooboo.com/documents" target="_blank"&gt;http://www.kooboo.com/documents&lt;/a&gt;</value>
+  <data name="Key" xml:space="preserve">
+    <value>Key</value>
   </data>
-  <data name="Sign in to the CMS and create your first Kooboo website, the default login is: &lt;strong&gt;admin/admin&lt;/strong&gt;" xml:space="preserve">
-    <value>Sign in to the CMS and create your first Kooboo website, the default login is: &lt;strong&gt;admin/admin&lt;/strong&gt;</value>
+  <data name="CustomSettings" xml:space="preserve">
+    <value>CustomSettings</value>
   </data>
 </root>

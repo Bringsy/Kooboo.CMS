@@ -18,6 +18,7 @@ namespace Kooboo.CMS.Sites.Extension.ModuleArea
 {
     public class ModuleContext
     {
+        #region Create
         public static ModuleContext Create(Site site, string moduleName, ModuleSettings moduleSettings, ModulePosition position)
         {
 
@@ -27,17 +28,30 @@ namespace Kooboo.CMS.Sites.Extension.ModuleArea
             {
                 throw new Exception(string.Format("The module does not exist.Module name:{0}".Localize(), moduleName));
             }
-
             return context;
         }
+        #endregion
+
+        #region ModuleContext
         protected ModuleContext(Site site, string moduleName, ModuleSettings moduleSettings, ModulePosition position)
         {
             this.Site = site;
             ModuleName = moduleName;
             this.ModuleSettings = moduleSettings;
             this.ModulePosition = position;
+            this.ModuleInfo = ModuleInfo.Get(moduleName);
         }
+        #endregion
+
+        #region ModuleName
         public string ModuleName { get; private set; }
+        #endregion
+
+        #region ModuleInfo
+        public ModuleInfo ModuleInfo { get; private set; }
+        #endregion
+
+        #region ModulePath
         public ModulePath ModulePath
         {
             get
@@ -45,7 +59,13 @@ namespace Kooboo.CMS.Sites.Extension.ModuleArea
                 return new ModulePath(this.ModuleName);
             }
         }
+        #endregion
+
+        #region Site
         public Site Site { get; private set; }
+        #endregion
+
+        #region RouteTable
         public RouteCollection RouteTable
         {
             get
@@ -53,9 +73,44 @@ namespace Kooboo.CMS.Sites.Extension.ModuleArea
                 return RouteTables.GetRouteTable(this.ModuleName);
             }
         }
+        #endregion
 
+        #region ModuleSettings
         public ModuleSettings ModuleSettings { get; private set; }
+        #endregion
 
+        #region ModulePosition
         public ModulePosition ModulePosition { get; private set; }
+        #endregion
+
+        #region EnableTheme
+        private bool enableTheme = true;
+        public virtual bool EnableTheme
+        {
+            get
+            {
+                return enableTheme;
+            }
+            set
+            {
+                this.enableTheme = value;
+            }
+        }
+        #endregion
+
+        #region EnableScript
+        private bool enableScript = true;
+        public virtual bool EnableScript
+        {
+            get
+            {
+                return enableScript;
+            }
+            set
+            {
+                enableScript = value;
+            }
+        }
+        #endregion
     }
 }

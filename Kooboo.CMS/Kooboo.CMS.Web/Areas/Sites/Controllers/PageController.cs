@@ -72,7 +72,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
         #endregion
 
         #region Create
-        public override ActionResult Create()
+        public override ActionResult Create(Page model)
         {
             if (!string.IsNullOrWhiteSpace(Site.Repository))
             {
@@ -93,7 +93,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             page.Layout = ControllerContext.RequestContext.GetRequestValue("layout");
             page.IsDefault = isDefault;
 
-            return View(page);
+            return base.Create(page);
         }
 
         [HttpPost]

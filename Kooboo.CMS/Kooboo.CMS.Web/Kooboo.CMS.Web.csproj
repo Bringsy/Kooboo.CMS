@@ -126,7 +126,6 @@
     <Compile Include="Areas\Contents\Controllers\ManagerControllerBase.cs" />
     <Compile Include="Areas\Contents\Controllers\MediaContentController.cs" />
     <Compile Include="Areas\Contents\Controllers\MediaFolderController.cs" />
-    <Compile Include="Areas\Contents\Controllers\MetaweblogController.cs" />
     <Compile Include="Areas\Contents\Controllers\PendingWorkflowController.cs" />
     <Compile Include="Areas\Contents\Controllers\ReceivingSettingController.cs" />
     <Compile Include="Areas\Contents\Controllers\RepositoryController.cs" />
@@ -200,6 +199,7 @@
     <Compile Include="Areas\Sites\Controllers\ABRuleSettingController.cs" />
     <Compile Include="Areas\Sites\Models\ABPageTestHitsReport.cs" />
     <Compile Include="Areas\Sites\Models\ABPageTestResult_Metadata.cs" />
+	<Compile Include="Areas\Sites\Models\DataSources\RouteTypesDatasource.cs" />
     <Compile Include="Areas\Sites\Models\DataSources\SubmissionPluginsDataSource.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\ABPageTestHitsReport_HitTimes_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\ABPageTestHitsReport_ShowTimes_GridItemColumn.cs" />
@@ -217,6 +217,7 @@
     <Compile Include="Areas\Sites\Models\DataSources\ABRuleSettingDataSource.cs" />
     <Compile Include="Areas\Sites\Models\Security_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ABSiteSetting_Metadata.cs" />
+    <Compile Include="Areas\Sites\Models\SiteModuleRelationModel.cs" />
     <Compile Include="Areas\Sites\Models\SubmissionSetting_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\UserAgentVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\CopySiteModel.cs" />
@@ -228,6 +229,10 @@
     <Compile Include="Areas\Sites\Models\ABRuleSetting_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\SiteTemplate_ViewModel.cs" />
     <Compile Include="Areas\Sites\Models\QueryStringVisitRule_Metadata.cs" />
+    <Compile Include="Interoperability\MetaWeblog\BloggerAPI.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interoperability\MetaWeblog\MetaWeblogRouteHandler.cs" />
     <Compile Include="KoobooCMSHttpApplicationEvents.cs" />
     <Compile Include="Models\AllPropertiesResolver.cs" />
     <Compile Include="Models\ImportModel.cs" />
@@ -411,13 +416,12 @@
     <Compile Include="Grid2\SortableGridColumn.cs" />
     <Compile Include="HealthMonitoring\TextFileWebEventProvider.cs" />
     <Compile Include="HtmlExtensions.cs" />
-    <Compile Include="Interoperability\MetaWeblog\BloggerAPI.cs" />
     <Compile Include="Interoperability\MetaWeblog\MetaWeblogAPI.cs" />
     <Compile Include="Interoperability\MetaWeblog\MetaWeblogAPIHandler.cs" />
     <Compile Include="Json_netResult.cs" />
     <Compile Include="Models\CopyModel.cs" />
     <Compile Include="Models\DynamicDictionaryBinder.cs" />
-    <Compile Include="Models\JsonModelBinder.cs" />
+    <Compile Include="Models\Json_netModelBinder.cs" />
     <Compile Include="Models\RemoteExAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Areas\Sites\CodeSnippets\WebForm\Inline Edit\Edit field atributes.txt" />
@@ -813,8 +817,8 @@
     <Content Include="Scripts\tiny_mce\skins\lightgray\skin.min.css" />
     <Content Include="Scripts\tiny_mce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tiny_mce\tinymce.min.js" />
-    <Content Include="Scripts\underscore.debug.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\yardiTip\images\arrow_down.png" />
+    <Content Include="Scripts\yardiTip\images\arrow_top.png" />
     <Content Include="Styles\Diff\Diff.css" />
     <Content Include="Styles\Diff\InView.png" />
     <Content Include="Styles\Diff\Main.css" />
@@ -1754,8 +1758,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.watermarkinput.js" />
     <Content Include="Scripts\yardiTip\ellipsis.xml" />
-    <Content Include="Scripts\yardiTip\images\arrow_down.gif" />
-    <Content Include="Scripts\yardiTip\images\arrow_top.gif" />
     <Content Include="Scripts\yardiTip\images\arrow_top_yellow.gif" />
     <Content Include="Scripts\yardiTip\yardiTip.css" />
     <Content Include="Scripts\yardiTip\yardiTip.js" />
@@ -1897,7 +1899,7 @@
     <Content Include="Areas\Sites\Views\PagePublishingQueue\Index.cshtml" />
     <Content Include="Areas\Sites\Views\Robots_Txt\Index.cshtml" />
     <Content Include="Areas\Sites\Views\Site\EditorTemplates\CreateOrSelect.cshtml" />
-    <Content Include="Areas\Sites\Views\Site\EditorTemplates\UploadOrSelect.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UploadOrSelect.cshtml" />
     <Content Include="Areas\Sites\Views\Site\Create.cshtml" />
     <Content Include="Areas\Sites\Views\Site\CreateSubSite.cshtml" />
     <Content Include="Areas\Sites\Views\Site\Delete.cshtml" />
@@ -2258,7 +2260,7 @@
     <Content Include="Areas\Sites\Views\ModuleManagement\OnUninstalling.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Sites\Views\ModuleManagement\Uninstall.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\DeleteModuleFiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Sites\Views\ModuleManagement\GoingToUninstall.cshtml" />
@@ -2319,6 +2321,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Contents\Views\Setting\Basic.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ModuleManagement\UninstallComplete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ABRuleSetting\Finished.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

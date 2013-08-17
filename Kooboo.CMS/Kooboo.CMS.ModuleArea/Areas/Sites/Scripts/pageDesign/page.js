@@ -132,7 +132,8 @@
                         });
                         return empty;
                     },
-                    form:$(this)});
+                    form: $(this)
+                });
                 (success !== false) && (success = self.outerApi.onValid(postData));
                 if (success !== false) {
                     self.doPost($(this).attr('action'), postData, function (data) {
@@ -389,7 +390,15 @@
                                             this.checked = false;
                                         }
                                     });
-                                } else {
+                                }
+                                else if (valueInput.get(0).tagName.toLowerCase() == 'select' && valueInput.attr("multiple")) {
+                                    var val = (dataItem.Value ? dataItem.Value.toString() : '').split(',');
+                                    var selOptions = valueInput.find("option");
+                                    $.each(val, function (ix, it) {
+                                        selOptions.filter("[value='" + it + "']").attr("selected", "selected");
+                                    });
+                                }
+                                else {
                                     var strval = dataItem.Value ? dataItem.Value.toString() : '';
                                     if (dataItem.DataType == 'DateTime') { strval = strval.replace(/\+/g, ' '); }
                                     valueInput.val(strval);
@@ -648,8 +657,10 @@
         EntryOptionsSelect: null,
         initialize: function () {
             ProcessModule.superclass.initialize.call(this);
+            this.LinkToEntryNameInput = $('input[id="LinkToEntryName"]');
             this.EntryActionInput = $('input[id="EntryAction"]');
             this.EntryControllerInput = $('input[id="EntryController"]');
+            this.ValuesTemplate = $('#DefaultValuesTemplate');
             this.EntryOptionsSelect = $('select[id="EntryOptions"]');
             var checks = $('input[name="ModuleName"]'), self = this;
             checks.change(function () {
@@ -665,37 +676,71 @@
                 }
                 // set module default settings
                 var module = $(this).val();
+                self.LinkToEntryNameInput.val($('input[id="' + module + 'LinkToEntryName"]').val());
                 self.EntryActionInput.val($('input[id="' + module + 'EntryAction"]').val());
                 self.EntryControllerInput.val($('input[id="' + module + 'EntryController"]').val());
+                if (self.ValuesTemplate.data('KO_ViewModel')) {
+                    self.ValuesTemplate.data('KO_ViewModel').renew($.parseJSON($('input[id="' + module + 'Values"]').val()));
+                }
+
                 var optionsHtml = [], options = $.parseJSON($('input[id="' + module + 'EntryOptions"]').val());
                 if (options && options.length) {
                     optionsHtml.push('<option></option>');
                     $.each(options, function (index, op) {
-                        optionsHtml.push('<option action="' + op.EntryAction + '" controller="' + op.EntryController + '">' + op.Name + '</option>');
+                        optionsHtml.push("<option action='" + op.EntryAction + "' controller='" + op.EntryController + "' values='" + ko.toJSON(op.Values) + "' linkToEntryName='" + op.LinkToEntryName + "'>" + op.Name + '</option>');
                     });
                 }
-                self.EntryOptionsSelect.html(optionsHtml.join(''));
+                self.EntryOptionsSelect.append(optionsHtml.join(''));
             });
             this.EntryOptionsSelect.change(function () {
                 var op = $(this).children().eq(this.selectedIndex);
                 var action = op.attr('action'), controller = op.attr('controller');
+                var values = op.attr('values');
+                self.LinkToEntryNameInput.val(op.attr('linkToEntryName'));
                 self.EntryActionInput.val(action); self.EntryControllerInput.val(controller);
+                self.ValuesTemplate.data('KO_ViewModel').renew($.parseJSON(values));
             });
         },
+
         restoreValue: function () {
             ProcessModule.superclass.restoreValue.call(this);
+            var self = this;
+
             // 
-            var moduleName = this.outerValue.ModuleName;
+            var moduleName = self.outerValue.ModuleName;
             if (moduleName) { $('input[name="ModuleName"][value="' + moduleName + '"]').attr('checked', true).trigger('change'); }
-            //
-            var exclusive = this.outerValue.Exclusive;
-            if (exclusive == 'true') { $('input[name="Exclusive"]').attr('checked', true); }
-            //
-            var action = this.outerValue.EntryAction;
-            if (action) { this.EntryActionInput.val(action); }
-            //
-            var controller = this.outerValue.EntryController;
-            if (controller) { this.EntryControllerInput.val(controller); }
+
+            setTimeout(function () {                
+                var entryName = self.outerValue.EntryName;
+                if (entryName) {
+                    self.EntryOptionsSelect.find('option').each(function () {
+                        if ($(this).text() == entryName) {
+                            $(this).attr("selected", "selected");
+                        }
+                    });
+                }
+
+                var linkToEntryName = self.outerValue.LinkToEntryName;              
+                if (linkToEntryName) {
+                    self.LinkToEntryNameInput.val(linkToEntryName);
+                }
+              
+                //
+                var exclusive = self.outerValue.Exclusive;
+                if (exclusive == 'true') { $('input[name="Exclusive"]').attr('checked', true); }
+                //
+                var action = self.outerValue.EntryAction;
+                if (action) { self.EntryActionInput.val(action); }
+                //
+                var controller = self.outerValue.EntryController;
+                if (controller) { self.EntryControllerInput.val(controller); }
+
+                var values = self.outerValue.Values;
+
+                if (values) {
+                    self.ValuesTemplate.data('KO_ViewModel').renew($.parseJSON(values));                    
+                }
+            }, 200);
         },
 
         validateForm: function (context) {
