@@ -2102,4 +2102,7 @@ Are you sure you want to use this size?</value>
   <data name="Allow roles" xml:space="preserve">
     <value>Allow roles</value>
   </data>
+  <data name="Jobs" xml:space="preserve">
+    <value>Jobs</value>
+  </data>
 </root>

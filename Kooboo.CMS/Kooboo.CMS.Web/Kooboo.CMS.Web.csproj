@@ -192,6 +192,7 @@
     <Compile Include="Areas\Contents\Models\VersionInfo_Metadata.cs" />
     <Compile Include="Areas\Sites\Controllers\ABPageTestResultController.cs" />
     <Compile Include="Areas\Sites\Controllers\ApplicationController.cs" />
+    <Compile Include="Areas\Sites\Controllers\JobManagmentController.cs" />
     <Compile Include="Areas\Sites\Controllers\SubmissionSettingController.cs" />
     <Compile Include="Areas\Sites\Controllers\ABPageSettingController.cs" />
     <Compile Include="Areas\Sites\Controllers\SiteTemplateController.cs" />

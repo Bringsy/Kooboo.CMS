@@ -94,4 +94,7 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>InvalidPassword</value>
   </data>
+  <data name="DuplicateEmail" xml:space="preserve">
+    <value>DuplicateEmail</value>
+  </data>
 </root>
