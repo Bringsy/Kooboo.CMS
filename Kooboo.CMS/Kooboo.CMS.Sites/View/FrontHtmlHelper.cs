@@ -25,7 +25,6 @@ using Kooboo.Web.Mvc;
 using Kooboo.Web.Mvc.Html;
 using Kooboo.Web.Mvc.Paging;
 using Kooboo.Web.Url;
-using Kooboo.CMS.Sites.Membership;
 //# define Page_Trace
 using System;
 using System.Collections.Generic;
@@ -126,25 +125,25 @@ namespace Kooboo.CMS.Sites.View
             }
         }
 
-        public virtual IHtmlString Position(string positionID, bool requireMembershipAuthentication, params string[] membershipGroups)
-        {
-            if (PageContext.PageRequestContext.RequestChannel == FrontRequestChannel.Design)
-            {
-                return new PageDesignHolder(this, positionID);
-            }
-            else
-            {
-                if (requireMembershipAuthentication)
-                {
-                    var permission = new PagePermission() { RequireMember = requireMembershipAuthentication, AllowGroups = membershipGroups };
-                    if (!permission.Authorize(Html.ViewContext.HttpContext.Membership().GetMember()))
-                    {
-                        return new HtmlString("");
-                    }
-                }
-                return Position(positionID);
-            }
-        }
+        //public virtual IHtmlString Position(string positionID, bool requireMembershipAuthentication, params string[] membershipGroups)
+        //{
+        //    if (PageContext.PageRequestContext.RequestChannel == FrontRequestChannel.Design)
+        //    {
+        //        return new PageDesignHolder(this, positionID);
+        //    }
+        //    else
+        //    {
+        //        if (requireMembershipAuthentication)
+        //        {
+        //            var permission = new PagePermission() { RequireMember = requireMembershipAuthentication, AllowGroups = membershipGroups };
+        //            if (!permission.Authorize(Html.ViewContext.HttpContext.Membership().GetMember()))
+        //            {
+        //                return new HtmlString("");
+        //            }
+        //        }
+        //        return Position(positionID);
+        //    }
+        //}
         #endregion
 
         #region RenderPositionContents
