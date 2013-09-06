@@ -37,10 +37,7 @@ namespace Kooboo.CMS.Content.Models
         {
             this.UserKey = "";
             this.Id = string.Empty;
-
-            this.UtcCreationDate = DateTime.Now;
-            this.UtcLastModificationDate = DateTime.Now;
-
+            this.UtcCreationDate = this.UtcLastModificationDate = DateTime.UtcNow;
             this.UUID = UUIDGenerator.DefaultGenerator.Generate(this);
         }
         /// <summary>
@@ -53,10 +50,6 @@ namespace Kooboo.CMS.Content.Models
         {
             this.Repository = repository;
             this.FolderName = folderName;
-            this.Id = string.Empty;
-
-            this.UtcCreationDate = DateTime.Now;
-            this.UtcLastModificationDate = DateTime.Now;
         }
         /// <summary>
         /// 在关系型数据库中，这是一个自增长Id值，

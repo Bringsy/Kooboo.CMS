@@ -116,7 +116,7 @@ namespace Kooboo.CMS.Content.Services
             textContent.ParentFolder = parentFolder;
             textContent.ParentUUID = parentUUID;
             textContent.UserId = userid;
-            textContent.UtcLastModificationDate = textContent.UtcCreationDate = DateTime.Now;
+            textContent.UtcLastModificationDate = textContent.UtcCreationDate = DateTime.UtcNow;
 
             textContent.ContentFiles = GetPostFiles(files);
 
@@ -287,7 +287,7 @@ namespace Kooboo.CMS.Content.Services
             textContent.ParentUUID = parentUUID;
 
             textContent = Binder.Bind(schema, textContent, values);
-            textContent.UtcLastModificationDate = textContent.UtcCreationDate = DateTime.Now.ToUniversalTime();
+            textContent.UtcLastModificationDate = textContent.UtcCreationDate = DateTime.UtcNow;
             textContent.UserId = userid;
 
             if (files != null)
@@ -310,7 +310,7 @@ namespace Kooboo.CMS.Content.Services
             var old = new TextContent(textContent);
 
             textContent = Binder.Update(schema, textContent, values);
-            textContent.UtcLastModificationDate = DateTime.Now.ToUniversalTime();
+            textContent.UtcLastModificationDate = DateTime.UtcNow;
             textContent.UserId = userid;
             if (files != null)
             {
@@ -430,7 +430,7 @@ namespace Kooboo.CMS.Content.Services
                 var @new = new TextContent(versionInfo.TextContent);
                 @new.Repository = repository.Name;
                 @new.UserId = user;
-                @new.UtcLastModificationDate = DateTime.Now;
+                @new.UtcLastModificationDate = DateTime.UtcNow;
 
                 TextContentProvider.Update(@new, textContent);
                 ClearCategories(repository, textContent);
@@ -560,8 +560,7 @@ namespace Kooboo.CMS.Content.Services
                 var textContent = new TextContent(content);
                 textContent.Id = "";
                 textContent.UUID = "";
-                textContent.UtcCreationDate = DateTime.Now;
-                textContent.UtcLastModificationDate = DateTime.Now;
+                textContent.UtcCreationDate = textContent.UtcLastModificationDate = DateTime.UtcNow;
                 textContent.Published = null;
                 textContent.Sequence = 0;
                 textContent.UserKey = null;
