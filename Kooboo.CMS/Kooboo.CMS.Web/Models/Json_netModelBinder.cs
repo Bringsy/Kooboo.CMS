@@ -8,11 +8,7 @@
 #endregion
 using Kooboo.CMS.Common;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Kooboo.CMS.Web.Models
@@ -30,7 +26,7 @@ namespace Kooboo.CMS.Web.Models
             var request = controllerContext.HttpContext.Request;
             request.InputStream.Position = 0;
             var jsonStringData = new StreamReader(request.InputStream).ReadToEnd();
-
+                
             // Use the built-in serializer to do the work for us
             return JsonConvert.DeserializeObject(jsonStringData, 
                 bindingContext.ModelMetadata.ModelType, 
@@ -41,7 +37,7 @@ namespace Kooboo.CMS.Web.Models
         private static bool IsJSON_netRequest(ControllerContext controllerContext)
         {
             var contentType = controllerContext.HttpContext.Request.ContentType;
-            return contentType.Contains("application/json_net");
+            return contentType.Contains("application/json");
         }
     }
 }
