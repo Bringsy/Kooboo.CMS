@@ -2105,4 +2105,49 @@ Are you sure you want to use this size?</value>
   <data name="Jobs" xml:space="preserve">
     <value>Jobs</value>
   </data>
+  <data name="Site level A/B Test" xml:space="preserve">
+    <value>Site level A/B Test</value>
+  </data>
+  <data name="You do not have any module yet, click the button below to installl a module." xml:space="preserve">
+    <value>You do not have any module yet, click the button below to installl a module.</value>
+  </data>
+  <data name="Module installation" xml:space="preserve">
+    <value>Module installation</value>
+  </data>
+  <data name="Upload module file" xml:space="preserve">
+    <value>Upload module file</value>
+  </data>
+  <data name="Run install action" xml:space="preserve">
+    <value>Run install action</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="The Select file source field is required." xml:space="preserve">
+    <value>The Select file source field is required.</value>
+  </data>
+  <data name="Select file source" xml:space="preserve">
+    <value>Select file source</value>
+  </data>
+  <data name="Folder settings" xml:space="preserve">
+    <value>Folder settings</value>
+  </data>
+  <data name="Pickup directory location" xml:space="preserve">
+    <value>Pickup directory location</value>
+  </data>
+  <data name="The SMTP server is required." xml:space="preserve">
+    <value>The SMTP server is required.</value>
+  </data>
+  <data name="The FROM address is required." xml:space="preserve">
+    <value>The FROM address is required.</value>
+  </data>
+  <data name="The TO addresses is required." xml:space="preserve">
+    <value>The TO addresses is required.</value>
+  </data>
+  <data name="Absolute path to the folder where system save mail messages to be processed by the local SMTP server." xml:space="preserve">
+    <value>Absolute path to the folder where system save mail messages to be processed by the local SMTP server.</value>
+  </data>
+  <data name="The FROM email address of mails sent out by the system. For example: user registration confirmation email." xml:space="preserve">
+    <value>The FROM email address of mails sent out by the system. For example: user registration confirmation email.</value>
+  </data>
 </root>

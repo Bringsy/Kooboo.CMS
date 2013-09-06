@@ -1538,4 +1538,10 @@ Are you sure you want to use this size?</value>
   <data name="Jobs" xml:space="preserve">
     <value>Jobs</value>
   </data>
+  <data name="Site level A/B Test" xml:space="preserve">
+    <value>Site level A/B Test</value>
+  </data>
+  <data name="A/B site settings" xml:space="preserve">
+    <value>A/B site settings</value>
+  </data>
 </root>
