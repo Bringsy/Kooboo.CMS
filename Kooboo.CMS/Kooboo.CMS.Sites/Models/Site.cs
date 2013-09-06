@@ -60,14 +60,19 @@ namespace Kooboo.CMS.Sites.Models
     #region Smtp
     public class Smtp
     {
+        public Smtp()
+        {
+            this.Port = 25; 
+        }
+
         public string Host { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        private int port = 25;
-        public int Port { get { return port; } set { port = value; } }
+        public int Port { get; set; }
         public bool EnableSsl { get; set; }
         public string[] To { get; set; }
         public string From { get; set; }
+        public string PickupDirectoryLocation { get; set; }
 
         public SmtpClient ToSmtpClient()
         {
@@ -75,11 +80,19 @@ namespace Kooboo.CMS.Sites.Models
             smtpClient.Host = this.Host;
             smtpClient.Port = this.Port;
             smtpClient.EnableSsl = this.EnableSsl;
+            
             if (!string.IsNullOrEmpty(this.UserName))
             {
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = new NetworkCredential(this.UserName, this.Password);
             }
+
+            if (!string.IsNullOrWhiteSpace(this.PickupDirectoryLocation))
+            {
+                smtpClient.PickupDirectoryLocation = this.PickupDirectoryLocation; 
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
+            }
+
             return smtpClient;
         }
 

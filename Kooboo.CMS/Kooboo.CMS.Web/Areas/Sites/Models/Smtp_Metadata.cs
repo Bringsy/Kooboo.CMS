@@ -6,14 +6,10 @@
 // See the file LICENSE.txt for details.
 // 
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using Kooboo.ComponentModel;
 using Kooboo.CMS.Sites.Models;
+using Kooboo.ComponentModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 namespace Kooboo.CMS.Web.Areas.Sites.Models
 {
     [MetadataFor(typeof(Smtp))]
@@ -35,7 +31,10 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         [Description("The receiver's Email addresses of your contact form")]
         public string[] To { get; set; }
         [DisplayName("From address")]
-        [Description("The FROM email address of emails sent out by the system. For example: user registration confirmation email.")]
+        [Description("The FROM email address of mails sent out by the system. For example: user registration confirmation email.")]
         public string From { get; set; }
+        [DisplayName("Pickup directory location")]
+        [Description("Absolute path to the folder where system save mail messages to be processed by the local SMTP server.")]
+        public string PickupDirectoryLocation { get; set; }
     }
 }
