@@ -187,6 +187,7 @@
     <Compile Include="Areas\Contents\Models\Schema_Metadata.cs" />
     <Compile Include="Areas\Contents\Models\SelectableViewModel.cs" />
     <Compile Include="Areas\Contents\Models\SendingSetting_Metadata.cs" />
+    <Compile Include="Areas\Contents\Models\TextContentImportModel.cs" />
     <Compile Include="Areas\Contents\Models\TextContentDiffModel.cs" />
     <Compile Include="Areas\Contents\Models\TextContentGrid.cs" />
     <Compile Include="Areas\Contents\Models\TextFolder_Metadata.cs" />
@@ -248,6 +249,10 @@
     <Content Include="Areas\Account\WebResources.config" />
     <Content Include="Areas\Contents\Menu.config">
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Contents\Views\TextContent\SelectCategories.cshtml" />
+    <Content Include="Areas\Contents\Views\TextContent\ShowOriginalVersions.cshtml">
+      <SubType>Code</SubType>
     </Content>
     <Content Include="Areas\Contents\WebResources.config">
       <SubType>Designer</SubType>
@@ -1824,7 +1829,6 @@
     <Content Include="Areas\Contents\Views\TextContent\Edit.cshtml" />
     <Content Include="Areas\Contents\Views\TextContent\Index.cshtml" />
     <Content Include="Areas\Contents\Views\TextContent\_AdvancedSearch.cshtml" />
-    <Content Include="Areas\Contents\Views\TextContent\SelectCategories.cshtml" />
     <Content Include="Areas\Contents\Views\TextContent\SubContent.cshtml" />
     <Content Include="Areas\Contents\Views\TextContent\Versions.cshtml" />
     <Content Include="Areas\Contents\Views\TextFolder\EditorTemplates\Categories.cshtml" />
@@ -2329,6 +2333,9 @@
     <Content Include="Areas\Sites\Views\ABRuleSetting\Finished.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Contents\Views\TextContent\Import.cshtml" />
+  </ItemGroup>
+<ItemGroup>
     <Content Include="Areas\Sites\Views\ModuleManagement\_ModuleNode.cshtml" />
   </ItemGroup>
   <PropertyGroup>

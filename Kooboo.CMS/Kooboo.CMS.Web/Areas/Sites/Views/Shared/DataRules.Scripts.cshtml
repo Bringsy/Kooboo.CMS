@@ -111,8 +111,8 @@
                 self.CodeSnippetList.remove(codeSnippet);
             }
         };
-        self.InsertCodeSnippet = function(rule,e){
-            var codeSnippet = ko.utils.arrayFirst(self.CodeSnippetList(), function(item) {                
+        self.InsertCodeSnippet = function(rule,e){            
+            var codeSnippet = ko.utils.arrayFirst(self.CodeSnippetList(), function(item) {     
                 return item.DataRuleName() === rule.DataName();
             });
             if($(e.target).hasClass('csharp')){
@@ -270,6 +270,17 @@
             });
             self.EditingStep = ko.observable();
             self.GotoNextStep = function() {
+                if(self.DataRuleSetting().TakeOperation() == 1)
+                {
+                    var newFilter = utils.CloneObject(metadata.rawEmptyWhereClause);
+                    newFilter.IsEditing = ko.observable(false);
+                    newFilter.Logical(0);
+                    newFilter.FieldName('UserKey');
+                    newFilter.Operator(0);
+                    newFilter.Value1('{UserKey}');
+     
+                    self.DataRuleSetting().DataRule.WhereClauses.push(newFilter);
+                }
                 self.EditingStep('EditFilters');
                 $.validator.unobtrusive.parse('#editing-form');
             };
@@ -372,7 +383,7 @@
             $.ajax({
                 type: "POST",
                 url: "@Html.Raw(Url.Action("GetCodeSnippet", "View", new { siteName = ViewContext.RequestContext.GetRequestValue("SiteName"), ViewEngine = viewEngine.Name })) ",
-                contentType:"application/json",
+                contentType:"application/json_net",
                 dataType:"json",
                 data: ko.mapping.toJSON(dataRule),
                 success:function(result){

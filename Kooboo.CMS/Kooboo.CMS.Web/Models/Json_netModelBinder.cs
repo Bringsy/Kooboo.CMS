@@ -26,11 +26,9 @@ namespace Kooboo.CMS.Web.Models
             var request = controllerContext.HttpContext.Request;
             request.InputStream.Position = 0;
             var jsonStringData = new StreamReader(request.InputStream).ReadToEnd();
-                
-            // Use the built-in serializer to do the work for us
-            return JsonConvert.DeserializeObject(jsonStringData, 
-                bindingContext.ModelMetadata.ModelType, 
-                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects });
+
+
+            return JsonConvert.DeserializeObject(jsonStringData, bindingContext.ModelMetadata.ModelType, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects });
 
         }
 
