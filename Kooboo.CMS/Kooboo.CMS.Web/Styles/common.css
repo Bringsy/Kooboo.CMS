@@ -415,6 +415,18 @@ img.icon.warning.big {
 	width: 28px;
 }
 
+img.icon.reget {
+	background-position: -52px -123px;
+	height: 12px;
+	width: 13px;
+}
+
+img.icon.reget.on {
+	background-position: -38px -123px;
+	height: 12px;
+	width: 13px;
+}
+
 img.icon.undo {
 	background-position: -32px -135px;
 	height: 13px;
@@ -2483,6 +2495,8 @@ body #diffBox .diffTable td.lineNumber {
 	min-width: 100%;
 	position: absolute;
 	z-index: 1009;
+	max-height: 500px;
+	overflow-y: auto;
 }
 
 #header .panel ul li {
@@ -2496,6 +2510,7 @@ body #diffBox .diffTable td.lineNumber {
 	line-height: 34px;
 	margin: 0 -10px;
 	white-space: nowrap;
+	padding-right: 30px;
 }
 
 #header .panel ul a:hover {
@@ -2821,6 +2836,11 @@ body #diffBox .diffTable td.lineNumber {
 .breadcrumb span {
 	color: #666;
 	float: left;
+}
+
+.breadcrumb span a {
+    color:#0078B1;
+    float:none;
 }
 
 /* Common-form
