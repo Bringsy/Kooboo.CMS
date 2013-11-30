@@ -406,7 +406,7 @@ namespace Kooboo.CMS.Sites.Services
         }
         public virtual void Publish(Page page, bool publishDraft, string userName)
         {
-            Publish(page, false, publishDraft, false, DateTime.Now, DateTime.Now, userName);
+            Publish(page, false, publishDraft, false, DateTime.UtcNow, DateTime.UtcNow, userName);
         }
         public virtual void Publish(Page page, bool publishSchedule, bool publishDraft, bool period, DateTime publishDate, DateTime offlineDate, string userName)
         {

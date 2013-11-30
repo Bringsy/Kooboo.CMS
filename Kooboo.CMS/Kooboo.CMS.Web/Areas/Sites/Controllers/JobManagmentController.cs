@@ -41,7 +41,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
                 {"UserKey", Guid.NewGuid().ToString()},
                 {"Name", "123132"},
                 {"Value", "321321"},
-                {"ActiveFrom", DateTime.Now.ToString()}
+                {"ActiveFrom", DateTime.UtcNow.ToString()}
             };
 
 

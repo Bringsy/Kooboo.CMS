@@ -29,7 +29,7 @@ namespace Kooboo.Job
         public void Execute(object executionState)
         {
             System.Threading.Thread.Sleep(3000);
-            File.AppendAllLines(logFile, new[] { string.Format("Run on {0}", DateTime.Now) });
+            File.AppendAllLines(logFile, new[] { string.Format("Run on {0}", DateTime.UtcNow) });
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Kooboo.Job
         /// <param name="e">The e.</param>
         public void Error(Exception e)
         {
-            File.AppendAllLines(logFile, new[] { string.Format("Exception throwed on {0}, message:{1}", DateTime.Now, e.Message) });
+            File.AppendAllLines(logFile, new[] { string.Format("Exception throwed on {0}, message:{1}", DateTime.UtcNow, e.Message) });
         }
 
         #endregion

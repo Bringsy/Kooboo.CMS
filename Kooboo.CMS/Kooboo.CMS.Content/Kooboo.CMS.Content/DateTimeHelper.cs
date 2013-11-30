@@ -40,7 +40,7 @@ namespace Kooboo.CMS.Content
         }
         public static bool TryParse(string strValue, out DateTime dt)
         {
-            dt = DateTime.Now;
+            dt = DateTime.UtcNow;
             if (!string.IsNullOrEmpty(strValue))
             {
                 long ticks = 0;

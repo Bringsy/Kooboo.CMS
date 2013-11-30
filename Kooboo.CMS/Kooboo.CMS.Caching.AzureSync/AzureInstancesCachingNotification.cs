@@ -74,7 +74,7 @@ namespace Kooboo.CMS.Caching.AzureSync
             NameValueCollection queryString = new NameValueCollection();
             queryString["ObjectCacheName"] = objectCacheName;
             queryString["CacheKey"] = key;
-            queryString["_ts"] = DateTime.Now.Ticks.ToString();
+            queryString["_ts"] = DateTime.UtcNow.Ticks.ToString();
             queryString["source"] = AppDomain.CurrentDomain.FriendlyName;
             url = CombineQueryString(url, queryString);
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);

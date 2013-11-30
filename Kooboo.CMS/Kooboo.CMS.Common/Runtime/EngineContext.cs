@@ -27,9 +27,9 @@ namespace Kooboo.CMS.Common.Runtime
         {
             if (Singleton<IEngine>.Instance == null || forceRecreate)
             {
-                Debug.WriteLine("Constructing engine " + DateTime.Now);
+                Debug.WriteLine("Constructing engine " + DateTime.UtcNow);
                 Singleton<IEngine>.Instance = CreateEngineInstance();
-                Debug.WriteLine("Initializing engine " + DateTime.Now);
+                Debug.WriteLine("Initializing engine " + DateTime.UtcNow);
                 Singleton<IEngine>.Instance.Initialize();
             }
             return Singleton<IEngine>.Instance;

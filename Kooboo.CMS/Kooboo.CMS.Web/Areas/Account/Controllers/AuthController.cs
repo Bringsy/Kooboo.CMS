@@ -17,10 +17,17 @@ namespace Kooboo.CMS.Web.Areas.Account.Controllers
             return new RedirectResult(request.WriteQueryString());
         }
 
-        public ActionResult SignOut()
+        public ActionResult SignOut(string returnUrl = null)
         {
+            if (string.IsNullOrEmpty(returnUrl))
+                returnUrl = HttpContext.Request.Url.Scheme + "://" + HttpContext.Request.Url.Host;
+
             var fam = FederatedAuthentication.WSFederationAuthenticationModule;
-            var request = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm) { Reply = fam.Reply };
+            var request = new SignOutRequestMessage(new Uri(fam.Issuer), fam.Realm)
+            {
+                Context = string.Format("ru={0}", returnUrl)
+            };
+
             return new RedirectResult(request.WriteQueryString());
         }
     }

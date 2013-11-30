@@ -2150,4 +2150,13 @@ Are you sure you want to use this size?</value>
   <data name="The FROM email address of mails sent out by the system. For example: user registration confirmation email." xml:space="preserve">
     <value>The FROM email address of mails sent out by the system. For example: user registration confirmation email.</value>
   </data>
+  <data name="Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="Customize the page URL to anyway you like.&lt;br /&gt; Use {key} to match the URL query string. &lt;br /&gt;For example: {userkey}_othertext to replace parameter &quot;?userkey=&quot; into static URL.&lt;br/&gt;Use {*ModuleURL} to match all the query string after ModuleURL." xml:space="preserve">
+    <value>Customize the page URL to anyway you like.&lt;br /&gt; Use {key} to match the URL query string. &lt;br /&gt;For example: {userkey}_othertext to replace parameter "?userkey=" into static URL.&lt;br/&gt;Use {*ModuleURL} to match all the query string after ModuleURL.</value>
+  </data>
 </root>

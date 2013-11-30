@@ -97,4 +97,58 @@
   <data name="DuplicateEmail" xml:space="preserve">
     <value>DuplicateEmail</value>
   </data>
+  <data name="Application" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="Current AppDomain ID" xml:space="preserve">
+    <value>Current AppDomain ID</value>
+  </data>
+  <data name=" - Kooboo CMS" xml:space="preserve">
+    <value> - Kooboo CMS</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="Recycle" xml:space="preserve">
+    <value>Recycle</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Change language" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="Account settings" xml:space="preserve">
+    <value>Account settings</value>
+  </data>
+  <data name="Sign out" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="Site cluster" xml:space="preserve">
+    <value>Site cluster</value>
+  </data>
+  <data name="Databases" xml:space="preserve">
+    <value>Databases</value>
+  </data>
+  <data name="Site templates" xml:space="preserve">
+    <value>Site templates</value>
+  </data>
+  <data name="Modules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="Site level A/B Test" xml:space="preserve">
+    <value>Site level A/B Test</value>
+  </data>
+  <data name="A/B rules" xml:space="preserve">
+    <value>A/B rules</value>
+  </data>
+  <data name="A/B site settings" xml:space="preserve">
+    <value>A/B site settings</value>
+  </data>
+  <data name="Jobs" xml:space="preserve">
+    <value>Jobs</value>
+  </data>
+  <data name="All your changes might be lost." xml:space="preserve">
+    <value>All your changes might be lost.</value>
+  </data>
 </root>

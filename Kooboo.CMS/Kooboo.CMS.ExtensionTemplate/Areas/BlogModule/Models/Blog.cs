@@ -10,7 +10,7 @@ namespace Kooboo.CMS.ExtensionTemplate.Areas.BlogModule.Models
     {
         public Blog()
         {
-            this.CreateionDate = DateTime.Now;
+            this.CreateionDate = DateTime.UtcNow; 
         }
         public virtual int Id { get; set; }
         public virtual string Title { get; set; }

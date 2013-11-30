@@ -32,7 +32,7 @@ namespace Kooboo.CMS.Content.Persistence
         private static string GetFileName(Repository repository, string providerName)
         {
             RepositoryPath path = new RepositoryPath(repository);
-            return System.IO.Path.Combine(path.PhysicalPath, "Logs", string.Format("{0}-{1}.log", providerName, DateTime.Now.ToString("yyyyMMdd")));
+            return System.IO.Path.Combine(path.PhysicalPath, "Logs", string.Format("{0}-{1}.log", providerName, DateTime.UtcNow.ToString("yyyyMMdd")));
         }
         private static string ToString(DbCommand command)
         {
@@ -48,7 +48,7 @@ namespace Kooboo.CMS.Content.Persistence
 --{1}
 --{2}
 -----------------------------------------------------------------------------------------------------
-", command.CommandText, parameters, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.ff"));
+", command.CommandText, parameters, DateTime.UtcNow.ToString("yyyy-MM-dd hh:mm:ss.ff"));
         }
     }
 }

@@ -25,6 +25,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +57,13 @@
   <ItemGroup>
     <Reference Include="DiffPlex">
       <HintPath>..\..\Lib\DiffPlex.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
@@ -2335,11 +2344,14 @@
   <ItemGroup>
     <Content Include="Areas\Contents\Views\TextContent\Import.cshtml" />
   </ItemGroup>
-<ItemGroup>
+  <ItemGroup>
     <Content Include="Areas\Sites\Views\ModuleManagement\_ModuleNode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Contents\Views\Shared\_TextContentGridBreadcrumb.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2385,4 +2397,5 @@
     <PostBuildEvent>copy "..\..\..\Lib\MVC\4.0\*.dll"  "$(TargetDir)";
 @echo copy "..\..\..\Lib\SQLCe\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

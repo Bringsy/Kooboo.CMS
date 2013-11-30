@@ -24,3 +24,4 @@ namespace Kooboo.CMS.Common.Persistence.Non_Relational
         void Remove(T item);
     }
 }
+    
