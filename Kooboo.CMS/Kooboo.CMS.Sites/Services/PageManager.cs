@@ -406,7 +406,19 @@ namespace Kooboo.CMS.Sites.Services
         }
         public virtual void Publish(Page page, bool publishDraft, string userName)
         {
-            Publish(page, false, publishDraft, false, DateTime.UtcNow, DateTime.UtcNow, userName);
+            page = page.AsActual();
+            if (page != null)
+            {
+                if (publishDraft)
+                {
+                    page = Provider.GetDraft(page);
+                    Provider.RemoveDraft(page);
+                }
+                page.Published = true;
+                page.UserName = userName;
+                Provider.Update(page, page);
+                VersionManager.LogVersion(page);
+            }
         }
         public virtual void Publish(Page page, bool publishSchedule, bool publishDraft, bool period, DateTime publishDate, DateTime offlineDate, string userName)
         {
@@ -624,5 +636,35 @@ namespace Kooboo.CMS.Sites.Services
         }
         #endregion
 
+        #region GetUnsyncedSubPage
+        public IEnumerable<Page> GetUnsyncedSubPages(Site site, string fullPageName)
+        {
+            if (site.Parent != null)
+            {
+                var page = new Page(site, fullPageName).LastVersion(site);
+                if (page.IsLocalized(site))
+                {
+                    var parent = site.Parent;
+                    List<Page> pagesInParentSites = new List<Page>();
+
+                    while (parent != null)
+                    {
+                        var parentPage = new Page(parent, fullPageName).LastVersion(parent);
+                        if (parentPage.IsLocalized(parent))
+                        {
+                            pagesInParentSites.AddRange(this.ChildPages(parent, fullPageName, null));
+                        }
+                        parent = parent.Parent;
+                    }
+
+                    var childPages = this.ChildPages(site, fullPageName, null);
+
+                    return pagesInParentSites.Where(it => !childPages.Any(cp => it.FullName.EqualsOrNullEmpty(cp.FullName, StringComparison.OrdinalIgnoreCase)));
+                }
+            }
+
+            return new Page[0];
+        }
+        #endregion
     }
 }

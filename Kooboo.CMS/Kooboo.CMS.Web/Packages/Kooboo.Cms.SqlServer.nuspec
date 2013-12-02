@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Kooboo.CMS.SqlServer</id>
-        <version>4.2.17</version>
+        <version>4.2.18</version>
         <authors>eConduct</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>SQL Server content provider for Kooboo CMS</description>

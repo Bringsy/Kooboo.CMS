@@ -27,6 +27,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -216,6 +217,7 @@
     <Compile Include="Areas\Sites\Models\DataSources\SubmissionPluginsDataSource.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\ABPageTestHitsReport_HitTimes_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\ABPageTestHitsReport_ShowTimes_GridItemColumn.cs" />
+    <Compile Include="Areas\Sites\Models\Grid2\Inheritable_Status_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_SortableGridColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\HitReport_GridItemColumn.cs" />
@@ -738,6 +740,8 @@
     <Content Include="Scripts\codemirror\theme\xq-light.css" />
     <Content Include="Scripts\d3.v3.min.js" />
     <Content Include="Scripts\jquery-ui.debug.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon\jquery-ui-sliderAccess.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.js" />
     <Content Include="Scripts\jquery.autosize.js" />
     <Content Include="Scripts\jquery.debug.js" />
     <Content Include="Scripts\jquery.fileDownload.js" />
@@ -841,6 +845,7 @@
     <Content Include="Styles\images\icon-insert-page.png" />
     <Content Include="Styles\images\media-library.png" />
     <Content Include="Styles\InlineEditing.css" />
+    <Content Include="Styles\jquery-ui-timepicker-addon.css" />
     <Content Include="Styles\jquery-ui.css" />
     <Content Include="Styles\jQuery.jCrop\Jcrop.gif" />
     <Content Include="Styles\jQuery.jCrop\jquery.Jcrop.css" />
@@ -2349,6 +2354,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Contents\Views\Shared\_TextContentGridBreadcrumb.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\Home\UnsyncedPageNode.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\Spinner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\Shared\_ChooseDataRuleType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
