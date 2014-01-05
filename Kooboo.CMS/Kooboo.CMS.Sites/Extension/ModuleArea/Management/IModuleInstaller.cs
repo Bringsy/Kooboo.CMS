@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace Kooboo.CMS.Sites.Extension.ModuleArea.Management
 {
     /// <summary>
-    /// Module installation steps:
+    /// Module installation steps:(未来更好的安装流程可能是在上传文件后，显示Module的版本号等信息后再确认一次是否要继续安装。目前不确定是否需要这一步。)
     /// 1. Unzip uploaded stream
     /// 2. Check conflict assembly references
     /// 2. Copy assemblies
@@ -17,19 +17,29 @@ namespace Kooboo.CMS.Sites.Extension.ModuleArea.Management
     /// </summary>
     public interface IModuleInstaller
     {
+
         /// <summary>
-        /// Unzips the specified default module name.
+        /// 上传Module的动作：
+        /// 1. 将module文件解压到一个临时安装目录
+        /// 2. 检查即将安装的module的Bin目录文件是否与系统存在的文件有冲突。并且返回冲突列表显示在页面上给用户确认。
         /// </summary>
-        /// <param name="defaultModuleName">It will be the upload file name, when the developer assign a different module in the module.config, the value will be changed to it.</param>
+        /// <param name="moduleName">Name of the module.</param>
         /// <param name="moduleStream">The module stream.</param>
-        /// <returns>error message</returns>
-        string Unzip(ref string moduleName, Stream moduleStream);
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
+        UploadModuleResult Upload(string moduleName, Stream moduleStream, string user);       
 
-        IEnumerable<ConflictedAssemblyReference> CheckConflictedAssemblyReferences(string moduleName);
+        /// <summary>
+        /// 执行安装动作
+        /// 1. 将临时安装目录的文件拷贝到Areas目录，并且Bin目录拷贝到系统Bin目录
+        /// 2. 执行安装事件。
+        /// </summary>
+        /// <param name="moduleName">Name of the module.</param>
+        /// <param name="controllerContext">The controller context.</param>
+        /// <param name="overrideFiles">if set to <c>true</c> [override files].</param>
+        void RunInstallation(string moduleName, ControllerContext controllerContext, bool @overrideFiles, string user);
 
-        void CopyAssemblies(string moduleName, bool @overrideSystemVersion);
-
-        void RunEvent(string moduleName, ControllerContext controllerContext);
+        IPath GetTempInstallationPath(string moduleName);
 
     }
 }

@@ -400,7 +400,6 @@ namespace Kooboo.CMS.Sites.Models
         }
         #endregion
 
-
         #region IPersistable Members
         public string UUID
         {
@@ -469,6 +468,13 @@ namespace Kooboo.CMS.Sites.Models
                 return 1;
             }
             return this.FullName.CompareTo(((Site)obj).FullName);
+        }
+        #endregion
+        #region ISiteObject
+        Site ISiteObject.Site
+        {
+            get { return this; }
+            set { }
         }
         #endregion
     }
@@ -668,7 +674,7 @@ namespace Kooboo.CMS.Sites.Models
             }
         }
 
-        private bool? enableStyleEdting = true;
+        private bool? enableStyleEdting = false;
         [DataMember(Order = 23)]
         public bool? EnableStyleEdting
         {
@@ -676,7 +682,7 @@ namespace Kooboo.CMS.Sites.Models
             {
                 if (enableStyleEdting == null)
                 {
-                    enableStyleEdting = true;
+                    enableStyleEdting = false;
                 }
                 return enableStyleEdting;
             }

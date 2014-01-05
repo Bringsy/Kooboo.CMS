@@ -7,6 +7,7 @@
 // 
 #endregion
 using Kooboo.CMS.Sites.Extension.Management;
+using Kooboo.CMS.Sites.Extension.ModuleArea.Management.Events;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,27 +22,28 @@ namespace Kooboo.CMS.Sites.Extension.ModuleArea.Management
     {
         #region .ctor
         IAssemblyReferences _assemblyReferences;
-        public ModuleUninstaller(IAssemblyReferences assemblyReferences)
+        IInstallationFileManager _moduleVersioning;
+        public ModuleUninstaller(IAssemblyReferences assemblyReferences, IInstallationFileManager moduleVersioning)
         {
             this._assemblyReferences = assemblyReferences;
+            this._moduleVersioning = moduleVersioning;
         }
         #endregion
 
         #region RunEvent
-        public void RunEvent(string moduleName, ControllerContext controllerContext)
+        private void RunEvent(string moduleName, ControllerContext controllerContext)
         {
-            var moduleAction = ResolveModuleAction(moduleName);
+            var moduleEvents = Kooboo.CMS.Common.Runtime.EngineContext.Current.TryResolve<IModuleUninstallingEvents>(moduleName);
 
-            moduleAction.OnInstalling(controllerContext);
-        }
-        private IModuleEvents ResolveModuleAction(string moduleName)
-        {
-            return Kooboo.CMS.Common.Runtime.EngineContext.Current.TryResolve<IModuleEvents>(moduleName);
+            if (moduleEvents != null)
+            {
+                moduleEvents.OnUninstalling(new ModuleContext(moduleName), controllerContext);
+            }
         }
         #endregion
 
         #region RemoveAssemblies
-        public void RemoveAssemblies(string moduleName)
+        internal void RemoveAssemblies(string moduleName)
         {
             var binPath = Settings.BinDirectory;
             foreach (var item in GetAssemblyFiles(moduleName))
@@ -76,12 +78,27 @@ namespace Kooboo.CMS.Sites.Extension.ModuleArea.Management
         #endregion
 
         #region DeleteModuleArea
-
-        public void DeleteModuleArea(string moduleName)
+        internal void RemoveModuleArea(string moduleName)
         {
             ModulePath modulePath = new ModulePath(moduleName);
             Kooboo.IO.IOUtility.DeleteDirectory(modulePath.PhysicalPath, true);
         }
         #endregion
+
+
+        #region RemoveVersions
+        public void RemoveVersions(string moduleName)
+        {
+            _moduleVersioning.RemoveHistory(moduleName);
+        }
+        #endregion
+
+        public void RunUninstall(string moduleName, ControllerContext controllerContext)
+        {
+            RunEvent(moduleName, controllerContext);
+            RemoveAssemblies(moduleName);
+            RemoveModuleArea(moduleName);
+            RemoveVersions(moduleName);
+        }
     }
 }

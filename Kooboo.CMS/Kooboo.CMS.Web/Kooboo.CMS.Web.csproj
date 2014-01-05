@@ -66,7 +66,17 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="dotless.AspNet">
+      <HintPath>..\..\Lib\dotLess\dotless.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\dotLess\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\Lib\dotLess\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Lib\JSON.NET\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -76,7 +86,7 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
-    <Reference Include="System.identitymodel.services" />
+    <Reference Include="System.IdentityModel.Services" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -218,12 +228,16 @@
     <Compile Include="Areas\Sites\Models\Grid2\ABPageTestHitsReport_HitTimes_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\ABPageTestHitsReport_ShowTimes_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Inheritable_Status_GridItemColumn.cs" />
+    <Compile Include="Areas\Sites\Models\Grid2\InstallationContext_GridItem.cs" />
+    <Compile Include="Areas\Sites\Models\Grid2\InstallationContext_TargetVersion_Column.cs" />
+    <Compile Include="Areas\Sites\Models\Grid2\InstallationContext_SourceVersion_Column.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_SortableGridColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\Page_Navigation_ShowInMenu_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\Grid2\HitReport_GridItemColumn.cs" />
     <Compile Include="Areas\Sites\Models\HtmlMeta_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ImportRepositoryModel.cs" />
     <Compile Include="Areas\Sites\Models\ImportSiteModel.cs" />
+    <Compile Include="Areas\Sites\Models\InstallationContext_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\LanguageVisitRule_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\PagePermission_Metadata.cs" />
     <Compile Include="Areas\Sites\Models\ProxyPosition_Metadata.cs" />
@@ -249,6 +263,8 @@
     </Compile>
     <Compile Include="Interoperability\MetaWeblog\MetaWeblogRouteHandler.cs" />
     <Compile Include="KoobooCMSHttpApplicationEvents.cs" />
+    <Compile Include="Misc\DynamicClientResourceDIFactory.cs" />
+    <Compile Include="Misc\LessCssProvider.cs" />
     <Compile Include="Models\AllPropertiesResolver.cs" />
     <Compile Include="Models\ImportModel.cs" />
     <Compile Include="Models\RelationModel_Metadata.cs" />
@@ -257,7 +273,9 @@
     <Content Include="Areas\Account\Menu.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Account\WebResources.config" />
+    <Content Include="Areas\Account\WebResources.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Contents\Menu.config">
       <SubType>Designer</SubType>
     </Content>
@@ -746,6 +764,7 @@
     <Content Include="Scripts\jquery.debug.js" />
     <Content Include="Scripts\jquery.fileDownload.js" />
     <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
+    <Content Include="Scripts\less.js" />
     <Content Include="Scripts\selectivizr-min.js" />
     <Content Include="Scripts\tiny_mce\langs\en.js" />
     <Content Include="Scripts\tiny_mce\langs\zh-cn.js" />
@@ -789,6 +808,7 @@
     <Content Include="Scripts\tiny_mce\plugins\fullscreen\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\hr\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\image\plugin.min.js" />
+    <Content Include="Scripts\tiny_mce\plugins\importcss\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\insertdatetime\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\insertPage\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\KoobooMediaLibrary\plugin.min.js" />
@@ -804,6 +824,7 @@
     <Content Include="Scripts\tiny_mce\plugins\paste\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\preview\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\print\plugin.min.js" />
+    <Content Include="Scripts\tiny_mce\plugins\rawcode\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\save\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\searchreplace\plugin.min.js" />
     <Content Include="Scripts\tiny_mce\plugins\spellchecker\plugin.min.js" />
@@ -826,6 +847,8 @@
     <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\icomoon.ttf" />
     <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\icomoon.woff" />
     <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\readme.md" />
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce.svg" />
     <Content Include="Scripts\tiny_mce\skins\lightgray\img\anchor.gif" />
     <Content Include="Scripts\tiny_mce\skins\lightgray\img\loader.gif" />
     <Content Include="Scripts\tiny_mce\skins\lightgray\img\object.gif" />
@@ -840,9 +863,14 @@
     <Content Include="Styles\Diff\Diff.css" />
     <Content Include="Styles\Diff\InView.png" />
     <Content Include="Styles\Diff\Main.css" />
+    <Content Include="Styles\fonts\opensans-bold-webfont.svg" />
+    <Content Include="Styles\fonts\opensans-extrabold-webfont.svg" />
     <Content Include="Styles\fonts\opensans-light-webfont.svg" />
     <Content Include="Styles\fonts\opensans-regular-webfont.svg" />
+    <Content Include="Styles\fonts\opensans-semibold-webfont.svg" />
     <Content Include="Styles\images\icon-insert-page.png" />
+    <Content Include="Styles\images\line-x.png" />
+    <Content Include="Styles\images\line-y.png" />
     <Content Include="Styles\images\media-library.png" />
     <Content Include="Styles\InlineEditing.css" />
     <Content Include="Styles\jquery-ui-timepicker-addon.css" />
@@ -872,15 +900,12 @@
     <Content Include="Scripts\Kooboo_CMS.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\underscore.js" />
-    <Content Include="Styles\base.css" />
-    <Content Include="Styles\common.css" />
     <Content Include="Styles\ie.css" />
     <Content Include="Styles\images\arrows.png" />
     <Content Include="Styles\images\icons.png" />
     <Content Include="Styles\images\line-end.png" />
     <Content Include="Styles\images\line.png" />
     <Content Include="Styles\images\stripe.png" />
-    <Content Include="Styles\reset.css" />
     <Content Include="Styles\select2\select2.css" />
     <Content Include="Styles\select2\select2.png" />
     <Content Include="Styles\select2\select2x2.png" />
@@ -1051,7 +1076,6 @@
     <Content Include="Areas\Account\Views\Users\ResetPassword.cshtml" />
     <Content Include="Areas\Account\Views\Shared\FrontLayout.cshtml" />
     <Content Include="Areas\Account\Views\Shared\CommonLayout.cshtml" />
-    <Content Include="Areas\Sites\Views\Page\EditorTemplates\CustomFields.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="Scripts\jquery.numeric.js" />
     <Content Include="Scripts\jquery-globalize\cultures\globalize.culture.af-ZA.js" />
@@ -1981,40 +2005,6 @@
     <Content Include="routes.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kooboo.CMS.Account\Kooboo.CMS.Account.csproj">
-      <Project>{61ed004c-9e20-4680-af2b-0723fe7648bb}</Project>
-      <Name>Kooboo.CMS.Account</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kooboo.CMS.Caching\Kooboo.CMS.Caching.csproj">
-      <Project>{570CD9D3-75D2-468A-8245-45BDCA57432E}</Project>
-      <Name>Kooboo.CMS.Caching</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kooboo.CMS.Common\Kooboo.CMS.Common.csproj">
-      <Project>{ab6dde14-eeb6-4497-80a0-d148a0a692b5}</Project>
-      <Name>Kooboo.CMS.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kooboo.CMS.Content\Kooboo.CMS.Content\Kooboo.CMS.Content.csproj">
-      <Project>{C5A5186D-6F8E-4BB9-AF0E-74F0993B48DA}</Project>
-      <Name>Kooboo.CMS.Content</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kooboo.CMS.Form\Kooboo.CMS.Form.csproj">
-      <Project>{C4F32215-EFAD-45C9-8276-6126681C3589}</Project>
-      <Name>Kooboo.CMS.Form</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kooboo.CMS.Search\Kooboo.CMS.Search.csproj">
-      <Project>{C7B73E67-D226-41CB-A86D-410276B265A1}</Project>
-      <Name>Kooboo.CMS.Search</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kooboo.CMS.Sites\Kooboo.CMS.Sites.csproj">
-      <Project>{ffd8e9f0-61b6-4b0d-a803-5beccd2a6578}</Project>
-      <Name>Kooboo.CMS.Sites</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kooboo\Kooboo.csproj">
-      <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>
-      <Name>Kooboo</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
@@ -2269,16 +2259,10 @@
     <Content Include="Areas\Sites\Views\Page\EditorTemplates\Naviation_Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Sites\Views\ModuleManagement\OnInstalling.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Areas\Sites\Views\ModuleManagement\InstallComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Sites\Views\ModuleManagement\OnUninstalling.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Sites\Views\ModuleManagement\DeleteModuleFiles.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\Uninstall.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Sites\Views\ModuleManagement\GoingToUninstall.cshtml" />
@@ -2369,12 +2353,115 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\Reinstall.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Sites\Views\ModuleManagement\CopyAssemblyFiles.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\RunReinstallation.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Sites\Views\ModuleManagement\AbortInstallation.cshtml" />
+    <Content Include="Areas\Sites\Views\ModuleManagement\ReinstallComplete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ModuleManagement\Versions.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ModuleManagement\RunInstallation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sites\Views\ModuleManagement\RunUninstallation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kooboo.CMS.Account\Kooboo.CMS.Account.csproj">
+      <Project>{61ed004c-9e20-4680-af2b-0723fe7648bb}</Project>
+      <Name>Kooboo.CMS.Account</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo.CMS.Caching\Kooboo.CMS.Caching.csproj">
+      <Project>{570cd9d3-75d2-468a-8245-45bdca57432e}</Project>
+      <Name>Kooboo.CMS.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo.CMS.Common\Kooboo.CMS.Common.csproj">
+      <Project>{ab6dde14-eeb6-4497-80a0-d148a0a692b5}</Project>
+      <Name>Kooboo.CMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo.CMS.Content\Kooboo.CMS.Content\Kooboo.CMS.Content.csproj">
+      <Project>{c5a5186d-6f8e-4bb9-af0e-74f0993b48da}</Project>
+      <Name>Kooboo.CMS.Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo.CMS.Form\Kooboo.CMS.Form.csproj">
+      <Project>{c4f32215-efad-45c9-8276-6126681c3589}</Project>
+      <Name>Kooboo.CMS.Form</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo.CMS.Search\Kooboo.CMS.Search.csproj">
+      <Project>{c7b73e67-d226-41cb-a86d-410276b265a1}</Project>
+      <Name>Kooboo.CMS.Search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo.CMS.Sites\Kooboo.CMS.Sites.csproj">
+      <Project>{ffd8e9f0-61b6-4b0d-a803-5beccd2a6578}</Project>
+      <Name>Kooboo.CMS.Sites</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kooboo\Kooboo.csproj">
+      <Project>{347e47e5-3132-4bad-b935-8282a2b16cf5}</Project>
+      <Name>Kooboo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\tiny_mce\skins\lightgray\fonts\tinymce.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\base.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\main.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\less-element.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\icon.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\sitemap.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\grid.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\common.less" />
+    <Content Include="Styles\reset.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\ui.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\fonts\opensans-bold-webfont.eot" />
+    <Content Include="Styles\fonts\opensans-bold-webfont.ttf" />
+    <Content Include="Styles\fonts\opensans-bold-webfont.woff" />
+    <Content Include="Styles\fonts\opensans-extrabold-webfont.eot" />
+    <Content Include="Styles\fonts\opensans-extrabold-webfont.ttf" />
+    <Content Include="Styles\fonts\opensans-extrabold-webfont.woff" />
+    <Content Include="Styles\fonts\opensans-semibold-webfont.eot" />
+    <Content Include="Styles\fonts\opensans-semibold-webfont.ttf" />
+    <Content Include="Styles\fonts\opensans-semibold-webfont.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\form.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\table.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\column.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\jqueryui.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\tinymce.less" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2421,4 +2508,8 @@
 @echo copy "..\..\..\Lib\SQLCe\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
