@@ -168,6 +168,7 @@
     <Compile Include="Membership\ValidateMemberModel.cs" />
     <Compile Include="Membership\ValidateMemberPlugin.cs" />
     <Compile Include="Models\HtmlMeta.cs" />
+    <Compile Include="Models\Sitemap_Xml.cs" />
     <Compile Include="Models\SubmissionSetting.cs" />
     <Compile Include="NullMembershipException.cs" />
     <Compile Include="Persistence\Caching\ABPageSettingProvider.cs" />

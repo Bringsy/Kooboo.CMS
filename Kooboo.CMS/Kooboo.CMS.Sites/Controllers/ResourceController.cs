@@ -139,6 +139,16 @@ namespace Kooboo.CMS.Sites.Controllers
         }
         #endregion
 
+        #region sitemap.xml
+        [CheckSiteExistsActionFilter(Order = 0)]
+        public virtual ActionResult SitemapXml()
+        {
+            Sitemap_Xml robotTxt = new Sitemap_Xml(Site);
+            var body = robotTxt.Read();
+            return Content(body, "application/xml");
+        }
+        #endregion
+
         #region File
         [CheckSiteExistsActionFilter(Order = 0)]
         public virtual ActionResult File(string name)
