@@ -143,7 +143,7 @@ namespace Kooboo.CMS.Sites.Controllers
         [CheckSiteExistsActionFilter(Order = 0)]
         public virtual ActionResult SitemapXml()
         {
-            Sitemap_Xml robotTxt = new Sitemap_Xml(Site);
+            var robotTxt = new Sitemap_Xml(Site);
             var body = robotTxt.Read();
             return Content(body, "application/xml");
         }

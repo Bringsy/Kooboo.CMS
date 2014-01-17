@@ -6,9 +6,7 @@ namespace Kooboo.CMS.Sites.Models
     {
         public Sitemap_Xml(Site site)
             : base(site, "sitemap.xml")
-        {
-
-        }
+        { }
 
         public override IEnumerable<string> RelativePaths
         {
