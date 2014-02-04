@@ -335,20 +335,30 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
             return Json(data);
         }
 
-        public ActionResult Preview(string imagePath, string rotateTypes)
+        public ActionResult Preview(string folderName, string uuid, string rotateTypes)
         {
-            var physicalPath = Server.MapPath(HttpUtility.UrlDecode(imagePath));
-            var imageFormat = ImageTools.ConvertToImageFormat(Path.GetExtension(physicalPath));
+            //var physicalPath = Server.MapPath(HttpUtility.UrlDecode(imagePath));
+            var mediaFolder = FolderHelper.Parse<MediaFolder>(Repository, folderName);
+            var mediaContent = mediaFolder.CreateQuery().WhereEquals("UUID", uuid).FirstOrDefault();
+
+            var provider = Kooboo.CMS.Content.Persistence.Providers.DefaultProviderFactory.GetProvider<IMediaContentProvider>();
+            var data = provider.GetContentStream(mediaContent);
+            var imageFormat = ImageTools.ConvertToImageFormat(Path.GetExtension(mediaContent.VirtualPath));
+
             Stream imageStream = new MemoryStream();
             Stream outputStream = new MemoryStream();
             try
             {
-                imageStream = RotateImage(rotateTypes, physicalPath, imageFormat);
+                using (var rawImage = new MemoryStream(data))
+                {
+                    imageStream = RotateImage(rotateTypes, rawImage, imageFormat);
 
-                ImageTools.ResizeImage(imageStream, outputStream, imageFormat, 600, 0, true, 80);
-                outputStream.Position = 0;
+                    ImageTools.ResizeImage(imageStream, outputStream, imageFormat, 600, 0, true, 80);
+                    outputStream.Position = 0;
 
-                return File(outputStream, IOUtility.MimeType(physicalPath));
+                    return File(outputStream, IOUtility.MimeType(mediaContent.VirtualPath));
+                }
+
             }
             finally
             {
@@ -360,47 +370,43 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
             }
         }
 
-        private static Stream RotateImage(string rotateTypes, string physicalPath, System.Drawing.Imaging.ImageFormat imageFormat)
+        private static Stream RotateImage(string rotateTypes, Stream inputStream, System.Drawing.Imaging.ImageFormat imageFormat)
         {
             Stream imageStream = new MemoryStream();
             if (!string.IsNullOrEmpty(rotateTypes))
             {
-                using (FileStream fs = new FileStream(physicalPath, FileMode.Open, FileAccess.Read))
+
+                using (Image image = Image.FromStream(inputStream))
                 {
-                    using (Image image = Image.FromStream(fs))
+                    var rotates = rotateTypes.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var rotateType in rotates)
                     {
-                        var rotates = rotateTypes.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                        foreach (var rotateType in rotates)
+                        switch (rotateType)
                         {
-                            switch (rotateType)
-                            {
-                                case "1": //逆时针旋转90
-                                    image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                                    break;
-                                case "2"://顺时针旋转90
-                                    image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                                    break;
-                                case "3"://垂直翻转
-                                    image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                                    break;
-                                case "4"://水平翻转
-                                    image.RotateFlip(RotateFlipType.Rotate180FlipY);
-                                    break;
-                                default:
-                                    break;
-                            }
+                            case "1": //逆时针旋转90
+                                image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                break;
+                            case "2"://顺时针旋转90
+                                image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                                break;
+                            case "3"://垂直翻转
+                                image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                                break;
+                            case "4"://水平翻转
+                                image.RotateFlip(RotateFlipType.Rotate180FlipY);
+                                break;
+                            default:
+                                break;
                         }
-                        image.Save(imageStream, imageFormat);
-                        image.Dispose();
                     }
+                    image.Save(imageStream, imageFormat);
+                    image.Dispose();
                 }
             }
             else
             {
-                using (var fs = new FileStream(physicalPath, FileMode.Open, FileAccess.Read))
-                {
-                    fs.CopyTo(imageStream);
-                }
+                inputStream.Position = 0;
+                inputStream.CopyTo(imageStream);
             }
             imageStream.Position = 0;
             return imageStream;
@@ -412,6 +418,7 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
         {
             var mediaFolder = FolderHelper.Parse<MediaFolder>(Repository.Current, folderName);
             var mediaContent = mediaFolder.CreateQuery().WhereEquals("UUID", uuid).FirstOrDefault();
+            var provider = Kooboo.CMS.Content.Persistence.Providers.DefaultProviderFactory.GetProvider<IMediaContentProvider>();
             JsonResultData data = new JsonResultData(ModelState);
 
             Stream targetStream = new MemoryStream();
@@ -420,34 +427,37 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
             int width = 0, height = 0;
             try
             {
-                ImageFormat imageFormat = ImageTools.ConvertToImageFormat(Path.GetExtension(mediaContent.PhysicalPath));
-                imageStream = RotateImage(rotateTypes, mediaContent.PhysicalPath, imageFormat);
-
-                if (cropModel != null && cropModel.X.HasValue && cropModel.Width.Value > 0 && cropModel.Height.Value > 0)
+                using (var contentStream = new MemoryStream(provider.GetContentStream(mediaContent)))
                 {
-                    ImageTools.CropImage(imageStream, targetStream, imageFormat, cropModel.X.Value, cropModel.Y.Value, cropModel.Width.Value, cropModel.Height.Value);
+                    ImageFormat imageFormat = ImageTools.ConvertToImageFormat(Path.GetExtension(mediaContent.VirtualPath));
+                    imageStream = RotateImage(rotateTypes, contentStream, imageFormat);
+
+                    if (cropModel != null && cropModel.X.HasValue && cropModel.Width.Value > 0 && cropModel.Height.Value > 0)
+                    {
+                        ImageTools.CropImage(imageStream, targetStream, imageFormat, cropModel.X.Value, cropModel.Y.Value, cropModel.Width.Value, cropModel.Height.Value);
+                        targetStream.Position = 0;
+                    }
+                    else
+                    {
+                        targetStream = imageStream;
+                    }
+                    if (scaleModel != null && scaleModel.Height.HasValue && scaleModel.Width.HasValue && scaleModel.Height.Value > 0 && scaleModel.Width.Value > 0)
+                    {
+                        ImageTools.ResizeImage(targetStream, resizedImage, imageFormat, scaleModel.Width.Value, scaleModel.Height.Value, scaleModel.PreserveAspectRatio, scaleModel.Quality ?? 80);
+                        resizedImage.Position = 0;
+                        targetStream = resizedImage;
+                    }
+
+                    Image image = Image.FromStream(targetStream);
+                    width = image.Width;
+                    height = image.Height;
                     targetStream.Position = 0;
-                }
-                else
-                {
-                    targetStream = imageStream;
-                }
-                if (scaleModel != null && scaleModel.Height.HasValue && scaleModel.Width.HasValue)
-                {
-                    ImageTools.ResizeImage(targetStream, resizedImage, imageFormat, scaleModel.Width.Value, scaleModel.Height.Value, scaleModel.PreserveAspectRatio, scaleModel.Quality ?? 80);
-                    resizedImage.Position = 0;
-                    targetStream = resizedImage;
-                }
 
-                Image image = Image.FromStream(targetStream);
-                width = image.Width;
-                height = image.Height;
-                targetStream.Position = 0;
+                    ServiceFactory.MediaContentManager.Update(Repository.Current, mediaFolder, uuid, mediaContent.FileName, targetStream, User.Identity.Name);
 
-                ServiceFactory.MediaContentManager.Update(Repository.Current, mediaFolder, uuid, mediaContent.FileName, targetStream, User.Identity.Name);
-
-                image.Dispose();
-                targetStream.Close();
+                    image.Dispose();
+                    targetStream.Close();
+                }
                 //data.ClosePopup = true;
                 //data.AddMessage("The image has been changed.".Localize());
             }
@@ -630,11 +640,14 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
             var data = new JsonResultData(ModelState);
             data.RunWithTry((resultData) =>
             {
-                var old = new MediaFolder(Repository, folderName);
+                var oldFolder = new MediaFolder(Repository, folderName);
                 var @new = new MediaFolder(Repository, folderName);
                 @new.Name = name;
 
-                FolderManager.Rename(@new, old);
+                if (oldFolder != @new)
+                {
+                    FolderManager.Rename(@new, oldFolder);
+                }
                 resultData.RedirectUrl = @return;
             });
 
@@ -643,9 +656,9 @@ namespace Kooboo.CMS.Web.Areas.Contents.Controllers
         #endregion
 
         #region IsFolderNameAvailable
-        public virtual ActionResult IsFolderNameAvailable(string name, string folderName)
+        public virtual ActionResult IsFolderNameAvailable(string name, string folderName, string old)
         {
-            if (!string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(name) && !name.EqualsOrNullEmpty(old, StringComparison.OrdinalIgnoreCase))
             {
                 string fullName = name;
                 if (!string.IsNullOrEmpty(folderName))

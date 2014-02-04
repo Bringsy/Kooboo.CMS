@@ -78,5 +78,9 @@ namespace Kooboo.CMS.Common.Runtime.Dependency
 
         object ResolveUnregistered(Type type);
         #endregion
+
+        #region InjectProperties
+        void InjectProperties(object instance); 
+        #endregion
     }
 }

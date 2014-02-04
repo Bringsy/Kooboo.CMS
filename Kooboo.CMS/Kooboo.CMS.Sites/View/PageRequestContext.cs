@@ -91,7 +91,7 @@ namespace Kooboo.CMS.Sites.View
             {
                 if (!string.IsNullOrEmpty(ModuleUrl) && this.ModuleCountInPage == 1)
                 {
-                    return "~/" + this.ModuleUrl;
+                    return "~/" + ModuleUrlHelper.Decode(this.ModuleUrl).TrimStart('/');
                 }
             }
             return string.Empty;
@@ -300,8 +300,12 @@ namespace Kooboo.CMS.Sites.View
 
             }
 
+            if (string.IsNullOrEmpty(pageRequestUrl))
+            {
+                pageRequestUrl = "/";
+            }
 
-            HttpContextBase pageContext = new PageHttpContenxt(httpContext, new PageHttpRequest(httpContext.Request, "~/" + pageRequestUrl, ""));
+            HttpContextBase pageContext = new PageHttpContenxt(httpContext, new PageHttpRequest(httpContext.Request, Kooboo.Web.Url.UrlUtility.Combine("~", pageRequestUrl), ""));
             var routeData = page.Route.ToMvcRoute().GetRouteData(pageContext);
 
             if (routeData != null)
@@ -318,7 +322,8 @@ namespace Kooboo.CMS.Sites.View
             }
 
             var moduleUrl = AllQueryString[ModuleUrlContext.ModuleUrlSegment];
-            ModuleUrlContext = new ModuleUrlContext(this, moduleUrl, page.PagePositions.OfType<ModulePosition>().Count());
+            var modulePositions = page.PagePositions.Where(it => it is ModulePosition || it is ProxyPosition).Count();
+            ModuleUrlContext = new ModuleUrlContext(this, moduleUrl, modulePositions);
         }
         #endregion
 

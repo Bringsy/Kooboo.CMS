@@ -412,8 +412,26 @@ namespace Kooboo.CMS.Sites.Models
                 return OutputCache != null && OutputCache.Duration > 0;
             }
         }
+        private Dictionary<string, string> customFields;
         [DataMember(Order = 36)]
-        public Dictionary<string, string> CustomFields { get; set; }
+        public Dictionary<string, string> CustomFields
+        {
+            get
+            {
+                return customFields ?? new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            }
+            set
+            {
+                if (value != null)
+                {
+                    customFields = new Dictionary<string, string>(value, StringComparer.OrdinalIgnoreCase);
+                }
+                else
+                {
+                    customFields = value;
+                }
+            }
+        }
 
         private bool? published;
         [DataMember(Order = 38)]
@@ -741,10 +759,10 @@ namespace Kooboo.CMS.Sites.Models
 
         public virtual bool HasParentVersion()
         {
-            if (this.Parent != null && this.Parent.IsLocalized(this.Site))
-            {
-                return false;
-            }
+            //if (this.Parent != null && this.Parent.IsLocalized(this.Site))
+            //{
+            //    return false;
+            //}
             var parentSite = this.Site.Parent;
             while (parentSite != null)
             {

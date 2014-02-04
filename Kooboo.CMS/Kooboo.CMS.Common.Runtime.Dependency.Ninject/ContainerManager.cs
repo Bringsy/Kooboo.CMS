@@ -250,6 +250,14 @@ namespace Kooboo.CMS.Common.Runtime.Dependency.Ninject
             _container.AddResolvingObserver(observer);
         }
         #endregion
+
+
+        #region InjectProperties
+        public void InjectProperties(object instance)
+        {
+            this._container.Inject(instance);
+        }
+        #endregion
     }
 
 }

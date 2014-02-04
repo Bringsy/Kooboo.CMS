@@ -600,6 +600,22 @@ namespace Kooboo.CMS.Content.Persistence.Default
             //no need to do anything.
         }
         #endregion
+
+        public byte[] GetContentStream(MediaContent content)
+        {
+            using (var fs = File.Open(content.PhysicalPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                return fs.ReadData();
+            }
+        }
+
+        public void SaveContentStream(MediaContent content, Stream stream)
+        {
+            using (FileStream file = new FileStream(content.PhysicalPath, FileMode.Create, System.IO.FileAccess.Write))
+            {
+                ((MemoryStream)stream).WriteTo(file);
+            }
+        }
     }
 
 
@@ -653,7 +669,7 @@ namespace Kooboo.CMS.Content.Persistence.Default
                 mediaContent["Metadata.AlternateText"] = metadata.AlternateText;
                 mediaContent["Metadata.Description"] = metadata.Description;
             }
-        } 
+        }
         #endregion
 
         #region DeleteMetadata
@@ -664,7 +680,7 @@ namespace Kooboo.CMS.Content.Persistence.Default
             {
                 File.Delete(metadataFile);
             }
-        } 
+        }
         #endregion
     }
     #endregion

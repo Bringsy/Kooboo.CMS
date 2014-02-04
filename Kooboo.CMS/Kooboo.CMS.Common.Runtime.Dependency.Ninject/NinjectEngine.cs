@@ -138,7 +138,10 @@ namespace Kooboo.CMS.Common.Runtime.Dependency.Ninject
         {
             return ContainerManager.ResolveAll<T>();
         }
-
+        public void InjectProperties(object instance)
+        {
+            ContainerManager.InjectProperties(instance);
+        }
         #endregion
 
         #region Properties
@@ -150,5 +153,8 @@ namespace Kooboo.CMS.Common.Runtime.Dependency.Ninject
         }
         public ITypeFinder TypeFinder { get; private set; }
         #endregion
+
+
+
     }
 }

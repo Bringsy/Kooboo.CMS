@@ -74,9 +74,6 @@
       <HintPath>..\..\Lib\dotLess\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\Lib\dotLess\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Lib\JSON.NET\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -129,6 +126,7 @@
     <Compile Include="Areas\Account\Models\ChangeLanguageModel.cs" />
     <Compile Include="Areas\Account\Models\CreateRoleModel.cs" />
     <Compile Include="Areas\Account\Models\DataSources\EnabledLanguagesDataSource.cs" />
+    <Compile Include="Areas\Account\Models\DataSources\RolesDatasource.cs" />
     <Compile Include="Areas\Account\Models\EditUserModel.cs" />
     <Compile Include="Areas\Account\Models\Grid2\User_ResetPassword_GridItemColumn.cs" />
     <Compile Include="Areas\Account\Models\LoginModel.cs" />
@@ -265,6 +263,7 @@
     <Compile Include="KoobooCMSHttpApplicationEvents.cs" />
     <Compile Include="Misc\DynamicClientResourceDIFactory.cs" />
     <Compile Include="Misc\LessCssProvider.cs" />
+    <Compile Include="Misc\RenderHelper.cs" />
     <Compile Include="Models\AllPropertiesResolver.cs" />
     <Compile Include="Models\ImportModel.cs" />
     <Compile Include="Models\RelationModel_Metadata.cs" />
@@ -660,9 +659,12 @@
     <Content Include="Images\Default.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\loading.gif" />
+    <Content Include="Images\svg-content.png" />
     <Content Include="Images\svg-edit.png" />
     <Content Include="Images\svg-export.png" />
+    <Content Include="Images\svg-membership.png" />
     <Content Include="Images\svg-preview.png" />
+    <Content Include="Images\svg-site.png" />
     <Content Include="Images\svg-view.png" />
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\aight.js" />
@@ -860,6 +862,8 @@
     <Content Include="Scripts\tiny_mce\tinymce.min.js" />
     <Content Include="Scripts\yardiTip\images\arrow_down.png" />
     <Content Include="Scripts\yardiTip\images\arrow_top.png" />
+    <Content Include="Styles\base.css" />
+    <Content Include="Styles\common.css" />
     <Content Include="Styles\Diff\Diff.css" />
     <Content Include="Styles\Diff\InView.png" />
     <Content Include="Styles\Diff\Main.css" />
@@ -877,6 +881,7 @@
     <Content Include="Styles\jquery-ui.css" />
     <Content Include="Styles\jQuery.jCrop\Jcrop.gif" />
     <Content Include="Styles\jQuery.jCrop\jquery.Jcrop.css" />
+    <Content Include="Styles\reset.css" />
     <Content Include="Styles\validation.css" />
     <Content Include="Views\Shared\Import.cshtml" />
     <Content Include="Areas\Sites\WebResources.config">
@@ -1795,7 +1800,7 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.filestyle.js" />
     <Content Include="Scripts\jquery.json-2.2.js" />
-    <Content Include="Scripts\jquery.maskedinput-1.2.2.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -2274,7 +2279,7 @@
     <Content Include="Areas\Contents\Views\ContentType\EditTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Sites\Views\ABRuleSetting\EditorTemplates\UserAgentPattern.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UserAgentPattern.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Sites\Views\Page\_OutputCache.cshtml">
@@ -2462,6 +2467,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\tinymce.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DisplayTemplates\_TR.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\relation.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\repository-flowchart.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cms_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -47,5 +47,9 @@ namespace Kooboo.CMS.Common.Runtime
 
         IEnumerable<T> ResolveAll<T>();
         #endregion
+
+        #region InjectProperties
+        void InjectProperties(object instance);
+        #endregion
     }
 }

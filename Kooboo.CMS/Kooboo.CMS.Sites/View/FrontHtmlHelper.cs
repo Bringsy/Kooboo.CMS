@@ -80,11 +80,11 @@ namespace Kooboo.CMS.Sites.View
         {
             if (PageContext.PageRequestContext.RequestChannel == FrontRequestChannel.Design)
             {
-                return true;
+                return false;
             }
             else
             {
-                return GetContentsForPosition(positionID).Length > 0;
+                return GetContentsForPosition(positionID).Length == 0;
             }
         }
         private PagePosition[] GetContentsForPosition(string positionID)
@@ -184,7 +184,7 @@ namespace Kooboo.CMS.Sites.View
         #region RenderProxyPosition
         protected virtual IHtmlString RenderProxyPosition(ProxyPosition proxyPosition)
         {
-            return ProxyRender.Render(PageContext, proxyPosition.PagePositionId, proxyPosition.Host, proxyPosition.RequestPath, proxyPosition.NoProxy, proxyPosition.OutputCache);
+            return ProxyRender.Render(new ProxyRenderContext(PageContext.ControllerContext, PageContext.PageRequestContext, proxyPosition, null));
         }
         #endregion
 
@@ -581,15 +581,15 @@ namespace Kooboo.CMS.Sites.View
                 {
                     scripts.Add(Kooboo.Web.Mvc.WebResourceLoader.MvcExtensions.ExternalResources(this.Html, null, "jQuery", null, baseUrl));
                 }
-                scripts.AddRange(GetScriptsBySite(site, compressed, baseUrl));
+                scripts.AddRange(GetScriptsBySite(site, "", compressed, baseUrl));
             }
             return scripts;
         }
-        private IEnumerable<IHtmlString> GetScriptsBySite(Site site, bool compressed, string baseUri = null)
+        private IEnumerable<IHtmlString> GetScriptsBySite(Site site, string folder, bool compressed, string baseUri = null)
         {
             List<IHtmlString> scripts = new List<IHtmlString>();
 
-            var siteScripts = ServiceFactory.ScriptManager.GetFiles(site, "");
+            var siteScripts = ServiceFactory.ScriptManager.GetFiles(site, folder);
             if (siteScripts != null && siteScripts.Count() > 0)
             {
                 if (site.Mode == ReleaseMode.Debug)
@@ -614,7 +614,7 @@ namespace Kooboo.CMS.Sites.View
                 }
                 else
                 {
-                    scripts.Add(this.Html.Script(this.PageContext.FrontUrl.SiteScriptsUrl(baseUri, compressed).ToString()));
+                    scripts.Add(this.Html.Script(this.PageContext.FrontUrl.SiteScriptsUrl(baseUri, folder, compressed).ToString()));
                 }
             }
 
@@ -657,6 +657,18 @@ namespace Kooboo.CMS.Sites.View
                 }
             }
         }
+
+        #region RegisterScriptFolder
+        public virtual IHtmlString RegisterScriptFolder(string folder)
+        {
+            return RegisterScriptFolder(folder, true, PageContext.PageRequestContext.Site.ResourceDomain);
+        }
+        public virtual IHtmlString RegisterScriptFolder(string folder, bool compressed, string baseUri)
+        {
+            return new AggregateHtmlString(GetScriptsBySite(PageContext.PageRequestContext.Site, folder, compressed, baseUri));
+        }
+        #endregion
+
         #endregion
 
         #region RegisterStyles

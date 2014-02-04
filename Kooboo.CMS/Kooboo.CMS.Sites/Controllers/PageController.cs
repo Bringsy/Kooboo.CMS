@@ -129,8 +129,10 @@ namespace Kooboo.CMS.Sites.Controllers
                 set;
             }
         }
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public virtual ActionResult ViewEntry(string viewName)
         {
+            viewName = Server.UrlDecode(viewName);
             var viewPosition = new ViewPosition()
             {
                 LayoutPositionId = Kooboo.UniqueIdGenerator.GetInstance().GetBase32UniqueId(5),
@@ -141,7 +143,7 @@ namespace Kooboo.CMS.Sites.Controllers
             var rawPage = new Page(Site, "____VisitViewPage_____") { IsDummy = false };
             rawPage.PagePositions.Add(viewPosition);
 
-            var requestUrl = "";
+            var requestUrl = "/";
 
             var pageRequestContext = new PageRequestContext(this.ControllerContext, FrontHttpRequest.RawSite, FrontHttpRequest.Site, rawPage, rawPage,
                 FrontHttpRequest.RequestChannel, requestUrl);

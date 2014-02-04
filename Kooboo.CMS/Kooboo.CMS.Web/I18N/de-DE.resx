@@ -2159,4 +2159,76 @@ Are you sure you want to use this size?</value>
   <data name="Customize the page URL to anyway you like.&lt;br /&gt; Use {key} to match the URL query string. &lt;br /&gt;For example: {userkey}_othertext to replace parameter &quot;?userkey=&quot; into static URL.&lt;br/&gt;Use {*ModuleURL} to match all the query string after ModuleURL." xml:space="preserve">
     <value>Customize the page URL to anyway you like.&lt;br /&gt; Use {key} to match the URL query string. &lt;br /&gt;For example: {userkey}_othertext to replace parameter "?userkey=" into static URL.&lt;br/&gt;Use {*ModuleURL} to match all the query string after ModuleURL.</value>
   </data>
+  <data name="Set as default page" xml:space="preserve">
+    <value>Set as default page</value>
+  </data>
+  <data name="A/B Testing" xml:space="preserve">
+    <value>A/B Testing</value>
+  </data>
+  <data name="Unsynchronized page" xml:space="preserve">
+    <value>Unsynchronized page</value>
+  </data>
+  <data name="Show error path" xml:space="preserve">
+    <value>Show error path</value>
+  </data>
+  <data name="Used to create sites for special devices only, you can define regex expression to match the Browser User-Agent.&lt;br /&gt;Only matched devices are allowed to view this site." xml:space="preserve">
+    <value>Used to create sites for special devices only, you can define regex expression to match the Browser User-Agent.&lt;br /&gt;Only matched devices are allowed to view this site.</value>
+  </data>
+  <data name="Example:" xml:space="preserve">
+    <value>Example:</value>
+  </data>
+  <data name="Mobiles" xml:space="preserve">
+    <value>Mobiles</value>
+  </data>
+  <data name="Android" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="iPhone" xml:space="preserve">
+    <value>iPhone</value>
+  </data>
+  <data name="iPad" xml:space="preserve">
+    <value>iPad</value>
+  </data>
+  <data name="IE" xml:space="preserve">
+    <value>IE</value>
+  </data>
+  <data name="Firefox" xml:space="preserve">
+    <value>Firefox</value>
+  </data>
+  <data name="Chrome" xml:space="preserve">
+    <value>Chrome</value>
+  </data>
+  <data name="Safari/Windows" xml:space="preserve">
+    <value>Safari/Windows</value>
+  </data>
+  <data name="Safari/Mac" xml:space="preserve">
+    <value>Safari/Mac</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
+  </data>
+  <data name="FileType" xml:space="preserve">
+    <value>FileType</value>
+  </data>
+  <data name="Module name" xml:space="preserve">
+    <value>Module name</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Included</value>
+  </data>
+  <data name="Include" xml:space="preserve">
+    <value>Include</value>
+  </data>
+  <data name="Exclude" xml:space="preserve">
+    <value>Exclude</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>FileName</value>
+  </data>
+  <data name="View types" xml:space="preserve">
+    <value>View types</value>
+  </data>
+  <data name="Inheritance" xml:space="preserve">
+    <value>Inheritance</value>
+  </data>
 </root>

@@ -23,6 +23,7 @@ namespace Kooboo.CMS.Sites.Persistence
 
     public interface ISiteProvider : ISiteElementProvider<Site>
     {
+        [Obsolete("Move to PageManager")]
         Site GetSiteByHostNameNPath(string hostName, string requestPath);
 
         //Site GetSiteByHostName(string hostName);
