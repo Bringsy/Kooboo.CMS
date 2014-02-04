@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Kooboo.CMS.SqlServer</id>
-        <version>4.2.18</version>
+        <version>4.3.5</version>
         <authors>eConduct</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>SQL Server content provider for Kooboo CMS</description>
@@ -10,7 +10,7 @@
     <files>
         <file src="..\..\Kooboo.CMS.Account.Persistence.EntityFramework\bin\Release\Kooboo.CMS.Account.Persistence.EntityFramework.dll" target="lib\net45\" />
 		<file src="..\..\Kooboo.CMS.Account.Persistence.EntityFramework\bin\Release\EntityFramework.dll" target="lib\net45\" />
-		<file src="..\..\Kooboo.CMS.Sites.Persistence.EntityFramework\bin\Release\Kooboo.CMS.Sites.Persistence.EntityFramework.dll" target="lib\net45\" />
+		<file src="..\..\Kooboo.CMS.SitesProviders\Kooboo.CMS.Sites.Persistence.EntityFramework\bin\Release\Kooboo.CMS.Sites.Persistence.EntityFramework.dll" target="lib\net45\" />
 		<file src="..\..\Kooboo.CMS.Content\Kooboo.CMS.Content.Persistence.SqlServer\bin\Release\Kooboo.CMS.Content.Persistence.SqlServer.dll" target="lib\net45\" />
     </files>
 </package>
