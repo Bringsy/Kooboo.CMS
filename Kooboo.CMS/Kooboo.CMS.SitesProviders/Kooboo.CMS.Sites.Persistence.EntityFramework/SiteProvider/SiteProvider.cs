@@ -9,7 +9,6 @@
 using Kooboo.CMS.Caching;
 using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
-using Kooboo.CMS.Membership.Persistence;
 using Kooboo.CMS.Sites.Globalization;
 using Kooboo.CMS.Sites.Models;
 using Kooboo.Runtime.Serialization;
@@ -30,7 +29,7 @@ namespace Kooboo.CMS.Sites.Persistence.EntityFramework.SiteProvider
         Kooboo.CMS.Sites.Persistence.EntityFramework.ABTestProvider.ABPageTestResultProvider aBPageTestResultProvider;
         Kooboo.CMS.Sites.Persistence.EntityFramework.ABTestProvider.ABRuleSettingsProvider aBRuleSettingsProvider;
         Kooboo.CMS.Sites.Persistence.EntityFramework.ABTestProvider.ABPageSettingsProvider aBPageSettingsProvider;
-        public SiteProvider(IBaseDir baseDir, IMembershipProvider membershipProvider, IElementRepositoryFactory elementRepositoryFactory, SiteDBContext dbContext)
+        public SiteProvider(IBaseDir baseDir, IElementRepositoryFactory elementRepositoryFactory, SiteDBContext dbContext)
             : base(baseDir, elementRepositoryFactory)
         {
             this._dbContext = dbContext;
