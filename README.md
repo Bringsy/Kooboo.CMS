@@ -1,4 +1,4 @@
-Kooboo CMS with modifications to be able to use STS
+The current running version: V4.3 https://kooboo.codeplex.com/
 
 Modifications
 - Ugrated to .NET 4.5
@@ -8,13 +8,10 @@ NOTE: This branch is not tested to be MONO compatible.
 
 
 
-Kooboo CMS
-The current running version: V4.2.1 http://kooboo.codeplex.com/releases/view/110888
-
 
 Kooboo CMS has been developed to satisfy all your web development needs we are constantly working on simplifying the development process giving you complete freedom over development.
 
-Kooboo CMS 4.0 is based on the ASP.NET MVC 4 framework and Microsoft Metro Style UI.
+Kooboo CMS 4.X is based on the ASP.NET MVC 4 framework and Microsoft Metro Style UI.
 
 Highlights
 
