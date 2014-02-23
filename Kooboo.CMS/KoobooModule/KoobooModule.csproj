@@ -935,12 +935,6 @@
     <Content Include="lib\CookComputing.XmlRpcV2.dll" />
     <Content Include="lib\DiffPlex.dll" />
     <Content Include="lib\dotless.Core.dll" />
-    <Content Include="lib\DotNetOpenAuth.AspNet.dll" />
-    <Content Include="lib\DotNetOpenAuth.Core.dll" />
-    <Content Include="lib\DotNetOpenAuth.OAuth.Consumer.dll" />
-    <Content Include="lib\DotNetOpenAuth.OAuth.dll" />
-    <Content Include="lib\DotNetOpenAuth.OpenId.dll" />
-    <Content Include="lib\DotNetOpenAuth.OpenId.RelyingParty.dll" />
     <Content Include="lib\HtmlAgilityPack.dll" />
     <Content Include="lib\Ionic.Zip.Reduced.dll" />
     <Content Include="lib\Kooboo.CMS.Account.dll" />
