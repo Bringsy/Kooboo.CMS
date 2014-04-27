@@ -7,6 +7,7 @@
 // 
 #endregion
 using Kooboo.CMS.Sites.Models;
+using Kooboo.CMS.Sites.Models.Options;
 using Kooboo.CMS.Web.Areas.Sites.Models.DataSources;
 using Kooboo.Web.Mvc;
 using System;
@@ -34,20 +35,13 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         public string Parent { get; set; }
 
         //[Remote("IsRepositoryAvaliable", "Site")]
-        [Required(ErrorMessage = "Required")]
+        //[Required(ErrorMessage = "Required")]
         [Description("The name of your database to be created")]
         [UIHint("CreateOrSelect")]
         [DataSource(typeof(RepositoriesDataSource))]
         [Display(Name = "Content database")]
         [RegularExpression(RegexPatterns.Alphanum, ErrorMessage = "Only alphameric and numeric are allowed in the field name")]
         public string Repository { get; set; }
-
-        //[Description("Create a new membership or select the membership.")]
-        //[UIHint("CreateOrSelect")]
-        //[DataSource(typeof(MembershipDataSource))]
-        //[Display(Name = "Membership")]
-        //[RegularExpression(RegexPatterns.Alphanum, ErrorMessage = "Only alphameric and numeric are allowed in the field name")]
-        //public string Membership { get; set; }
 
         [Required(ErrorMessage = "Required")]
         [UIHint("UploadOrSelect")]
@@ -57,20 +51,10 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         [AdditionalMetadata("data-val-filesize-value", 4194304)]
         public string File { get; set; }
 
+        private bool keepSiteSetting = true;
         [Description("Will keep the site setting such like 'Domains','DisplayName' without any changes.")]
         [Display(Name = "Keep settings")]
-        public bool KeepSiteSetting { get; set; }
-
-        public Site ToSiteSetting()
-        {
-            var site = new Site()
-            {
-                Repository = Repository,
                 //Membership = Membership,
-                Domains = null
-            };
-
-            return site;
-        }
+        public bool KeepSiteSetting { get { return keepSiteSetting; } set { keepSiteSetting = value; } }
     }
 }

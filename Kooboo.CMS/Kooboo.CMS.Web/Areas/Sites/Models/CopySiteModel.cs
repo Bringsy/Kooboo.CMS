@@ -1,4 +1,5 @@
 ﻿using Kooboo.CMS.Sites.Models;
+using Kooboo.CMS.Sites.Models.Options;
 using Kooboo.CMS.Web.Areas.Sites.Models.DataSources;
 using Kooboo.CMS.Web.Models;
 using Kooboo.Web.Mvc;
@@ -31,24 +32,14 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         [RegularExpression(RegexPatterns.Alphanum, ErrorMessage = "Only alphameric and numeric are allowed in the field name")]
         public string Repository { get; set; }
 
-        [Description("Create a new membership or select the membership.")]
-        [UIHint("CreateOrSelect")]
-       // [DataSource(typeof(MembershipDataSource))]
-        [Display(Name = "Membership")]
-        [RegularExpression(RegexPatterns.Alphanum, ErrorMessage = "Only alphameric and numeric are allowed in the field name")]
-        public string Membership { get; set; }
-
-
-        public Site ToSiteSetting()
+        public CreateSiteOptions ToCreateSiteOptions()
         {
-            var site = new Site()
+            var options = new CreateSiteOptions()
             {
-                Repository = Repository,
-                //Membership = Membership,
-                Domains = null
+                RepositoryName = Repository
             };
 
-            return site;
+            return options;
         }
     }
 }
