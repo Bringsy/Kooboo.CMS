@@ -677,6 +677,7 @@
     <Content Include="Areas\Sites\Styles\images\map-item-hover.png" />
     <Content Include="Areas\Sites\Styles\images\map-item.png" />
     <Content Include="Areas\Sites\Styles\sites.css" />
+    <Content Include="FederationMetadata\2007-06\FederationMetadata.xml" />
     <Content Include="Images\Default.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\loading.gif" />
