@@ -29,7 +29,6 @@ namespace Kooboo.CMS.Sites.Persistence
         public Site SiteObject { get; set; }
     }
         //public string Membership { get; set; }
-    
     public interface ISiteProvider : ISiteElementProvider<Site>
     {
         [Obsolete("Move to PageManager")]

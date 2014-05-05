@@ -10,6 +10,7 @@ using Kooboo.CMS.Caching;
 using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Content.Services;
+//using Kooboo.CMS.Membership.Persistence;
 using Kooboo.CMS.Sites.Globalization;
 using Kooboo.CMS.Sites.Models;
 using Kooboo.Runtime.Serialization;
@@ -25,8 +26,8 @@ namespace Kooboo.CMS.Sites.Persistence.EntityFramework.SiteProvider
     {
         #region .ctor
         SiteDBContext _dbContext;
-        public SiteProvider(IBaseDir baseDir, ISiteExportableProvider[] exportableProivders, SiteDBContext dbContext, RepositoryManager repositoryManager)
-            : base(baseDir, exportableProivders, repositoryManager)
+        public SiteProvider(IBaseDir baseDir, IMembershipProvider membershipProvider, ISiteExportableProvider[] exportableProivders, SiteDBContext dbContext, RepositoryManager repositoryManager)
+            : base(baseDir, membershipProvider, exportableProivders, repositoryManager)
         {
             this._dbContext = dbContext;
         }

@@ -11,6 +11,8 @@ using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Content.Models;
 using Kooboo.CMS.Content.Services;
+using Kooboo.CMS.Membership.Models;
+using Kooboo.CMS.Membership.Persistence;
 using Kooboo.CMS.Sites.Globalization;
 using Kooboo.CMS.Sites.Models;
 using Kooboo.CMS.Sites.Models.Options;
@@ -34,16 +36,19 @@ namespace Kooboo.CMS.Sites.Persistence.FileSystem
         #region Static
         static string Offline_File = "offline.txt";
         static string ContentDatabaseFileName = "ContentDatabase";
+        static string MembershipFileName = "Membership";
         static System.Threading.ReaderWriterLockSlim locker = new System.Threading.ReaderWriterLockSlim();
         #endregion
 
         #region .ctor
         IBaseDir baseDir;
+        IMembershipProvider _membershipProvider;
         ISiteExportableProvider[] _exportableProivders;
         RepositoryManager _repositoryManager;
-        public SiteProvider(IBaseDir baseDir, ISiteExportableProvider[] exportableProivders, RepositoryManager repositoryManager)
+        public SiteProvider(IBaseDir baseDir, IMembershipProvider membershipProvider, ISiteExportableProvider[] exportableProivders, RepositoryManager repositoryManager)
         {
             this.baseDir = baseDir;
+            this._membershipProvider = membershipProvider;
             this._exportableProivders = exportableProivders;
             _repositoryManager = repositoryManager;
         }
@@ -354,6 +359,7 @@ namespace Kooboo.CMS.Sites.Persistence.FileSystem
             newSite.InlineEditing = parentSite.InlineEditing;
             newSite.CustomFields = parentSite.CustomFields;
             newSite.Smtp = parentSite.Smtp;
+            newSite.Membership = parentSite.Membership;
 
 
             Add(newSite);
@@ -385,6 +391,7 @@ namespace Kooboo.CMS.Sites.Persistence.FileSystem
                 site = Get(site);
 
                 CreateRepository(site, options);
+                CreateMembership(site, options);
 
                 if (site.Parent == null)
                 {
@@ -477,7 +484,63 @@ namespace Kooboo.CMS.Sites.Persistence.FileSystem
                 CreateRepository(childSite, options);
             }
         }
-        
+        private void CreateMembership(Site site, CreateSiteOptions options)
+        {
+            site = Get(site);
+
+            var membershipName = site.Membership;
+            //如果用户没有指定新的Membership名称，直接使用站点原来使用的名称。（有可能是导入的情况）
+            if (!string.IsNullOrEmpty(options.MembershipName))
+            {
+                //如果有父站点，新的子站点的Membership名称使用 指定的名称+"_"+子站点的名称
+                if (site.Parent != null)
+                {
+                    membershipName = options.MembershipName + "_" + site.Name;
+                }
+                else
+                {
+                    membershipName = options.MembershipName;
+                }
+            }
+            site.Membership = membershipName;
+            if (!string.IsNullOrEmpty(membershipName))
+            {
+                var membership = new Kooboo.CMS.Membership.Models.Membership(membershipName).AsActual();
+                if (membership == null)
+                {
+                    var membershipFile = GetSiteRelatedFile(site, MembershipFileName);
+                    if (!string.IsNullOrEmpty(membershipFile) && File.Exists(membershipFile))
+                    {
+                        using (FileStream fs = new FileStream(membershipFile, FileMode.Open, FileAccess.Read))
+                        {
+                            _membershipProvider.Import(membershipName, fs);
+                        }
+                        try
+                        {
+                            File.Delete(membershipFile);
+                        }
+                        catch (Exception e)
+                        {
+                            Kooboo.HealthMonitoring.Log.LogException(e);
+                        }
+                    }
+                    else if (site.Parent != null && !string.IsNullOrEmpty(site.Membership))
+                    {
+                        site.Membership = Get(site.Parent).Membership;
+                    }
+                    else
+                    {
+                        site.Membership = null;
+                    }
+                }
+            }
+            Save(site);
+            foreach (var childSite in ChildSites(site))
+            {
+                CreateMembership(childSite, options);
+            }
+        }
+
         //private string GetChildSiteRepositoryName(Site childSite, string newRepositoryName)
         //{
         //    childSite = childSite.AsActual();
@@ -562,6 +625,7 @@ namespace Kooboo.CMS.Sites.Persistence.FileSystem
                 if (includeDatabase)
                 {
                     ExportSiteRepository(site, site, zipFile, includeSubSites);
+                    ExportSiteMembership(site, site, zipFile, includeSubSites);
                 }
 
                 zipFile.ZipErrorAction = ZipErrorAction.Skip;
@@ -603,6 +667,42 @@ namespace Kooboo.CMS.Sites.Persistence.FileSystem
             }
         }
 
+        private void ExportSiteMembership(Site rootSiteExported, Site site, ZipFile zipFile, bool includeSubSites)
+        {
+            site = Get(site);
+
+            if (!string.IsNullOrEmpty(site.Membership))
+            {
+                if (site.Parent == null || (site.Parent != null
+                    && !Get(site.Parent).Membership.EqualsOrNullEmpty(site.Membership, StringComparison.CurrentCultureIgnoreCase)))
+                {
+                    MemoryStream ms = new MemoryStream();
+
+                    _membershipProvider.Export(site.GetMembership(), ms);
+
+                    if (ms.Length > 0)
+                    {
+                        ms.Position = 0;
+
+                        var entryName = GetSiteRelatedEntryName(rootSiteExported, site, MembershipFileName);
+
+                        if (zipFile.ContainsEntry(entryName))
+                        {
+                            zipFile.RemoveEntry(entryName);
+                        }
+                        zipFile.AddEntry(entryName, ms);
+                    }
+
+                }
+            }
+            if (includeSubSites)
+            {
+                foreach (var childSite in ChildSites(site))
+                {
+                    ExportSiteMembership(rootSiteExported, childSite, zipFile, includeSubSites);
+                }
+            }
+        }
         private static string GetSiteRelatedEntryName(Site rootSiteExported, Site site, string entryName)
         {
             entryName = entryName + ".zip";

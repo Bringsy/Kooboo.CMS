@@ -7,6 +7,7 @@ using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Sites.ABTest;
 using Kooboo.CMS.Sites.Models;
 using Kooboo.CMS.Sites.Services;
+using Kooboo.CMS.Membership.Persistence;
 
 namespace Kooboo.CMS.Sites.Persistence.Couchbase.ABTestProvider
 {

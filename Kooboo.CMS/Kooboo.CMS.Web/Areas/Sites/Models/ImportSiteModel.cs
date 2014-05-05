@@ -43,6 +43,13 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         [RegularExpression(RegexPatterns.Alphanum, ErrorMessage = "Only alphameric and numeric are allowed in the field name")]
         public string Repository { get; set; }
 
+        [Description("Create a new membership or select the membership.")]
+        [UIHint("CreateOrSelect")]
+        [DataSource(typeof(MembershipDataSource))]
+        [Display(Name = "Membership")]
+        [RegularExpression(RegexPatterns.Alphanum, ErrorMessage = "Only alphameric and numeric are allowed in the field name")]
+        public string Membership { get; set; }
+
         [Required(ErrorMessage = "Required")]
         [UIHint("UploadOrSelect")]
         [DataSource(typeof(SitePackagesDatasource))]
@@ -54,7 +61,6 @@ namespace Kooboo.CMS.Web.Areas.Sites.Models
         private bool keepSiteSetting = true;
         [Description("Will keep the site setting such like 'Domains','DisplayName' without any changes.")]
         [Display(Name = "Keep settings")]
-                //Membership = Membership,
         public bool KeepSiteSetting { get { return keepSiteSetting; } set { keepSiteSetting = value; } }
     }
 }

@@ -78,6 +78,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
                             new CreateSiteOptions()
                             {
                                 Culture = createSiteModel.Culture,
+                                MembershipName = createSiteModel.Membership,
                                 RepositoryName = createSiteModel.Repository,
                                 TimeZoneId = createSiteModel.TimeZoneId,
                                 UserName = User.Identity.Name
@@ -126,6 +127,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
                         new CreateSiteOptions()
                         {
                             Culture = createSiteModel.Culture,
+                            MembershipName = createSiteModel.Membership,
                             RepositoryName = createSiteModel.Repository,
                             TimeZoneId = createSiteModel.TimeZoneId,
                             UserName = User.Identity.Name
@@ -354,6 +356,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
                     }
                     var options = new CreateSiteOptions()
                         {
+                            MembershipName = model.Membership,
                             RepositoryName = model.Repository,
                             UserName = User.Identity.Name
                         };
@@ -527,6 +530,7 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
                     site.EnableStyleEdting = model.EnableStyleEdting;
                     site.TimeZoneId = model.TimeZoneId;
                     site.HtmlMeta = model.HtmlMeta;
+                    site.Membership = model.Membership;
                     site.SSLDetection = model.SSLDetection;
                     site.UserAgent = model.UserAgent;
 
@@ -602,6 +606,10 @@ namespace Kooboo.CMS.Web.Areas.Sites.Controllers
             {
                 data.RunWithTry((resultData) =>
                 {
+                    if (string.IsNullOrEmpty(model.Membership))
+                    {
+                        model.Membership = Site.AsActual().Membership;
+                    }
                     var options = model.ToCreateSiteOptions();
                     options.UserName = User.Identity.Name;
                     var createdSite = Kooboo.CMS.Sites.Services.ServiceFactory.SiteManager.Copy(Site, model.Name, options);

@@ -127,7 +127,10 @@
       <Project>{c5a5186d-6f8e-4bb9-af0e-74f0993b48da}</Project>
       <Name>Kooboo.CMS.Content</Name>
     </ProjectReference>
-
+    <ProjectReference Include="..\..\Kooboo.CMS.Membership\Kooboo.CMS.Membership.csproj">
+      <Project>{3df23643-4bd1-4564-82b9-9ec594ad05b6}</Project>
+      <Name>Kooboo.CMS.Membership</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Kooboo.CMS.Sites\Kooboo.CMS.Sites.csproj">
       <Project>{FFD8E9F0-61B6-4B0D-A803-5BECCD2A6578}</Project>
       <Name>Kooboo.CMS.Sites</Name>
