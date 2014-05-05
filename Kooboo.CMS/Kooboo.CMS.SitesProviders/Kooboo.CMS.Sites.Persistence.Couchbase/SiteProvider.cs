@@ -1,7 +1,7 @@
 ﻿using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
 using Kooboo.CMS.Content.Services;
-using Kooboo.CMS.Membership.Persistence;
+//using Kooboo.CMS.Membership.Persistence;
 using Kooboo.CMS.Sites.Globalization;
 using Kooboo.CMS.Sites.Models;
 using System;
@@ -18,8 +18,8 @@ namespace Kooboo.CMS.Sites.Persistence.Couchbase
     {
         #region .ctor
         SiteInitializer _initializer;
-        public SiteProvider(IBaseDir baseDir, IMembershipProvider membershipProvider, ISiteExportableProvider[] exportableProivders, SiteInitializer initializer, RepositoryManager repositoryManager)
-            : base(baseDir, membershipProvider, exportableProivders,repositoryManager)
+        public SiteProvider(IBaseDir baseDir, /*IMembershipProvider membershipProvider,*/ ISiteExportableProvider[] exportableProivders, SiteInitializer initializer, RepositoryManager repositoryManager)
+            : base(baseDir, /*membershipProvider,*/ exportableProivders,repositoryManager)
         {
             //abSiteSettingProvider = new ABTestProvider.ABSiteSettingProvider();
             _initializer = initializer;

@@ -26,8 +26,8 @@ namespace Kooboo.CMS.Sites.Persistence.EntityFramework.SiteProvider
     {
         #region .ctor
         SiteDBContext _dbContext;
-        public SiteProvider(IBaseDir baseDir, IMembershipProvider membershipProvider, ISiteExportableProvider[] exportableProivders, SiteDBContext dbContext, RepositoryManager repositoryManager)
-            : base(baseDir, membershipProvider, exportableProivders, repositoryManager)
+        public SiteProvider(IBaseDir baseDir, /*IMembershipProvider membershipProvider,*/ ISiteExportableProvider[] exportableProivders, SiteDBContext dbContext, RepositoryManager repositoryManager)
+            : base(baseDir, /*membershipProvider,*/ exportableProivders, repositoryManager)
         {
             this._dbContext = dbContext;
         }

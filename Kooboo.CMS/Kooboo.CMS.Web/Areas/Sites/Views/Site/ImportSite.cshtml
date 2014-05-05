@@ -31,7 +31,7 @@
             @Html.EditorFor(o => o.KeepSiteSetting)
             @Html.EditorFor(o => o.Parent, new { HtmlAttributes = new { @class = "medium" } })
             @Html.EditorFor(o => o.Repository, new { HtmlAttributes = new { @class = "medium" } })
-            @Html.EditorFor(o => o.Membership, new { HtmlAttributes = new { @class = "medium" } })
+            
         </table>     
     }
 </div>
@@ -39,17 +39,17 @@
 <script>
     $(function () {
         var trRepository = $('#Repository').parent().parent().parent();
-        var trMembership = trRepository.next();       
+        //var trMembership = trRepository.next();       
         $('#KeepSiteSetting').change(function () {
             var keepSetting = $(this);
 
             if (!keepSetting.is(':checked')) {
                 trRepository.show();
-                trMembership.show();
+                //trMembership.show();
             }
             else {
                 trRepository.hide();
-                trMembership.hide();
+                //trMembership.hide();
             }
         });
 
