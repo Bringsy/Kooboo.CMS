@@ -2279,4 +2279,7 @@ Are you sure you want to use this size?</value>
   <data name="When you are ready, click the &lt;strong&gt;Next&lt;/strong&gt; button to start the installation." xml:space="preserve">
     <value>When you are ready, click the &lt;strong&gt;Next&lt;/strong&gt; button to start the installation.</value>
   </data>
+  <data name="This page is set as homepage. Are you sure you want to remove it?" xml:space="preserve">
+    <value>This page is set as homepage. Are you sure you want to remove it?</value>
+  </data>
 </root>
