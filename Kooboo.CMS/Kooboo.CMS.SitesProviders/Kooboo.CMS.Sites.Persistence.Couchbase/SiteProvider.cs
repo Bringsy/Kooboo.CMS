@@ -1,5 +1,6 @@
 ﻿using Kooboo.CMS.Common;
 using Kooboo.CMS.Common.Persistence.Non_Relational;
+using Kooboo.CMS.Content.Services;
 using Kooboo.CMS.Membership.Persistence;
 using Kooboo.CMS.Sites.Globalization;
 using Kooboo.CMS.Sites.Models;
@@ -11,27 +12,25 @@ using System.Threading.Tasks;
 
 namespace Kooboo.CMS.Sites.Persistence.Couchbase
 {
-    [Kooboo.CMS.Common.Runtime.Dependency.Dependency(typeof(ISiteProvider))]
-    [Kooboo.CMS.Common.Runtime.Dependency.Dependency(typeof(IProvider<Site>))]
+    [Kooboo.CMS.Common.Runtime.Dependency.Dependency(typeof(ISiteProvider), Order = 100)]
+    [Kooboo.CMS.Common.Runtime.Dependency.Dependency(typeof(IProvider<Site>), Order = 100)]
     public class SiteProvider : Kooboo.CMS.Sites.Persistence.FileSystem.SiteProvider
     {
         #region .ctor
         SiteInitializer _initializer;
-        public SiteProvider(IBaseDir baseDir, IMembershipProvider membershipProvider, IElementRepositoryFactory elementRepositoryFactory, SiteInitializer initializer)
-            : base(baseDir, membershipProvider, elementRepositoryFactory)
+        public SiteProvider(IBaseDir baseDir, IMembershipProvider membershipProvider, ISiteExportableProvider[] exportableProivders, SiteInitializer initializer, RepositoryManager repositoryManager)
+            : base(baseDir, membershipProvider, exportableProivders,repositoryManager)
         {
+            //abSiteSettingProvider = new ABTestProvider.ABSiteSettingProvider();
             _initializer = initializer;
         }
-        public override void Initialize(Site site)
-        {
-            _initializer.Initialize(site);
-            base.Initialize(site);
-        }
         #endregion
+
         Func<Site, string, Site> createModel = (Site site, string key) =>
         {
             return new Site(key);
         };
+
         #region Get/Update/Save/Delete
         public override void Add(Site item)
         {
@@ -76,6 +75,7 @@ namespace Kooboo.CMS.Sites.Persistence.Couchbase
             DataHelper.DeleteItemByKey(item, ModelExtensions.GetBucketDocumentKey(ModelExtensions.SiteDataType, item.Name));
             base.Remove(item);
         }
+      
         #endregion
     }
 }

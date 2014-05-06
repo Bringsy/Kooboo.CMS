@@ -60,19 +60,28 @@
     <Compile Include="..\..\CMSAssemblyInfoGlobal.cs">
       <Link>CMSAssemblyInfoGlobal.cs</Link>
     </Compile>
+    <Compile Include="ABTestProvider\ABPageSettingProvider.cs" />
+    <Compile Include="ABTestProvider\ABPageTestResultProvider.cs" />
+    <Compile Include="ABTestProvider\ABRuleSettingProvider.cs" />
+    <Compile Include="ABTestProvider\ABSiteSettingProvider.cs" />
+    <Compile Include="CustomErrorProvider\CustomErrorProvider.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DatabaseSettings.cs" />
     <Compile Include="DataHelper.cs" />
     <Compile Include="HtmlBlockProvider\HtmlBlockProvider.cs" />
     <Compile Include="LabelProvider\ElementRepositoryFactory.cs" />
+    <Compile Include="LabelProvider\LabelCategory.cs" />
+    <Compile Include="LabelProvider\LabelProvider.cs" />
     <Compile Include="LabelProvider\LabelRepository.cs" />
     <Compile Include="ModelExtensions.cs" />
     <Compile Include="PageProvider\PageProvider.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderBase.cs" />
     <Compile Include="SiteInitializer.cs" />
     <Compile Include="SiteProvider.cs" />
+    <Compile Include="UrlRedirectProvider\UrlRedirectProvider.cs" />
     <Compile Include="UserProvider\UserProvider.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +92,10 @@
     <ProjectReference Include="..\..\Kooboo.CMS.Common\Kooboo.CMS.Common.csproj">
       <Project>{ab6dde14-eeb6-4497-80a0-d148a0a692b5}</Project>
       <Name>Kooboo.CMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Kooboo.CMS.Content\Kooboo.CMS.Content\Kooboo.CMS.Content.csproj">
+      <Project>{c5a5186d-6f8e-4bb9-af0e-74f0993b48da}</Project>
+      <Name>Kooboo.CMS.Content</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Kooboo.CMS.Membership\Kooboo.CMS.Membership.csproj">
       <Project>{3df23643-4bd1-4564-82b9-9ec594ad05b6}</Project>

@@ -204,9 +204,10 @@ namespace Kooboo.CMS.Sites.View
         {
             get
             {
-                return this.PageRequestContext.RequestChannel != Web.FrontRequestChannel.Design
-                       && this.PageRequestContext.Site.EnableStyleEdting != false
-                       && ServiceFactory.UserManager.Authorize(Page_Context.Current.PageRequestContext.Site, Page_Context.Current.ControllerContext.HttpContext.User.Identity.Name, Account.Models.Permission.Sites_Page_StyleEditPermission);
+                return false;
+                //return this.PageRequestContext.RequestChannel != Web.FrontRequestChannel.Design
+                //       && this.PageRequestContext.Site.EnableStyleEdting != false
+                //       && ServiceFactory.UserManager.Authorize(Page_Context.Current.PageRequestContext.Site, Page_Context.Current.ControllerContext.HttpContext.User.Identity.Name, Account.Models.Permission.Sites_Page_StyleEditPermission);
             }
         }
         #endregion
@@ -438,7 +439,10 @@ namespace Kooboo.CMS.Sites.View
         {
             this.htmlMeta.HtmlTitle = EvaluateStringFormulas(htmlMetaSetting.HtmlTitle) + this.htmlMeta.HtmlTitle ?? "";
 
-            this.htmlMeta.Canonical = EvaluateStringFormulas(htmlMetaSetting.Canonical);
+            if (string.IsNullOrEmpty(htmlMeta.Canonical))
+            {
+                this.htmlMeta.Canonical = EvaluateStringFormulas(htmlMetaSetting.Canonical);
+            }
 
             this.htmlMeta.Author = EvaluateStringFormulas(htmlMetaSetting.Author) + this.htmlMeta.Author ?? "";
 

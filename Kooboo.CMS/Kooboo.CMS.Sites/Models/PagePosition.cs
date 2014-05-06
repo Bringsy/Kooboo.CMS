@@ -114,7 +114,7 @@ namespace Kooboo.CMS.Sites.Models
         {
             get
             {
-                return OutputCache != null && OutputCache.Duration > 0;
+                return OutputCache != null && OutputCache.EnableCaching == true;
             }
         }
         public override string ToString()
@@ -257,6 +257,18 @@ namespace Kooboo.CMS.Sites.Models
         [DataMember]
         public CacheSettings OutputCache { get; set; }
 
+        public Uri HostUri
+        {
+            get
+            {
+                var host = this.Host.Trim();
+                if (!host.StartsWith("http://"))
+                {
+                    host = "http://" + host;
+                }
+                return new Uri(host);
+            }
+        }
         public override string ToString()
         {
             return "Proxy:" + this.Host ?? "" + ":" + RequestPath ?? "/";

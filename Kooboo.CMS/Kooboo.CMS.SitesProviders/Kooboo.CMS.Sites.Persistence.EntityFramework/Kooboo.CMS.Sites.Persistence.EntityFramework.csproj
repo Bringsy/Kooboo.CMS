@@ -43,7 +43,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
@@ -57,9 +56,46 @@
     <Compile Include="..\..\CMSAssemblyInfoGlobal.cs">
       <Link>CMSAssemblyInfoGlobal.cs</Link>
     </Compile>
+    <Compile Include="ABTestProvider\Entities\ABPageSettingEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\ABPageSettingsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ISiteImportExportStartup.cs" />
+    <Compile Include="ABTestProvider\Mapping\ABPageSettingMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\Entities\ABPageTestResultEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\ABPageTestResultProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\Mapping\ABPageTestResultMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\Entities\ABRuleSettingEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\ABRuleSettingsProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\Mapping\ABRuleSettingMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ABTestProvider\Entities\ABSiteSettingEntity.cs" />
+    <Compile Include="ABTestProvider\ABSiteSettingProvider.cs" />
+    <Compile Include="ABTestProvider\Mapping\ABSiteSettingMapping.cs" />
+    <Compile Include="CustomErrorsProvider\CustomErrorEntity.cs" />
+    <Compile Include="CustomErrorsProvider\CustomErrorProvider.cs" />
+    <Compile Include="CustomErrorsProvider\Mapping\CustomErrorMapping.cs" />
     <Compile Include="HtmlBlockProvider\HtmlBlockEntity.cs" />
     <Compile Include="HtmlBlockProvider\HtmlBlockProvider.cs" />
     <Compile Include="LabelProvider\LabelEntity.cs" />
+    <Compile Include="LabelProvider\LabelProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="LabelProvider\LabelRepository.cs" />
     <Compile Include="LabelProvider\ElementRepositoryFactory.cs" />
     <Compile Include="PageProvider\Mapping\PageEnityMapping.cs" />
@@ -71,6 +107,9 @@
     <Compile Include="SiteProvider\Mapping\SiteSettingMapping.cs" />
     <Compile Include="SiteProvider\SiteEntity.cs" />
     <Compile Include="SiteProvider\SiteProvider.cs" />
+    <Compile Include="UrlRedirectsProvider\Mapping\UrlRedirectMapping.cs" />
+    <Compile Include="UrlRedirectsProvider\UrlRedirectEntity.cs" />
+    <Compile Include="UrlRedirectsProvider\UrlRedirectProvider.cs" />
     <Compile Include="UserProvider\Mapping\SiteUserMapping.cs" />
     <Compile Include="UserProvider\SiteUserEntity.cs" />
     <Compile Include="UserProvider\UserProvider.cs" />
@@ -83,6 +122,10 @@
     <ProjectReference Include="..\..\Kooboo.CMS.Common\Kooboo.CMS.Common.csproj">
       <Project>{ab6dde14-eeb6-4497-80a0-d148a0a692b5}</Project>
       <Name>Kooboo.CMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Kooboo.CMS.Content\Kooboo.CMS.Content\Kooboo.CMS.Content.csproj">
+      <Project>{c5a5186d-6f8e-4bb9-af0e-74f0993b48da}</Project>
+      <Name>Kooboo.CMS.Content</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Kooboo.CMS.Membership\Kooboo.CMS.Membership.csproj">
       <Project>{3df23643-4bd1-4564-82b9-9ec594ad05b6}</Project>
@@ -97,7 +140,6 @@
       <Name>Kooboo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo copy "$(TargetDir)\$(TargetFileName)" "..\..\..\..\Kooboo.CMS.Web\Bin\"

@@ -8,10 +8,32 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Couchbase.Operations;
+using Couchbase;
 namespace Kooboo.CMS.Sites.Persistence.Couchbase
 {
     public class DataHelper
     {
+
+        public static string ViewTemplate = @"""{0}"":{{""map"":""function(doc,meta){{if(doc._datatype_==='{1}'){{emit(meta.id,null);}}}}""}}";
+
+        public static IView<IViewRow> GetView(CouchbaseClient bucket, string bucketName, string designName, string viewName)
+        {
+            var view = bucket.GetView(designName, viewName).Stale(global::Couchbase.StaleMode.False).Reduce(false);
+            if (!view.CheckExistsByCache(bucketName, viewName))
+            {
+                var created = DatabaseHelper.CreateDesignDocument(bucketName, ModelExtensions.DesignDocumentName, ModelExtensions.GetDesignDocumentBody());
+                if (created)
+                {
+                    DatabaseHelper.ExistedView.Add(DatabaseHelper.GetViewCacheName(bucketName, viewName));
+                    System.Threading.Thread.Sleep(3000);
+                }
+                else
+                {
+                    throw new Exception("Create view " + viewName + " faild");
+                }
+            }
+            return view;
+        }
         #region DeleteItemByKey
         public static void DeleteItemByKey(Site site, string key)
         {
@@ -30,6 +52,8 @@ namespace Kooboo.CMS.Sites.Persistence.Couchbase
             if (result.HasValue)
             {
                 var obj = ModelExtensions.JsonToObject<T>(json.ToString());
+                if (obj is ISiteObject)
+                    ((ISiteObject)obj).Site = site;
                 return obj;
             }
             else
@@ -66,11 +90,12 @@ namespace Kooboo.CMS.Sites.Persistence.Couchbase
 
             if (bucket != null)
             {
-                var view = bucket.GetView(viewName, viewName).Stale(global::Couchbase.StaleMode.False).Reduce(false);
+                var view = GetView(bucket, site.GetBucketName(), ModelExtensions.DesignDocumentName, viewName);
 
                 var idList = view.Select(it => it.ItemId).ToArray();
 
-                return bucket.ExecuteGet(idList).Select(it => ModelExtensions.JsonToObject<T>(it.Value.Value.ToString()));
+                return bucket.ExecuteGet(idList).Select(it => ModelExtensions.JsonToObject<T>(it.Value.Value.ToString()))
+                    .Select(it => { if (it is ISiteObject) ((ISiteObject)it).Site = site; return it; });
             }
             else
             {
@@ -85,7 +110,7 @@ namespace Kooboo.CMS.Sites.Persistence.Couchbase
 
             if (bucket != null)
             {
-                var view = bucket.GetView(viewName, viewName).Stale(global::Couchbase.StaleMode.False).Reduce(false);
+                var view = GetView(bucket, site.GetBucketName(), ModelExtensions.DesignDocumentName, viewName);
 
                 var idList = view.Select(it => it.ItemId).ToArray();
 
@@ -113,5 +138,6 @@ namespace Kooboo.CMS.Sites.Persistence.Couchbase
             bucket.ExecuteStore(StoreMode.Set, ModelExtensions.GetBucketDocumentKey(dataType, key), o.ToJson(dataType), PersistTo.One);
         }
         #endregion
+
     }
 }

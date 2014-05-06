@@ -338,6 +338,15 @@ namespace Kooboo.CMS.Content.Persistence.Default
                 visitor.Visite(expression);
                 return visitor.LinqExpression;
             }
+            protected override void VisitNot(NotExpression expression)
+            {
+                if (expression.InnerExpression != null)
+                {
+                    var rightClause = VisitInner(expression.InnerExpression);
+                    LinqExpression = PredicateBuilder.And(PredicateBuilder.False<MediaContent>(), rightClause);
+                }
+
+            }
             protected override void VisitAndAlso(Query.Expressions.AndAlsoExpression expression)
             {
                 Expression<Func<MediaContent, bool>> leftClause = it => true;
@@ -601,15 +610,12 @@ namespace Kooboo.CMS.Content.Persistence.Default
         }
         #endregion
 
-        public Stream GetContentStream(MediaContent content)
+        public byte[] GetContentStream(MediaContent content)
         {
-            Stream stream=new MemoryStream();
-            using (var fs = File.Open(content.PhysicalPath, FileMode.OpenOrCreate))
+            using (var fs = File.Open(content.PhysicalPath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                fs.CopyTo(stream);
+                return fs.ReadData();
             }
-            stream.Position = 0;
-            return stream;
         }
 
         public void SaveContentStream(MediaContent content, Stream stream)
@@ -672,7 +678,7 @@ namespace Kooboo.CMS.Content.Persistence.Default
                 mediaContent["Metadata.AlternateText"] = metadata.AlternateText;
                 mediaContent["Metadata.Description"] = metadata.Description;
             }
-        } 
+        }
         #endregion
 
         #region DeleteMetadata
@@ -683,7 +689,7 @@ namespace Kooboo.CMS.Content.Persistence.Default
             {
                 File.Delete(metadataFile);
             }
-        } 
+        }
         #endregion
     }
     #endregion

@@ -20,7 +20,7 @@ namespace Kooboo.CMS.Common.Runtime.Dependency.Ninject
         #region Ctor
 
         public NinjectEngine()
-            : this(new WebAppTypeFinder() { AssemblySkipLoadingPattern = "Kooboo,|System\\." })
+            : this(new WebAppTypeFinder())
         {
 
         }
@@ -138,9 +138,9 @@ namespace Kooboo.CMS.Common.Runtime.Dependency.Ninject
         {
             return ContainerManager.ResolveAll<T>();
         }
-        public void Inject(object instance, params Parameter[] parameters)
+        public void InjectProperties(object instance)
         {
-            ContainerManager.Inject(instance, parameters);
+            ContainerManager.InjectProperties(instance);
         }
         #endregion
 
