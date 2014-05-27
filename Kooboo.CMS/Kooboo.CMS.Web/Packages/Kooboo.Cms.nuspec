@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Kooboo.CMS.References</id>
-    <version>4.4.3</version>
+    <version>4.4.5</version>
     <authors>eConduct</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Binaries for Kooboo CMS</description>
@@ -20,7 +20,24 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\bin\*.dll" target="lib\net45\" />
-    <file src="..\bin\*.pdb" target="lib\net45\" />    
+    <file src="..\Bin\CookComputing.XmlRpcV2.dll" target="lib\net40\CookComputing.XmlRpcV2.dll" />
+    <file src="..\Bin\DiffPlex.dll" target="lib\net40\DiffPlex.dll" />
+    <file src="..\Bin\dotless.Core.dll" target="lib\net40\dotless.Core.dll" />
+    <file src="..\Bin\HtmlAgilityPack.dll" target="lib\net40\HtmlAgilityPack.dll" />
+    <file src="..\Bin\Ionic.Zip.Reduced.dll" target="lib\net40\Ionic.Zip.Reduced.dll" />
+    <file src="..\Bin\Kooboo.CMS.Account.dll" target="lib\net40\Kooboo.CMS.Account.dll" />
+    <file src="..\Bin\Kooboo.CMS.Caching.dll" target="lib\net40\Kooboo.CMS.Caching.dll" />
+    <file src="..\Bin\Kooboo.CMS.Common.dll" target="lib\net40\Kooboo.CMS.Common.dll" />
+    <file src="..\Bin\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll" target="lib\net40\Kooboo.CMS.Common.Runtime.Dependency.Ninject.dll" />
+    <file src="..\Bin\Kooboo.CMS.Content.dll" target="lib\net40\Kooboo.CMS.Content.dll" />
+    <file src="..\Bin\Kooboo.CMS.Form.dll" target="lib\net40\Kooboo.CMS.Form.dll" />
+    <file src="..\Bin\Kooboo.CMS.Search.dll" target="lib\net40\Kooboo.CMS.Search.dll" />
+    <file src="..\Bin\Kooboo.CMS.Sites.dll" target="lib\net40\Kooboo.CMS.Sites.dll" />
+    <file src="..\Bin\Kooboo.CMS.Sites.TemplateEngines.Razor.dll" target="lib\net40\Kooboo.CMS.Sites.TemplateEngines.Razor.dll" />
+    <file src="..\Bin\Kooboo.CMS.Web.dll" target="lib\net40\Kooboo.CMS.Web.dll" />
+    <file src="..\Bin\Kooboo.dll" target="lib\net40\Kooboo.dll" />
+    <file src="..\Bin\Lucene.Net.Contrib.Highlighter.dll" target="lib\net40\Lucene.Net.Contrib.Highlighter.dll" />
+    <file src="..\Bin\Lucene.Net.dll" target="lib\net40\Lucene.Net.dll" />
+    <file src="..\Bin\Ninject.dll" target="lib\net40\Ninject.dll" />
   </files>
 </package>
