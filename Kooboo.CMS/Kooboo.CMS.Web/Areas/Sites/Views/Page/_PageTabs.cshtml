@@ -48,13 +48,11 @@
                 </a>@Html.IconImage("arrow blue-down")
             </li>
         }
-	    @*if (!string.IsNullOrEmpty(Kooboo.CMS.Sites.Models.Site.Current.Membership))
-        {
-            <li>
-                <a href="#permission">
-                    @("Permission".Localize())
-                </a>@Html.IconImage("arrow blue-down")
-            </li>
+		<li>
+			<a href="#permission">
+				@("Permission".Localize())
+			</a>@Html.IconImage("arrow blue-down")
+		</li>
         @if (customTabs.Length == 0)
         {
             <li>
@@ -112,19 +110,10 @@
             @Html.EditorFor(m => m.DataRules)
         </div>
     }
-	@*if (!string.IsNullOrEmpty(Kooboo.CMS.Sites.Models.Site.Current.Membership))
-    {
-        <div class="tab-content" id="permission">
-            @Html.EditorFor(m => m.Permission)
-        </div>
-    }*@
-	
-	 <div class="tab-content" id="permission">
-            @Html.EditorFor(m => m.Permission)
-        </div>
-
-
-	@if (customTabs.Length == 0)
+	<div class="tab-content" id="permission">
+        @Html.EditorFor(m => m.Permission)
+    </div>
+    @if (customTabs.Length == 0)
     {
         <div class="tab-content" id="customFields">
             <table>
